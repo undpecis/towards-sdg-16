@@ -122,33 +122,33 @@
             <div class="c-country-key-txxt-wrap">
                 <!-- ATTENTION - there are two titles (c-country-title) because I need to know when to show content for mobile and when for desktop. Each title has different click event functions  -->
                 <!-- #region Country title -->
-                <div class="c-country-title c-show-when-lg">
+                <div class="c-country-title c-show-when-lg" ng-click="toggleCountryKeyResults('lg')">
                     <div class="c-table">
                         <div class="c-cell">
                             <span class="c-dynamic-country-title">Kazakhstan</span>
                         </div>
                         <div class="c-cell c-w-1perc">
-                            <i class="c-ico icon-arrow-up-circle" id="cid-title-arrow-up"></i>
-                            <i class="c-ico icon-arrow-down-circle" id="cid-title-arrow-down"></i>
+                            <i class="c-ico icon-arrow-up" id="cid-title-arrow-up" ng-if="ctrlVars.isOpenCountryTitleLg"></i>
+                            <i class="c-ico icon-arrow-down" id="cid-title-arrow-down" ng-if="!ctrlVars.isOpenCountryTitleLg"></i>
                         </div>
                     </div>
                 </div>
                 <!-- #endregion Country title -->
                 <!-- #region Country title -->
-                <div class="c-country-title c-show-when-xs">
+                <div class="c-country-title c-show-when-xs" ng-click="toggleCountryKeyResults('xs')">
                     <div class="c-table">
                         <div class="c-cell">
                             <span class="c-dynamic-country-title">Kazakhstan</span>
                         </div>
                         <div class="c-cell c-w-1perc">
-                            <i class="c-ico icon-arrow-up-circle" id="cid-title-arrow-up"></i>
-                            <i class="c-ico icon-arrow-down-circle" id="cid-title-arrow-down"></i>
+                            <i class="c-ico icon-arrow-up" id="cid-title-arrow-up" ng-if="ctrlVars.isOpenCountryTitleXs"></i>
+                            <i class="c-ico icon-arrow-down" id="cid-title-arrow-down" ng-if="!ctrlVars.isOpenCountryTitleXs"></i>
                         </div>
                     </div>
                 </div>
                 <!-- #endregion Country title -->
                 <!-- #region Key results content // LARGE RESOLUTIONS -->
-                <div class="c-key-results-content-flag c-show-when-lg">
+                <div class="c-key-results-content-flag c-show-when-lg" ng-if="ctrlVars.isOpenCountryTitleLg">
                     <div class="c-table">
                         <!-- #region Text -->
                         <div class="c-cell c-has-text">
@@ -201,7 +201,7 @@
             </div>-->
             <!-- #endregion Title -->
             <!-- #region Key results content // SMALL RESOLUTIONS -->
-            <div class="c-key-results-content-flag c-show-when-xs">
+            <div class="c-key-results-content-flag c-show-when-xs" ng-if="ctrlVars.isOpenCountryTitleXs">
                 <div class="c-table">
                     <!-- #region Text -->
                     <div class="c-cell c-has-text">

@@ -101,6 +101,20 @@ angular.module('Home')
             /* #endregion Change Data displayed for 'Background', 'Assistance and Impact' & 'Challenges, Lessons Learned and Way Forward' */
             /* #endregion COUNTRIES RELATED CODE */
 
+            /* #region Country Key Results */
+            $scope.ctrlVars = {
+                isOpenCountryTitleLg: false,
+                isOpenCountryTitleXs: false
+            }
+            $scope.toggleCountryKeyResults = function (callerName) {
+                if (callerName == 'xs') {
+                    $scope.ctrlVars.isOpenCountryTitleXs = !$scope.ctrlVars.isOpenKeyXs;
+                } else if (callerName == 'lg') {
+                    $scope.ctrlVars.isOpenCountryTitleLg = !$scope.ctrlVars.isOpenKeyLg;
+                }
+            }
+            /* #endregion Country Key Results */
+
 
         }
     ]
