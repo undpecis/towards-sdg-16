@@ -1271,12 +1271,12 @@ a {
 }
 .c-map-content-wrap .c-country-key-txxt-wrap .c-country-title > .c-table > .c-cell.c-w-1perc .c-ico {
   color: #fff;
-}
-.c-map-content-wrap .c-country-key-txxt-wrap .c-country-title > .c-table > .c-cell.c-w-1perc .c-ico.icon-arrow-up-circle {
-  display: none;
-}
-.c-map-content-wrap .c-country-key-txxt-wrap .c-country-title > .c-table > .c-cell.c-w-1perc .c-ico.icon-arrow-down-circle {
-  display: block;
+  /*&.icon-arrow-up-circle, &.icon-arrow-up{
+                                display:none;
+                            }
+                            &.icon-arrow-down-circle, &.icon-arrow-down{
+                                display:block;
+                            }*/
 }
 @media only screen and (min-width: 1px) and (max-width: 575px) {
   .c-map-content-wrap .c-country-key-txxt-wrap .c-country-title.c-show-when-xs {
