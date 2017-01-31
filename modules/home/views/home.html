@@ -119,36 +119,21 @@
             </div>
             <!-- #endregion Help controls -->
             <!-- #region Country Key results text -->
-            <div class="c-country-key-txxt-wrap">
-                <!-- ATTENTION - there are two titles (c-country-title) because I need to know when to show content for mobile and when for desktop. Each title has different click event functions  -->
+            <div class="c-country-key-results-wrap c-show-when-lg" ng-if="ctrlVars.isInterestCountryClicked">
                 <!-- #region Country title -->
-                <div class="c-country-title c-show-when-lg" ng-click="toggleCountryKeyResults('lg')">
+                <div class="c-country-title">
                     <div class="c-table">
                         <div class="c-cell">
-                            <span class="c-dynamic-country-title">Kazakhstan</span>
+                            <span class="c-dynamic-country-title">{{selectedCountry.title}}</span>
                         </div>
-                        <div class="c-cell c-w-1perc">
-                            <i class="c-ico icon-arrow-up" id="cid-title-arrow-up" ng-if="ctrlVars.isOpenCountryTitleLg"></i>
-                            <i class="c-ico icon-arrow-down" id="cid-title-arrow-down" ng-if="!ctrlVars.isOpenCountryTitleLg"></i>
-                        </div>
-                    </div>
-                </div>
-                <!-- #endregion Country title -->
-                <!-- #region Country title -->
-                <div class="c-country-title c-show-when-xs" ng-click="toggleCountryKeyResults('xs')">
-                    <div class="c-table">
-                        <div class="c-cell">
-                            <span class="c-dynamic-country-title">Kazakhstan</span>
-                        </div>
-                        <div class="c-cell c-w-1perc">
-                            <i class="c-ico icon-arrow-up" id="cid-title-arrow-up" ng-if="ctrlVars.isOpenCountryTitleXs"></i>
-                            <i class="c-ico icon-arrow-down" id="cid-title-arrow-down" ng-if="!ctrlVars.isOpenCountryTitleXs"></i>
+                        <div class="c-cell c-w-1perc" ng-click="toggleContent('closeInterestCountry')">
+                            <i class="c-ico icon-close"></i>
                         </div>
                     </div>
                 </div>
                 <!-- #endregion Country title -->
                 <!-- #region Key results content // LARGE RESOLUTIONS -->
-                <div class="c-key-results-content-flag c-show-when-lg" ng-if="ctrlVars.isOpenCountryTitleLg">
+                <div class="c-key-results-content-flag">
                     <div class="c-table">
                         <!-- #region Text -->
                         <div class="c-cell c-has-text">
@@ -158,7 +143,7 @@
                             </ul>
                             <div class="c-buttons-wrap">
                                 <!-- #region Learn more button -->
-                                <button class="c-bttn c-bttn-combo c-bttn-blue c-key-results-learn-more c-show-when-lg">
+                                <button class="c-bttn c-bttn-combo c-bttn-blue" ng-click="toggleContent('isOpenCountryBACdata_lg')">
                                     <div class="c-circle-icon-box">
                                         <i class="c-ico icon-login"></i>
                                     </div>
@@ -191,56 +176,17 @@
     </div>
 </div>
 <!-- #endregion Interactive map -->
-<!-- #region Expandable content -->
-<div class="c-wide-wrap" id="c-ng-expandable-content-01">
+<!-- #region Expandable BAC content // LARGE RESOLUTIONS -->
+<div class="c-wide-wrap c-show-when-lg" ng-if="ctrlVars.isOpenCountryBACdata_lg && ctrlVars.isInterestCountryClicked">
     <div class="c-container">
+        <!-- #region BAC texts content // LARGE RESOLUTIONS -->
         <div class="c-expandable-content-wrap c-blue-background">
             <!-- #region Title -->
             <!--<div class="c-title">
                 <h3>Inclusive political processes</h3>
             </div>-->
             <!-- #endregion Title -->
-            <!-- #region Key results content // SMALL RESOLUTIONS -->
-            <div class="c-key-results-content-flag c-show-when-xs" ng-if="ctrlVars.isOpenCountryTitleXs">
-                <div class="c-table">
-                    <!-- #region Text -->
-                    <div class="c-cell c-has-text">
-                        <p class="c-21-400">Key results:</p>
-                        <ul>
-                            <li><span class="c-list-item">12,206 people surveyed to assess the effectiveness of the judicial system</span></li>
-                            <li><span class="c-list-item">New laws on Access to Information, Public Councils, Civil Service, and Prevention of Corruption passed with UNDP assistance and input</span></li>
-                            <li><span class="c-list-item">Innovative Solutions Scheme launched at the Regional Hub for Civil Service, which also had the number of participating countries grow to 34</span></li>
-                        </ul>
-                        <div class="c-buttons-wrap">
-                            <!-- #region Learn more button -->
-                            <button class="c-bttn c-bttn-combo c-bttn-blue">
-                                <div class="c-circle-icon-box">
-                                    <i class="c-ico icon-login"></i>
-                                </div>
-                                <span>LEARN MORE</span>
-                            </button>
-                            <!-- #endregion Learn more button -->
-                            <!-- #region Download section -->
-                            <button class="c-bttn c-bttn-combo c-bttn-blue">
-                                <div class="c-circle-icon-box">
-                                    <i class="c-ico icon-cloud-download"></i>
-                                </div>
-                                <span>DOWNLOAD SECTION</span>
-                            </button>
-                            <!-- #endregion Download section -->
-                        </div>
-                    </div>
-                    <!-- #endregion Text -->
-                    <!-- #region Flag -->
-                    <div class="c-cell c-has-flag">
-                        <div class="c-flag-sprite c-kazakhstan"></div>
-                    </div>
-                    <!-- #endregion Flag -->
-                </div>
-            </div>
-            <!-- #endregion Key results content // SMALL RESOLUTIONS -->
-            <!-- #region Content // LARGE RESOLUTIONS -->
-            <div class="c-content-wrap c-show-when-lg">
+            <div class="c-content-wrap">
                 <div class="c-table">
                     <!-- #region Left content / Vertical navigation -->
                     <div class="c-cell c-has-vertical-nav c-col-1-5-lg">
@@ -280,14 +226,184 @@
                     <!-- #endregion Right content -->
                 </div>
             </div>
-            <!-- #endregion Content // LARGE RESOLUTIONS -->
-            <!-- #region Content // SMALL RESOLUTIONS -->
-            <div class="c-content-wrap c-show-when-xs">
+        </div>
+        <!-- #endregion BAC texts content // LARGE RESOLUTIONS -->
+        <!-- #region Key results content -->
+        <div class="c-key-results-content-wrap">
+            <div class="c-table">
+                <!-- #region Left content / Vertical navigation -->
+                <div class="c-cell c-col-1-5-lg">
+                    <h4 class="c-24-400">Key results</h4>
+                </div>
+                <!-- #endregion Left content / Vertical navigation -->
+                <!-- #region Right content -->
+                <div class="c-cell c-col-4-5-lg">
+                    <div class="c-cross-cells-wrap">
+                        <div class="c-table">
+                            <!-- #region First row -->
+                            <div class="c-row">
+                                <!-- #region Left cell content -->
+                                <div class="c-cell" ng-if="selectedCountry.keyResults[0].text != ''">
+                                    <!-- #region Icon & text -->
+                                    <div class="c-icon-text-content">
+                                        <div class="c-table">
+                                            <div class="c-cell c-w-1perc">
+                                                <i class="xn {{selectedCountry.keyResults[0].iconClass}}" aria-hidden="true"></i>
+                                                <!-- #region SVG graphic -->
+                                                <!--<div class="c-content-block c-svg-graph-wrap">
+                                                    <object type="image/svg+xml" data="Content/images/key-icon-legal.svg" class="c-svg-object">
+                                                        Legal
+                                                    </object>
+                                                </div>-->
+                                                <!-- #endregion SVG graphic -->
+                                            </div>
+                                            <div class="c-cell">
+                                                <p>{{selectedCountry.keyResults[0].text}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #endregion Icon & text -->
+                                </div>
+                                <!-- #endregion Left cell content -->
+                                <!-- #region Right cell content -->
+                                <div class="c-cell" ng-if="selectedCountry.keyResults[1].text != ''">
+                                    <!-- #region Icon & text -->
+                                    <div class="c-icon-text-content">
+                                        <div class="c-table">
+                                            <div class="c-cell c-w-1perc">
+                                                <i class="xn {{selectedCountry.keyResults[1].iconClass}}" aria-hidden="true"></i>
+                                                <!-- #region SVG graphic -->
+                                                <!--<div class="c-content-block c-svg-graph-wrap">
+                                                    <object type="image/svg+xml" data="Content/images/key-icon-family.svg" class="c-svg-object">
+                                                        Family
+                                                    </object>
+                                                </div>-->
+                                                <!-- #endregion SVG graphic -->
+                                            </div>
+                                            <div class="c-cell">
+                                                <p>{{selectedCountry.keyResults[1].text}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #endregion Icon & text -->
+                                </div>
+                                <!-- #endregion Right cell content -->
+                            </div>
+                            <!-- #endregion First row -->
+                            <!-- #region Second row -->
+                            <div class="c-row">
+                                <!-- #region Left cell content -->
+                                <div class="c-cell" ng-if="selectedCountry.keyResults[2].text != ''">
+                                    <!-- #region Icon & text -->
+                                    <div class="c-icon-text-content">
+                                        <div class="c-table">
+                                            <div class="c-cell c-w-1perc">
+                                                <i class="xn {{selectedCountry.keyResults[2].iconClass}}" aria-hidden="true"></i>
+                                                <!-- #region SVG graphic -->
+                                                <!--<div class="c-content-block c-svg-graph-wrap">
+                                                    <object type="image/svg+xml" data="Content/images/key-icon-legal.svg" class="c-svg-object">
+                                                        Legal
+                                                    </object>
+                                                </div>-->
+                                                <!-- #endregion SVG graphic -->
+                                            </div>
+                                            <div class="c-cell">
+                                                <p>{{selectedCountry.keyResults[2].text}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #endregion Icon & text -->
+                                </div>
+                                <!-- #endregion Left cell content -->
+                                <!-- #region Right cell content -->
+                                <div class="c-cell" ng-if="selectedCountry.keyResults[3].text != ''">
+                                    <!-- #region Icon & text -->
+                                    <div class="c-icon-text-content">
+                                        <div class="c-table">
+                                            <div class="c-cell c-w-1perc">
+                                                <i class="xn {{selectedCountry.keyResults[3].iconClass}}" aria-hidden="true"></i>
+                                                <!-- #region SVG graphic -->
+                                                <!--<div class="c-content-block c-svg-graph-wrap">
+                                                    <object type="image/svg+xml" data="Content/images/key-icon-light-bubble.svg" class="c-svg-object">
+                                                        Legal
+                                                    </object>
+                                                </div>-->
+                                                <!-- #endregion SVG graphic -->
+                                            </div>
+                                            <div class="c-cell">
+                                                <p>{{selectedCountry.keyResults[3].text}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #endregion Icon & text -->
+                                </div>
+                                <!-- #endregion Right cell content -->
+                            </div>
+                            <!-- #endregion Second row -->
+                        </div>
+                    </div>
+                </div>
+                <!-- #endregion Right content -->
+            </div>
+        </div>
+        <!-- #endregion Key results content -->
+    </div>
+</div>
+<!-- #endregion Expandable BAC content // LARGE RESOLUTIONS -->
+<!-- #region Expandable BAC content // SMALL RESOLUTIONS -->
+<div class="c-wide-wrap c-show-when-xs" ng-if="ctrlVars.isInterestCountryClicked">
+    <div class="c-container">
+        <div class="c-expandable-content-wrap c-blue-background">
+            <!-- #region Country title -->
+            <div class="c-country-key-title-padding-xs c-margin-top-negative-70">
+                <div class="c-country-title" ng-if="ctrlVars.isInterestCountryClicked">
+                    <div class="c-table">
+                        <div class="c-cell">
+                            <span class="c-dynamic-country-title">{{selectedCountry.title}}</span>
+                        </div>
+                        <div class="c-cell c-w-1perc" ng-click="toggleContent('closeInterestCountry')">
+                            <i class="c-ico icon-close"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion Country title -->
+            <!-- #region Country flag // SMALL RESOLUTIONS -->
+            <div class="c-key-results-content-flag" ng-if="ctrlVars.isInterestCountryClicked">
+                <div class="c-table">
+                    <!-- #region Text -->
+                    <div class="c-cell c-has-text">
+                        <p class="c-21-400">Key results://mobile//</p>
+                        <ul>
+                            <li ng-repeat="keyItem in selectedCountry.keyResults"><span class="c-list-item">{{keyItem.text}}</span></li>
+                        </ul>
+                        <div class="c-buttons-wrap">
+                            <!-- #region Download section -->
+                            <button class="c-bttn c-bttn-combo c-bttn-blue">
+                                <div class="c-circle-icon-box">
+                                    <i class="c-ico icon-cloud-download"></i>
+                                </div>
+                                <span>DOWNLOAD SECTION</span>
+                            </button>
+                            <!-- #endregion Download section -->
+                        </div>
+                    </div>
+                    <!-- #endregion Text -->
+                    <!-- #region Flag -->
+                    <div class="c-cell c-has-flag">
+                        <div class="c-flag-sprite {{selectedCountry.flagClass}}"></div>
+                    </div>
+                    <!-- #endregion Flag -->
+                </div>
+            </div>
+            <!-- #endregion Country flag // SMALL RESOLUTIONS -->
+            <!-- #region BAC texts content // SMALL RESOLUTIONS -->
+            <div class="c-content-wrap">
                 <ul class="c-vertical-list c-key-results-list">
                     <!-- #region Single item -->
                     <li>
-                        <a class="c-list-title" id="c-bttn-key-results-01"><b>Background</b></a>
-                        <div class="c-item-content" id="c-content-key-results-01">
+                        <a class="c-list-title"><b>Background//mobile//</b></a>
+                        <div class="c-item-content">
                             <p>An ethnically diverse nation with large oil, gas and mineral reserves, Kazakhstan has experienced rapid economic growth since the turn of the century and has become the dominant economy in Central Asia. However, with oil and other petroleum products making up over 60 percent of exports, the fall in prices for many commodities in 2015 had a significant impact on the Kazakh economy.</p>
                             <p>In April 2015, Nursultan Nazarbaev won the latest presidential election with a reported 97.7 percent of the vote.59 His re-election coincided with the launch of an important reform process, entitled ‘100 Concrete Steps to Implement Five Institutional Reforms’, which is anticipated to strongly impact on institutional efficiency, government openness and long-term economic development. Furthermore, the President has made a commitment to reforms encouraging a multi-party system, while the country has also been exploring ways to decentralize power to the local level, with several initiatives from the Government in this area. To date, however, there is still significant potential for the further decentralization of power to local executive bodies. </p>
                             <p>Over the past two decades, Kazakhstan has implemented significant public administration and civil service reforms to improve the effectiveness and efficiency of government. Nonetheless, more progress is needed in addressing the development challenges facing Kazakhstan. Restrictions on freedom of expression remain, with newspapers and other media outlets presenting dissenting views still subject to closure by authorities. Further improvement is also required to reduce discrimination against ethnic minorities, the LGTBI community and some religious groups.     </p>
@@ -305,23 +421,23 @@
                     <!-- #endregion Single item -->
                     <!-- #region Single item -->
                     <li>
-                        <a class="c-list-title" id="c-bttn-key-results-02"><b>Assistance and Impact</b></a>
-                        <div class="c-item-content" id="c-content-key-results-02">
+                        <a class="c-list-title"><b>Assistance and Impact</b></a>
+                        <div class="c-item-content">
                             <p>More recently, Kazakhstan has been playing an active role in attempts to counter violent extremism in Central Asia. In June 2015, Kazakhstan hosted the two-day Central and South Asia Regional Conference on Countering Violent Extremism. Co-organized by the Kazakh and US governments, the event was attended by 200 high-level government officials, representatives of the private sector and civil society activists from Afghanistan, Bangladesh, Kazakhstan, the Kyrgyz Republic, India, Pakistan, Sri Lanka, Tajikistan and Uzbekistan. As a result of the conference, a set of recommendations were adopted and concrete steps proposed to enhance national and regional efforts.</p>
                         </div>
                     </li>
                     <!-- #endregion Single item -->
                     <!-- #region Single item -->
                     <li>
-                        <a class="c-list-title" id="c-bttn-key-results-03"><b>Challenges, Lessons Learned and Way Forward</b></a>
-                        <div class="c-item-content" id="c-content-key-results-03">
+                        <a class="c-list-title"><b>Challenges, Lessons Learned and Way Forward</b></a>
+                        <div class="c-item-content">
                             <p>Over the past two decades, Kazakhstan has implemented significant public administration and civil service reforms to improve the effectiveness and efficiency of government. Nonetheless, more progress is needed in addressing the development challenges facing Kazakhstan. Restrictions on freedom of expression remain, with newspapers and other media outlets presenting dissenting views still subject to closure by authorities. Further improvement is also required to reduce discrimination against ethnic minorities, the LGTBI community and some religious groups.     </p>
                         </div>
                     </li>
                     <!-- #endregion Single item -->
                 </ul>
             </div>
-            <!-- #endregion Content // SMALL RESOLUTIONS -->
+            <!-- #endregion BAC texts content // SMALL RESOLUTIONS -->
         </div>
         <!-- #region Key results content -->
         <div class="c-key-results-content-wrap">
@@ -444,13 +560,13 @@
         <!-- #endregion Key results content -->
     </div>
 </div>
-<!-- #endregion Expandable content -->
+<!-- #endregion Expandable BAC content // SMALL RESOLUTIONS -->
 <!-- #region Focus areas -->
 <div class="c-wide-wrap">
     <div class="c-container">
         <!-- #region Title -->
         <div class="c-section-title">
-            <h2 id="trigger1">Focus Areas</h2>
+            <h2>Focus Areas</h2>
         </div>
         <!-- #endregion Title -->
         <!-- #region Focus areas content -->
@@ -583,7 +699,7 @@
 </div>
 <!-- #endregion Focus areas -->
 <!-- #region Expandable content -->
-<div class="c-wide-wrap c-black-background" id="c-ng-expandable-content-02">
+<div class="c-wide-wrap c-black-background">
     <div class="c-container">
         <div class="c-expandable-content-wrap">
             <!-- #region Title -->
@@ -642,8 +758,8 @@
                 <ul class="c-vertical-list c-key-results-list c-black-background">
                     <!-- #region Single item -->
                     <li>
-                        <a class="c-list-title" id="c-bttn-inclusive-political-01"><b>Overview</b></a>
-                        <div class="c-item-content" id="c-content-inclusive-political-01">
+                        <a class="c-list-title"><b>Overview</b></a>
+                        <div class="c-item-content">
                             <p>An ethnically diverse nation with large oil, gas and mineral reserves, Kazakhstan has experienced rapid economic growth since the turn of the century and has become the dominant economy in Central Asia. However, with oil and other petroleum products making up over 60 percent of exports, the fall in prices for many commodities in 2015 had a significant impact on the Kazakh economy.</p>
                             <p>In April 2015, Nursultan Nazarbaev won the latest presidential election with a reported 97.7 percent of the vote.59 His re-election coincided with the launch of an important reform process, entitled ‘100 Concrete Steps to Implement Five Institutional Reforms’, which is anticipated to strongly impact on institutional efficiency, government openness and long-term economic development. Furthermore, the President has made a commitment to reforms encouraging a multi-party system, while the country has also been exploring ways to decentralize power to the local level, with several initiatives from the Government in this area. To date, however, there is still significant potential for the further decentralization of power to local executive bodies. </p>
                             <p>Over the past two decades, Kazakhstan has implemented significant public administration and civil service reforms to improve the effectiveness and efficiency of government. Nonetheless, more progress is needed in addressing the development challenges facing Kazakhstan. Restrictions on freedom of expression remain, with newspapers and other media outlets presenting dissenting views still subject to closure by authorities. Further improvement is also required to reduce discrimination against ethnic minorities, the LGTBI community and some religious groups.     </p>
@@ -661,24 +777,24 @@
                     <!-- #endregion Single item -->
                     <!-- #region Single item -->
                     <li>
-                        <a class="c-list-title" id="c-bttn-inclusive-political-02"><b>Key trends</b></a>
-                        <div class="c-item-content" id="c-content-inclusive-political-02">
+                        <a class="c-list-title"><b>Key trends</b></a>
+                        <div class="c-item-content">
                             <p>More recently, Kazakhstan has been playing an active role in attempts to counter violent extremism in Central Asia. In June 2015, Kazakhstan hosted the two-day Central and South Asia Regional Conference on Countering Violent Extremism. Co-organized by the Kazakh and US governments, the event was attended by 200 high-level government officials, representatives of the private sector and civil society activists from Afghanistan, Bangladesh, Kazakhstan, the Kyrgyz Republic, India, Pakistan, Sri Lanka, Tajikistan and Uzbekistan. As a result of the conference, a set of recommendations were adopted and concrete steps proposed to enhance national and regional efforts.</p>
                         </div>
                     </li>
                     <!-- #endregion Single item -->
                     <!-- #region Single item -->
                     <li>
-                        <a class="c-list-title" id="c-bttn-inclusive-political-03"><b>What we do</b></a>
-                        <div class="c-item-content" id="c-content-inclusive-political-03">
+                        <a class="c-list-title"><b>What we do</b></a>
+                        <div class="c-item-content">
                             <p>Over the past two decades, Kazakhstan has implemented significant public administration and civil service reforms to improve the effectiveness and efficiency of government. Nonetheless, more progress is needed in addressing the development challenges facing Kazakhstan. Restrictions on freedom of expression remain, with newspapers and other media outlets presenting dissenting views still subject to closure by authorities. Further improvement is also required to reduce discrimination against ethnic minorities, the LGTBI community and some religious groups.     </p>
                         </div>
                     </li>
                     <!-- #endregion Single item -->
                     <!-- #region Single item -->
                     <li>
-                        <a class="c-list-title" id="c-bttn-inclusive-political-04"><b>Facts and figures</b></a>
-                        <div class="c-item-content" id="c-content-inclusive-political-04">
+                        <a class="c-list-title"><b>Facts and figures</b></a>
+                        <div class="c-item-content">
                             <p>Over the past two decades, Kazakhstan has implemented significant public administration and civil service reforms to improve the effectiveness and efficiency of government. Nonetheless, more progress is needed in addressing the development challenges facing Kazakhstan. Restrictions on freedom of expression remain, with newspapers and other media outlets presenting dissenting views still subject to closure by authorities. Further improvement is also required to reduce discrimination against ethnic minorities, the LGTBI community and some religious groups.     </p>
                         </div>
                     </li>
@@ -704,8 +820,8 @@
                 <!-- #region First infographic -->
                 <div class="c-cell">
                     <!-- #region SVG graphic -->
-                    <div class="c-content-block c-svg-graph-wrap" id="trigger-infographic-dots">
-                        <object type="image/svg+xml" data="Content/images/infographic-dots.svg" class="c-svg-object" id="cid-infographic-dots">
+                    <div class="c-content-block c-svg-graph-wrap" id="cid-infographic-uzbekistan-trigger">
+                        <object type="image/svg+xml" data="Content/images/infographic-uzbekistan.svg" class="c-svg-object" id="cid-infographic-uzbekistan-object">
                             Infographic Legal
                         </object>
                     </div>
@@ -1055,8 +1171,8 @@
         <div class="c-footer-content-wrap-xs">
             <ul class="c-vertical-list c-footer-nav">
                 <!-- #region Single item -->
-                <li id="c-bttn-footer-one" class="c-nav-title"><a>UNDP ECIS</a></li>
-                <li id="c-footer-expand-one" class="c-nav-content">
+                <li class="c-nav-title"><a>UNDP ECIS</a></li>
+                <li class="c-nav-content">
                     <p>Maecenas etos sit amet, consectetur adipis cing elit. Terminal volutpat rutrum metro amet sollicitudin interdum.</p>
                     <p>Ante tellus gravida mollis tellus neque vitae elit. Mauris adipiscing mauris.</p>
                     <!-- #region Social media buttons -->
@@ -1070,8 +1186,8 @@
                 </li>
                 <!-- #endregion Single item -->
                 <!-- #region Single item -->
-                <li id="c-bttn-footer-two" class="c-nav-title"><a>QUICK LINKS</a></li>
-                <li id="c-footer-expand-two" class="c-nav-content">
+                <li class="c-nav-title"><a>QUICK LINKS</a></li>
+                <li class="c-nav-content">
                     <ul class="c-vertical-list c-footer-subnav">
                         <li><a>Focus areas</a></li>
                         <li><a>Facts and Figures</a></li>
@@ -1082,15 +1198,15 @@
                 </li>
                 <!-- #endregion Single item -->
                 <!-- #region Single item -->
-                <li id="c-bttn-footer-three" class="c-nav-title"><a>RECENT TWEETS</a></li>
-                <li id="c-footer-expand-three" class="c-nav-content">
+                <li class="c-nav-title"><a>RECENT TWEETS</a></li>
+                <li class="c-nav-content">
                     <p>Maecenas etos sit amet, consectetur adipis cing elit. Terminal volutpat rutrum metro <a>http://www.google.com</a> 2 hours ago</p>
                     <p>Maecenas etos sit amet, consectetur adipis cing elit. Terminal volutpat rutrum metro <a>http://www.google.com</a> 2 hours ago</p>
                 </li>
                 <!-- #endregion Single item -->
                 <!-- #region Single item -->
-                <li id="c-bttn-footer-four" class="c-nav-title"><a>CONTACT US</a></li>
-                <li id="c-footer-expand-four" class="c-nav-content">
+                <li class="c-nav-title"><a>CONTACT US</a></li>
+                <li class="c-nav-content">
                     <p>Governance and Peacebuilding Istanbul Regional Hub Key Plaza, Abide-i Hürriyet Cd Istanbul Turkey</p>
                     <p><span class="c-white-color">Ph. :&nbsp;</span>+90 (801) 4567, +90 (802)6789</p>
                     <p><span class="c-white-color">Fax :&nbsp;</span>+90 (123( 7890</p>

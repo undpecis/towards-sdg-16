@@ -3,8 +3,13 @@
 angular.module('Home')
 
 .controller('HomeController',
-    ['$scope',
-        function ($scope) {
+    ['$scope', '$window',
+        function ($scope, $window) {            
+            var winElement = angular.element($window);
+            var screenWidth = winElement.width();
+            winElement.bind('resize', function () {
+                screenWidth = winElement.width();
+            });
             //'undpData' is object with side data defined inside 'allcontentdata.js' file
             var siteData = undpData;
             /* #region FOCUS AREAS RELATED CODE */
@@ -73,6 +78,7 @@ angular.module('Home')
                         $scope.selectedCountry = siteData.countries[i];
                         $scope.dataBindBAC = $scope.selectedCountry.backgroundData;
                         //console.log('$scope.selectedCountry: ' + $scope.selectedCountry.keyResults[2].text);
+                        $scope.ctrlVars.isInterestCountryClicked = true;
                         $scope.$apply();
                     }
                 }
@@ -101,20 +107,28 @@ angular.module('Home')
             /* #endregion Change Data displayed for 'Background', 'Assistance and Impact' & 'Challenges, Lessons Learned and Way Forward' */
             /* #endregion COUNTRIES RELATED CODE */
 
-            /* #region Country Key Results */
+            /* #region Content Visibility */
             $scope.ctrlVars = {
-                isOpenCountryTitleLg: false,
-                isOpenCountryTitleXs: false
+                isInterestCountryClicked: false,
+                isOpenCountryBACdata_lg: false,
+                isOpenCountryBACdata_xs: false
             }
-            $scope.toggleCountryKeyResults = function (callerName) {
-                if (callerName == 'xs') {
-                    $scope.ctrlVars.isOpenCountryTitleXs = !$scope.ctrlVars.isOpenKeyXs;
-                } else if (callerName == 'lg') {
-                    $scope.ctrlVars.isOpenCountryTitleLg = !$scope.ctrlVars.isOpenKeyLg;
+            $scope.toggleContent = function (callerName) {
+                if (callerName == 'closeInterestCountry') {
+                    $scope.ctrlVars.isInterestCountryClicked = false;
+                    if ($scope.ctrlVars.isOpenCountryBACdata_lg == true) {
+                        $scope.ctrlVars.isOpenCountryBACdata_lg = false;
+                    }
+                    if ($scope.ctrlVars.isOpenCountryBACdata_xs == true) {
+                        $scope.ctrlVars.isOpenCountryBACdata_xs = false;
+                    }
+                } else if (callerName == 'isOpenCountryBACdata_lg') {
+                    $scope.ctrlVars.isOpenCountryBACdata_lg = !$scope.ctrlVars.isOpenCountryBACdata_lg;
+                } else if (callerName == 'isOpenCountryBACdata_xs') {
+                    $scope.ctrlVars.isOpenCountryBACdata_xs = !$scope.ctrlVars.isOpenCountryBACdata_xs;
                 }
             }
-            /* #endregion Country Key Results */
-
+            /* #endregion Content Visibility */
 
         }
     ]

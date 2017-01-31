@@ -30,13 +30,13 @@ $(document).ready(function () {
          * this tells amCharts it's a map
          */
         "type": "map",
-        "allowClickOnSelectedObject": false,
+        "allowClickOnSelectedObject": true,
         "smallMap": {
             "enabled": false
         },
         "zoomControl": {
             "zoomFactor": 1.5,
-            "maxZoomLevel": 15
+            "maxZoomLevel": 7
         },
         /**
          * create data provider object
@@ -49,12 +49,13 @@ $(document).ready(function () {
         //"mouseWheelZoomEnabled": true,
         "dataProvider": {
             "map": "worldLow",
-            "getAreasFromMap": true,
+            //"getAreasFromMap": true,
             "areas": [
               { "id": "AL", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Albania" },
               { "id": "AM", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Armenia" },
               { "id": "AZ", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Azerbaijan" },
               { "id": "BA", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Bosnia and Herzegovina" },
+              { "id": "BY", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Belarus" },
               { "id": "MK", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "FYR Macedonia" },
               { "id": "GE", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Georgia" },
               { "id": "KZ", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Kazakhstan" },
@@ -86,7 +87,9 @@ $(document).ready(function () {
             "rollOverOutlineColor": "#b0414c",
             "selectedColor": "#00699e",
             "selectedOutlineColor": "#00699e",
-            "selectable": false
+            "unlistedAreasColor": "#c94b58",
+            "unlistedAreasOutlineColor": "#c94b58",
+            "balloonText": "[[title]]"
         },
         /**
          * let's say we want a small map to be displayed, so let's create it
@@ -104,11 +107,11 @@ $(document).ready(function () {
                     if (countryOfInterest == true) {
                         //'mainContainerId' is id of main html container; we need it to access angular controller and send the id of country that has been clicked; ID of country is defined in this controller in 'listOfActiveCountries' object AND IT SHOULD BE DEFINED ALSO in 'home-controller.js'
                         angular.element(document.getElementById('mainContainerId')).scope().countryClickedFunc(event.mapObject.id);
-                        var titleObjects = document.getElementsByClassName('c-dynamic-country-title');
-                        for (var i = 0; i < titleObjects.length; i++) {
-                            titleObjects[i].innerHTML = event.mapObject.title;
-                        }
-                        $(".c-country-key-txxt-wrap").show();
+                        //var titleObjects = document.getElementsByClassName('c-dynamic-country-title');
+                        //for (var i = 0; i < titleObjects.length; i++) {
+                        //    titleObjects[i].innerHTML = event.mapObject.title;
+                        //}
+                        //$(".c-country-key-txxt-wrap").show();
                     } else {
                         return false;
                     }
@@ -141,6 +144,12 @@ $(document).ready(function () {
                     //console.log('zoomLatitude methods: ' + event.chart.getObjectById("KZ").zoomLatitude );"));
                     event.chart.zoomToLongLat(2, 69.8885, 35.3864);
                 }
+            },
+            {
+                "event": "homeButtonClicked",
+                "method": function (event) {
+                    event.chart.zoomToLongLat(2, 69.8885, 35.3864);
+                }
             }
         ]
     });
@@ -156,438 +165,1122 @@ $(document).ready(function () {
     //    }
     //}
     /* #endregion AMCharts Map */
-    /* #region CUTSOM JAVASCRIPT */
-    /* #region Open key results with country flag */
-    $("div.c-country-title.c-show-when-lg").click(function () {
-        $("div.c-key-results-content-flag.c-show-when-lg").toggle();
-    });
-    $("div.c-country-title.c-show-when-xs").click(function () {
-        $("div#c-ng-expandable-content-01").toggle();
-        //$("div.c-expandable-content-wrap").toggle();
-    });
-    /* #endregion Open key results with country flag */
-    /* #region Open key results EXTRA content  */
-    $(".c-key-results-learn-more").click(function () {
-        $("div#c-ng-expandable-content-01").show();
-        //$("div.c-expandable-content-wrap").show();
-        console.log("dafafaf++++++e");
-    });
-    /* #endregion Open key results EXTRA content  */
-    /* #region Open FOCUS AREAS extra content  */
-    $(".c-ng-bttn-focus").click(function () {
-        $("#c-ng-expandable-content-02").toggle();
-    });
-    /* #endregion Open FOCUS AREAS extra content  */
-
-    //$("#c-ng-bttn-map-country-when-lg").click(function () {
-    //    //$("#c-ng-expandable-content-01").toggle();
-    //    $("#cid-country-key-txxt-wrap").toggle();
-    //    //$("#c-ng-flag-content-01-lg").toggle();
-    //    $("#cid-title-arrow-up").toggle();
-    //    $("#cid-title-arrow-down").toggle();
-    //});
-    //$("#c-ng-bttn-map-country-when-xs").click(function () {
-    //    //$("#c-ng-expandable-content-01").toggle();
-    //    $("#cid-country-key-txxt-wrap").toggle();
-    //    $("#cid-title-arrow-up").toggle();
-    //    $("#cid-title-arrow-down").toggle();
-    //});
-    //$("#cid-key-results-learn-more-bttn").click(function () {
-    //    //$("#c-ng-expandable-content-01").toggle();
-    //});
-    //$(".c-ng-bttn-focus").click(function () {
-    //    $("#c-ng-expandable-content-02").toggle();
-    //});
-    ///* #region Key content when small resolutions */
-    //$("#c-bttn-key-results-01").click(function () {
-    //    $("#c-content-key-results-01").toggle();
-    //});
-    //$("#c-bttn-key-results-02").click(function () {
-    //    $("#c-content-key-results-02").toggle();
-    //});
-    //$("#c-bttn-key-results-03").click(function () {
-    //    $("#c-content-key-results-03").toggle();
-    //});
-    /* #endregion Key content when small resolutions */
-    /* #region Inclusive political processes when small resolutions */
-    $("#c-bttn-inclusive-political-01").click(function () {
-        $("#c-content-inclusive-political-01").toggle();
-    });
-    $("#c-bttn-inclusive-political-02").click(function () {
-        $("#c-content-inclusive-political-02").toggle();
-    });
-    $("#c-bttn-inclusive-political-03").click(function () {
-        $("#c-content-inclusive-political-03").toggle();
-    });
-    $("#c-bttn-inclusive-political-04").click(function () {
-        $("#c-content-inclusive-political-04").toggle();
-    });
-    /* #endregion Inclusive political processes when small resolutions */
-    /* #region Footer controlls */
-    $("#c-bttn-footer-one").click(function () {
-        $("#c-footer-expand-one").toggle();
-    });
-    $("#c-bttn-footer-two").click(function () {
-        $("#c-footer-expand-two").toggle();
-    });
-    $("#c-bttn-footer-three").click(function () {
-        $("#c-footer-expand-three").toggle();
-    });
-    $("#c-bttn-footer-four").click(function () {
-        $("#c-footer-expand-four").toggle();
-    });
-    /* #endregion Footer controlls */
-    /* #endregion CUTSOM JAVASCRIPT */
-    /* #region SCROLL MAGIC setup */
-    // init controller
-    var controller = new ScrollMagic.Controller();
-    // build scene // Infographic Dots
-    var sceneForDots = new ScrollMagic.Scene({ triggerElement: "#trigger-infographic-dots", duration: 200 })
-    sceneForDots.triggerHook("onCenter")
-    .addTo(controller)
-    .on("start", function (e) {
-        animateDots();
-    })
-    // build scene // Infographic Female
-    var sceneForFemale = new ScrollMagic.Scene({ triggerElement: "#trigger-infographic-female", duration: 200 })
-    .addTo(controller)
-    .on("start", function (e) {
-        animateFemale();
-    })
-    // build scene // Infographic Legal
-    var sceneForLegal = new ScrollMagic.Scene({ triggerElement: "#trigger-infographic-legal", duration: 200 })
-    .addTo(controller)
-    .on("start", function (e) {
-        animateLegal();
-    })
-    // build scene // Infographic People figures
-    var sceneForLegal = new ScrollMagic.Scene({ triggerElement: "#trigger-infographic-people", duration: 200 })
-    .addTo(controller)
-    .on("start", function (e) {
-        animatePeopleFigures();
-        //var titleObject = document.getElementById('test-text-people');
-        //titleObject.innerHTML = 'FIRED+++';
-    })
-    // build scene // Infographic Legal
-    var sceneForLegal = new ScrollMagic.Scene({ triggerElement: "#trigger-infographic-bullets", duration: 200 })
-    .addTo(controller)
-    .on("start", function (e) {
-        animateBullets();
-        //var titleObject = document.getElementById('test-text-bullets');
-        //titleObject.innerHTML = 'FIRED+++';
-    })
-    // build scene // Infographic Legal
-    var sceneForLegal = new ScrollMagic.Scene({ triggerElement: "#trigger-infographic-flower", duration: 200 })
-    .addTo(controller)
-    .on("start", function (e) {
-        animateFlower();
-        //var titleObject = document.getElementById('test-text-flower');
-        //titleObject.innerHTML = 'FIRED+++';
-    })
-    //.on("update", function (e) {
-    //    console.log('its on update >>');
-    //})
-    //.on("enter", function (e) {
-    //    console.log('its on enter >>');
-    //})
-    //.on("leave", function (e) {
-    //    console.log('its on leave >>');
-    //})
-    //.on("start", function (e) {
-    //    //console.log('its on start >>');
-    //    animateDots();
-    //})
-    //.on("end", function (e) {
-    //    console.log('its on end >>');
-    //})
-    //.on("progress", function (e) {
-    //    console.log('its on progress >> ' + e.progress);
-    //});
-    /* #endregion SCROLL MAGIC setup */
     //-------------------------------------------------------//
-    /* #region SVG animation - Infographic Dots */
-    var graphicDots;
-    var graphicDotsSVGdocument;
-    graphicDots_Interval = setInterval(graphicDots_setup, 300);
-    function graphicDots_setup() {
-        graphicDots = document.getElementById("cid-infographic-dots");
-        // Get the SVG document inside the Object tag
-        graphicDotsSVGdocument = graphicDots.contentDocument;
-        if (graphicDotsSVGdocument != null) {
-            clearInterval(graphicDots_Interval); // stop the interval
+    /* #region SVG animation - Global Variables */
+    var scrollMagicInitController = new ScrollMagic.Controller();
+    var startingOpacity = 0.2;
+    /* #endregion SVG animation - Global Variables */
+    /* #region SVG animation - Albania */
+    var graphicAlbania_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-albania-trigger", duration: 200 })
+    graphicAlbania_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicAlbania_animate();
+    })
+    //contains <object> element with desired id
+    var graphicAlbania_object;
+    //contains <svg> element with graphics
+    var graphicAlbania_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicAlbania_interval = setInterval(graphicAlbania_setup, 300);
+    function graphicAlbania_setup() {
+        // Get the div holding svg object
+        graphicAlbania_object = document.getElementById("cid-infographic-albania-object");
+        if (graphicAlbania_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicAlbania_svgDocument = graphicAlbania_object.contentDocument;
+            if (graphicAlbania_svgDocument != null) {
+                clearInterval(graphicAlbania_interval); // stop the interval
+                //initial hide of svg
+                graphicAlbania_object.style.opacity = startingOpacity;
+            }
         }
     }
-    //state of animation
-    var graphicDotsFired = false;
-    function animateDots() {
-        if (graphicDotsFired == false && graphicDotsSVGdocument != null) {
-            // Get one of the SVG items by ID; 
-            var circleGroup = graphicDotsSVGdocument.getElementById('ASHE');
-            var svgItems = $(circleGroup).find('circle');
-            var allCircles = $(graphicDotsSVGdocument).find('circle');
-            graphicDotsFired = true;
-            var delayNumber = 0.015;
-            for (var i = 0; i < svgItems.length; i++) {
-                var newDelayValue = delayNumber * i;
-                TweenMax.to(svgItems[i], 0.05, { fill: "#05679a", ease: Power2.easeInOut, delay: newDelayValue });
-                TweenMax.to(svgItems[i], 0.05, { scaleX: 1.5, scaleY: 1.5, ease: Back.easeOut.config(1.7), transformOrigin: "50% 50%", onComplete: returnScaleCircle, onCompleteParams: [i], delay: newDelayValue });
-                function returnScaleCircle(completedi) {
-                    TweenMax.to(svgItems[completedi], 0.05, { scaleX: 1, scaleY: 1, ease: Back.easeOut.config(1.7), transformOrigin: "50% 50%" });
+    //contains state of animation (fired/not fired)
+    var graphicAlbania_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicAlbania_animate() {
+        if (graphicAlbania_fired == false && graphicAlbania_svgDocument != null) {
+            graphicAlbania_fired = true;
+            /* #region Defining Elements - Grayed Lines */
+            var objects_allGrayedLines = [];            
+            objects_allGrayedLines = graphicAlbania_svgDocument.getElementById("group-grayed").querySelectorAll("path");
+            for (var i = 0; i < objects_allGrayedLines.length; i++) {
+                TweenMax.to(objects_allGrayedLines[i], 0.1, { opacity: 0, scaleX: 0.01, scaleY: 0.01, transformOrigin: "50% 50%", onComplete: countdown_initial });
+            }
+            /* #endregion Defining Elements - Grayed Lines */
+            /* #region Defining Elements - Colored Lines */
+            var objects_allColoredLines = [];
+            objects_allColoredLines = graphicAlbania_svgDocument.getElementById("group-colored").querySelectorAll("path");
+            for (var i = 0; i < objects_allColoredLines.length; i++) {
+                TweenMax.to(objects_allColoredLines[i], 0.1, { opacity: 0, scaleX: 0.01, scaleY: 0.01, transformOrigin: "50% 50%", });
+            }
+            /* #endregion Defining Elements - Colored Lines */
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_allColoredLines.length) {
+                    TweenMax.to(graphicAlbania_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_allGrayedLines });
                 }
             }
-            for (var i = 0; i < allCircles.length; i++) {
-                var newDelayValue = delayNumber * i;
-                TweenMax.from(allCircles[i], 0.15, { opacity: 0, ease: Power2.easeInOut, transformOrigin: "50% 50%", delay: newDelayValue });
-            }
-        }
-    }
-    /* #endregion SVG animation - Infographic Dots */
-    /* #region SVG animation - Infographic Female */
-    var graphicFemale;
-    var graphicFemaleSVGdocument;
-    graphicFemale_Interval = setInterval(graphicFemale_setup, 300);
-    function graphicFemale_setup() {
-        graphicFemale = document.getElementById("cid-infographic-female");
-        // Get the SVG document inside the Object tag
-        graphicFemaleSVGdocument = graphicFemale.contentDocument;
-        if (graphicFemaleSVGdocument != null) {
-            clearInterval(graphicFemale_Interval); // stop the interval
-        }
-    }
-    //state of animation
-    var graphicFemaleFired = false;
-    function animateFemale() {
-        if (graphicFemaleFired == false && graphicFemaleSVGdocument != null) {
-            // Get one of the SVG items by ID; 
-            var idFemaleMiddle = 'femaleMiddle';
-            var idFemaleLeft = 'femaleLeft';
-            var idFemaleRight = 'femaleRight';
-            var femaleItems = [];
-            femaleItems.push(graphicFemaleSVGdocument.getElementById(idFemaleMiddle));
-            femaleItems.push(graphicFemaleSVGdocument.getElementById(idFemaleLeft));
-            femaleItems.push(graphicFemaleSVGdocument.getElementById(idFemaleRight));
-            //
-            graphicFemaleFired = true;
-            var delayNumber = 0.03;
-            for (var i = 0; i < femaleItems.length; i++) {
-                var newDelayValue = delayNumber * i;
-                /* #region Animating position */
-                var currentItemId = $(femaleItems[i]).attr("id");
-                var itemStartPositionX;
-                if (currentItemId == idFemaleMiddle) {
-                    itemStartPositionX = 0;
-                } else if (currentItemId == idFemaleLeft) {
-                    itemStartPositionX = 30;
-                } else if (currentItemId == idFemaleRight) {
-                    itemStartPositionX = -30;
-                }
-                TweenMax.from(femaleItems[i], 1.5, { x: itemStartPositionX, ease: Power2.easeInOut, delay: newDelayValue });
-                TweenMax.from(femaleItems[i], 0.75, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", ease: Power2.easeInOut, delay: newDelayValue });
-                /* #endregion Animating position */
-                var actualIconPath = $(femaleItems[i]).find('path');
-                TweenMax.to(actualIconPath, 0.5, { fill: "#05679a", ease: Power2.easeInOut, delay: newDelayValue });
-            }
-        }
-    }
-    /* #endregion SVG animation - Infographic Female */
-    /* #region SVG animation - Infographic Legal */
-    /* #region SVG animation - Infographic Female */
-    var graphicLegal;
-    var graphicLegalSVGdocument;
-    graphicLegal_Interval = setInterval(graphicLegal_setup, 300);
-    function graphicLegal_setup() {
-        graphicLegal = document.getElementById("cid-infographic-legal");
-        // Get the SVG document inside the Object tag
-        graphicLegalSVGdocument = graphicLegal.contentDocument;
-        if (graphicLegalSVGdocument != null) {
-            clearInterval(graphicLegal_Interval); // stop the interval
-        }
-    }
-    //state of animation
-    var graphicLegalFired = false;
-    function animateLegal() {
-        if (graphicLegalFired == false && graphicLegalSVGdocument != null) {
-            // Get one of the SVG items by ID; 
-            var idRoof = 'roof';
-            var idColumnLeft = 'columnLeft';
-            var idColumnRight = 'columnRight';
-            var idBaseOne = 'baseOne';
-            var idBaseTwo = 'baseTwo';
-            var legalItems = [];
-            legalItems.push(graphicLegalSVGdocument.getElementById(idRoof));
-            legalItems.push(graphicLegalSVGdocument.getElementById(idColumnLeft));
-            legalItems.push(graphicLegalSVGdocument.getElementById(idColumnRight));
-            legalItems.push(graphicLegalSVGdocument.getElementById(idBaseOne));
-            legalItems.push(graphicLegalSVGdocument.getElementById(idBaseTwo));
-            //
-            graphicLegalFired = true;
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
             var delayNumber = 0.02;
-            for (var i = 0; i < legalItems.length; i++) {
-                var newDelayValue = delayNumber * i;
-                /* #region Animating position */
-                var currentItemId = $(legalItems[i]).attr("id");
-                var itemStartPositionX;
-                if (currentItemId == idColumnLeft) {
-                    itemStartPositionX = -200;
-                } else if (currentItemId == idColumnRight) {
-                    itemStartPositionX = 200;
-                } else if (currentItemId == idBaseOne) {
-                    itemStartPositionX = -200;
-                } else if (currentItemId == idBaseTwo) {
-                    itemStartPositionX = 200;
-                } else {
-                    newDelayValue = delayNumber * 20;
+            function animate_allGrayedLines() {
+                for (var i = 0; i < objects_allGrayedLines.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_allGrayedLines[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forColored });
                 }
-                TweenMax.from(legalItems[i], 1.5, { x: itemStartPositionX, ease: Power2.easeInOut, delay: newDelayValue });
-                TweenMax.from(legalItems[i], 0.75, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", ease: Power2.easeInOut, delay: newDelayValue });
-                /* #endregion Animating position */
-                TweenMax.to(legalItems[i], 0.5, { fill: "#05679a", ease: Power2.easeInOut, delay: newDelayValue });
+            }
+            var counter_forColored = 0;
+            function countdown_forColored() {
+                counter_forColored++;
+                if (counter_forColored == objects_allGrayedLines.length) {
+                    for (var i = 0; i < objects_allGrayedLines.length; i++) {
+                        var animDelay = delayNumber * i;
+                        TweenMax.to(objects_allColoredLines[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay });
+                    }
+                }
+            }
+            /* #endregion MAIN ANIMATIONS */
+        }
+    }
+    /* #endregion SVG animation - Albania */
+    /* #region SVG animation - Armenia */
+    var graphicArmenia_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-armenia-trigger", duration: 200 })
+    graphicArmenia_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicArmenia_animate();
+    })
+    //contains <object> element with desired id
+    var graphicArmenia_object;
+    //contains <svg> element with graphics
+    var graphicArmenia_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicArmenia_interval = setInterval(graphicArmenia_setup, 300);
+    function graphicArmenia_setup() {
+        // Get the div holding svg object
+        graphicArmenia_object = document.getElementById("cid-infographic-armenia-object");
+        if (graphicArmenia_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicArmenia_svgDocument = graphicArmenia_object.contentDocument;
+            if (graphicArmenia_svgDocument != null) {
+                clearInterval(graphicArmenia_interval); // stop the interval
+                //initial hide of svg
+                graphicArmenia_object.style.opacity = startingOpacity;
             }
         }
     }
-    /* #endregion SVG animation - Infographic Legal */
-    /* #region SVG animation - Infographic People figures */
-    // Get the Object by ID
-    var graphicPeopleFigures;
-    var graphicPeopleFiguresSVGdocument;
-    graphicPeopleFigures_Interval = setInterval(graphicPeopleFigures_setup, 300);
-    function graphicPeopleFigures_setup() {
-        graphicPeopleFigures = document.getElementById("cid-infographic-people");
-        // Get the SVG document inside the Object tag
-        graphicPeopleFiguresSVGdocument = graphicPeopleFigures.contentDocument;
-        if (graphicPeopleFiguresSVGdocument != null) {
-            clearInterval(graphicPeopleFigures_Interval); // stop the interval
+    //contains state of animation (fired/not fired)
+    var graphicArmenia_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicArmenia_animate() {
+        if (graphicArmenia_fired == false && graphicArmenia_svgDocument != null) {
+            graphicArmenia_fired = true;
+            /* #region Defining Elements */
+            var objects_all = [];
+            objects_all.push(graphicArmenia_svgDocument.getElementById("building"));
+            objects_all.push(graphicArmenia_svgDocument.getElementById("person"));
+            objects_all.push(graphicArmenia_svgDocument.getElementById("left-number-group"));
+            objects_all.push(graphicArmenia_svgDocument.getElementById("right-number-group"));
+            for (var i = 0; i < objects_all.length; i++) {
+                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+            }
+            /* #endregion Defining Elements */
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_all.length) {
+                    TweenMax.to(graphicArmenia_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                }
+            }
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
+            var delayNumber = 0.02;
+            function animate_initial() {
+                for (var i = 0; i < objects_all.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, });
+                }
+            }
+            /* #endregion MAIN ANIMATIONS */
         }
     }
-    //state of animation
-    var graphicPeopleFiguresFired = false;
-    function animatePeopleFigures() {
-        if (graphicPeopleFiguresFired == false && graphicPeopleFiguresSVGdocument != null) {
-            // Get one of the SVG items by ID; 
-            var peopleFiguresItems = [];
-            peopleFiguresItems.push(graphicPeopleFiguresSVGdocument.getElementById('figure1'));
-            peopleFiguresItems.push(graphicPeopleFiguresSVGdocument.getElementById('figure2'));
-            peopleFiguresItems.push(graphicPeopleFiguresSVGdocument.getElementById('figure3'));
-            peopleFiguresItems.push(graphicPeopleFiguresSVGdocument.getElementById('figure4'));
-            peopleFiguresItems.push(graphicPeopleFiguresSVGdocument.getElementById('figure5'));
-            //
-            graphicPeopleFiguresFired = true;
-            var delayNumber = 0.03;
-            for (var i = 0; i < peopleFiguresItems.length; i++) {
-                var newDelayValue = delayNumber * i;
-                /* #region Animating position */
-                var itemStartPositionX;
-                if (i == 0) {
-                    itemStartPositionX = -200;
-                } else if (i == 1) {
-                    itemStartPositionX = -200;
-                } else if (i == 2) {
-                    itemStartPositionX = 0;
-                } else if (i == 3) {
-                    itemStartPositionX = 200;
-                } else if (i == 4) {
-                    itemStartPositionX = 200;
-                }
-                TweenMax.from(peopleFiguresItems[i], 1.5, { x: itemStartPositionX, ease: Power2.easeInOut, delay: newDelayValue });
-                TweenMax.from(peopleFiguresItems[i], 0.75, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", ease: Power2.easeInOut, delay: newDelayValue });
-                /* #endregion Animating position */
-                var actualIconPath = $(peopleFiguresItems[i]).find('path');
-                TweenMax.to(actualIconPath, 0.5, { fill: "#f2605f", ease: Power2.easeInOut, delay: newDelayValue });
+    /* #endregion SVG animation - Armenia */
+    /* #region SVG animation - Azerbaijan */
+    var graphicAzerbaijan_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-azerbaijan-trigger", duration: 200 })
+    graphicAzerbaijan_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicAzerbaijan_animate();
+    })
+    //contains <object> element with desired id
+    var graphicAzerbaijan_object;
+    //contains <svg> element with graphics
+    var graphicAzerbaijan_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicAzerbaijan_interval = setInterval(graphicAzerbaijan_setup, 300);
+    function graphicAzerbaijan_setup() {
+        // Get the div holding svg object
+        graphicAzerbaijan_object = document.getElementById("cid-infographic-azerbaijan-object");
+        if (graphicAzerbaijan_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicAzerbaijan_svgDocument = graphicAzerbaijan_object.contentDocument;
+            if (graphicAzerbaijan_svgDocument != null) {
+                clearInterval(graphicAzerbaijan_interval); // stop the interval
+                //initial hide of svg
+                graphicAzerbaijan_object.style.opacity = startingOpacity;
             }
         }
     }
-    /* #endregion SVG animation - Infographic People figures */
-    /* #region SVG animation - Infographic Bullets */
-    // Get the Object by ID
-    var graphicBullets;
-    var graphicBulletsSVGdocument;
-    graphicBullets_Interval = setInterval(graphicBullets_setup, 300);
-    function graphicBullets_setup() {
-        graphicBullets = document.getElementById("cid-infographic-bullets");
-        // Get the SVG document inside the Object tag
-        graphicBulletsSVGdocument = graphicBullets.contentDocument;
-        if (graphicBulletsSVGdocument != null) {
-            clearInterval(graphicBullets_Interval); // stop the interval
+    //contains state of animation (fired/not fired)
+    var graphicAzerbaijan_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicAzerbaijan_animate() {
+        if (graphicAzerbaijan_fired == false && graphicAzerbaijan_svgDocument != null) {
+            graphicAzerbaijan_fired = true;
+            /* #region Defining Elements */
+            var objects_all = [];
+            objects_all.push(graphicAzerbaijan_svgDocument.getElementById("document-back"));
+            objects_all.push(graphicAzerbaijan_svgDocument.getElementById("document-front"));
+            objects_all.push(graphicAzerbaijan_svgDocument.getElementById("monkey"));
+            for (var i = 0; i < objects_all.length; i++) {
+                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+            }
+            /* #endregion Defining Elements */
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_all.length) {
+                    TweenMax.to(graphicAzerbaijan_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                }
+            }
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
+            var delayNumber = 0.02;
+            function animate_initial() {
+                for (var i = 0; i < objects_all.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, });
+                }
+            }
+            /* #endregion MAIN ANIMATIONS */
         }
     }
-    //bulletItems.push(graphicBulletsSVGdocument.getElementById('bullet2'));
-    //bulletItems.push(graphicBulletsSVGdocument.getElementById('bullet3'));
-    //bulletItems.push(graphicBulletsSVGdocument.getElementById('bullet4'));
-    //bulletItems.push(graphicBulletsSVGdocument.getElementById('bullet5'));
-    //state of animation
-    var graphicBulletsFired = false;
-    function animateBullets() {
-        if (graphicBulletsFired == false && graphicBulletsSVGdocument != null) {
-            // Get one of the SVG items by ID; 
-            var bulletItems = [];
+    /* #endregion SVG animation - Azerbaijan */
+    /* #region SVG animation - Belarus */
+    var graphicBelarus_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-belarus-trigger", duration: 200 })
+    graphicBelarus_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicBelarus_animate();
+    })
+    //contains <object> element with desired id
+    var graphicBelarus_object;
+    //contains <svg> element with graphics
+    var graphicBelarus_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicBelarus_interval = setInterval(graphicBelarus_setup, 300);
+    function graphicBelarus_setup() {
+        // Get the div holding svg object
+        graphicBelarus_object = document.getElementById("cid-infographic-belarus-object");
+        if (graphicBelarus_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicBelarus_svgDocument = graphicBelarus_object.contentDocument;
+            if (graphicBelarus_svgDocument != null) {
+                clearInterval(graphicBelarus_interval); // stop the interval
+                //initial hide of svg
+                graphicBelarus_object.style.opacity = startingOpacity;
+            }
+        }
+    }
+    //contains state of animation (fired/not fired)
+    var graphicBelarus_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicBelarus_animate() {
+        if (graphicBelarus_fired == false && graphicBelarus_svgDocument != null) {
+            graphicBelarus_fired = true;
+            /* #region Defining Elements */
+            var objects_all = [];
+            objects_all.push(graphicBelarus_svgDocument.getElementById("left-group"));
+            objects_all.push(graphicBelarus_svgDocument.getElementById("right-group"));
+            objects_all.push(graphicBelarus_svgDocument.getElementById("calendar"));
+            for (var i = 0; i < objects_all.length; i++) {
+                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+            }
+            /* #endregion Defining Elements */
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_all.length) {
+                    TweenMax.to(graphicBelarus_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                }
+            }
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
+            var delayNumber = 0.02;
+            function animate_initial() {
+                for (var i = 0; i < objects_all.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, });
+                }
+            }
+            /* #endregion MAIN ANIMATIONS */
+        }
+    }
+    /* #endregion SVG animation - Belarus */
+    /* #region SVG animation - Bosnia */
+    var graphicBosnia_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-bosnia-trigger", duration: 200 })
+    graphicBosnia_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicBosnia_animate();
+    })
+    //contains <object> element with desired id
+    var graphicBosnia_object;
+    //contains <svg> element with graphics
+    var graphicBosnia_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicBosnia_interval = setInterval(graphicBosnia_setup, 300);
+    function graphicBosnia_setup() {
+        // Get the div holding svg object
+        graphicBosnia_object = document.getElementById("cid-infographic-bosnia-object");
+        if (graphicBosnia_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicBosnia_svgDocument = graphicBosnia_object.contentDocument;
+            if (graphicBosnia_svgDocument != null) {
+                clearInterval(graphicBosnia_interval); // stop the interval
+                //initial hide of svg
+                graphicBosnia_object.style.opacity = startingOpacity;
+            }
+        }
+    }
+    //contains state of animation (fired/not fired)
+    var graphicBosnia_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicBosnia_animate() {
+        if (graphicBosnia_fired == false && graphicBosnia_svgDocument != null) {
+            graphicBosnia_fired = true;
+            /* #region Defining Elements */
+            var objects_all = [];
+            for (var i = 0; i < 9; i++) {
+                objects_all.push(graphicBosnia_svgDocument.getElementById("person-" + (i + 1)));
+            }            
+            for (var i = 0; i < objects_all.length; i++) {
+                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+            }
+            /* #endregion Defining Elements */
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_all.length) {
+                    TweenMax.to(graphicBosnia_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                }
+            }
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
+            var delayNumber = 0.02;
+            function animate_initial() {
+                for (var i = 0; i < objects_all.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, });
+                }
+            }
+            /* #endregion MAIN ANIMATIONS */
+        }
+    }
+    /* #endregion SVG animation - Bosnia */
+    /* #region SVG animation - Georgia */
+    var graphicGeorgia_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-georgia-trigger", duration: 200 })
+    graphicGeorgia_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicGeorgia_animate();
+    })
+    //contains <object> element with desired id
+    var graphicGeorgia_object;
+    //contains <svg> element with graphics
+    var graphicGeorgia_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicGeorgia_interval = setInterval(graphicGeorgia_setup, 300);
+    function graphicGeorgia_setup() {
+        // Get the div holding svg object
+        graphicGeorgia_object = document.getElementById("cid-infographic-georgia-object");
+        if (graphicGeorgia_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicGeorgia_svgDocument = graphicGeorgia_object.contentDocument;
+            if (graphicGeorgia_svgDocument != null) {
+                clearInterval(graphicGeorgia_interval); // stop the interval
+                //initial hide of svg
+                graphicGeorgia_object.style.opacity = startingOpacity;
+            }
+        }
+    }
+    //contains state of animation (fired/not fired)
+    var graphicGeorgia_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicGeorgia_animate() {
+        if (graphicGeorgia_fired == false && graphicGeorgia_svgDocument != null) {
+            graphicGeorgia_fired = true;
+            /* #region Defining Elements */
+            var objects_all = [];
+            objects_all.push(graphicGeorgia_svgDocument.getElementById("hammer"));
+            objects_all.push(graphicGeorgia_svgDocument.getElementById("base"));
+            for (var i = 0; i < objects_all.length; i++) {
+                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+            }
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_all.length) {
+                    TweenMax.to(graphicGeorgia_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                }
+            }
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
+            var delayNumber = 0.02;
+            function animate_initial() {
+                for (var i = 0; i < objects_all.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, });
+                }
+            }
+            /* #endregion MAIN ANIMATIONS */
+        }
+    }
+    /* #endregion SVG animation - Georgia */
+    /* #region SVG animation - Kazakhstan */
+    var graphicKazakhstan_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-kazakhstan-trigger", duration: 200 })
+    graphicKazakhstan_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicKazakhstan_animate();
+    })
+    //contains <object> element with desired id
+    var graphicKazakhstan_object;
+    //contains <svg> element with graphics
+    var graphicKazakhstan_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicKazakhstan_interval = setInterval(graphicKazakhstan_setup, 300);
+    function graphicKazakhstan_setup() {
+        // Get the div holding svg object
+        graphicKazakhstan_object = document.getElementById("cid-infographic-kazakhstan-object");
+        if (graphicKazakhstan_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicKazakhstan_svgDocument = graphicKazakhstan_object.contentDocument;
+            if (graphicKazakhstan_svgDocument != null) {
+                clearInterval(graphicKazakhstan_interval); // stop the interval
+                //initial hide of svg
+                graphicKazakhstan_object.style.opacity = startingOpacity;
+            }
+        }
+    }
+    //contains state of animation (fired/not fired)
+    var graphicKazakhstan_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicKazakhstan_animate() {
+        if (graphicKazakhstan_fired == false && graphicKazakhstan_svgDocument != null) {
+            graphicKazakhstan_fired = true;
+            /* #region Defining Elements */
+            var objects_all = [];
+            objects_all.push(graphicKazakhstan_svgDocument.getElementById("building"));
+            objects_all.push(graphicKazakhstan_svgDocument.getElementById("person-left"));
+            objects_all.push(graphicKazakhstan_svgDocument.getElementById("person-right"));
+            for (var i = 0; i < objects_all.length; i++) {
+                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+            }
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_all.length) {
+                    TweenMax.to(graphicKazakhstan_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                }
+            }
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
+            var delayNumber = 0.02;
+            function animate_initial() {
+                for (var i = 0; i < objects_all.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, });
+                }
+            }
+            /* #endregion MAIN ANIMATIONS */
+        }
+    }
+    /* #endregion SVG animation - Kazakhstan */
+    /* #region SVG animation - Kosovo */
+    var graphicKosovo_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-kosovo-trigger", duration: 200 })
+    graphicKosovo_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicKosovo_animate();
+    })
+    //contains <object> element with desired id
+    var graphicKosovo_object;
+    //contains <svg> element with graphics
+    var graphicKosovo_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicKosovo_interval = setInterval(graphicKosovo_setup, 300);
+    function graphicKosovo_setup() {
+        // Get the div holding svg object
+        graphicKosovo_object = document.getElementById("cid-infographic-kosovo-object");
+        if (graphicKosovo_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicKosovo_svgDocument = graphicKosovo_object.contentDocument;
+            if (graphicKosovo_svgDocument != null) {
+                clearInterval(graphicKosovo_interval); // stop the interval
+                //initial hide of svg
+                graphicKosovo_object.style.opacity = startingOpacity;
+            }
+        }
+    }
+    //contains state of animation (fired/not fired)
+    var graphicKosovo_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicKosovo_animate() {
+        if (graphicKosovo_fired == false && graphicKosovo_svgDocument != null) {
+            graphicKosovo_fired = true;
+            /* #region Defining Elements */
+            var objects_all = [];            
             for (var i = 0; i < 5; i++) {
-                bulletItems.push(graphicBulletsSVGdocument.getElementById('bullet' + (i + 1)));
+                objects_all.push(graphicKosovo_svgDocument.getElementById("bullet-"+(i+1)));
+                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
             }
-            //
-            graphicBulletsFired = true;
-            var delayNumber = 0.03;
-            for (var i = 0; i < bulletItems.length; i++) {
-                var newDelayValue = delayNumber * i;
-                /* #region Animating position */
-                var itemStartPositionX = -100 * i;
-                TweenMax.from(bulletItems[i], 0.75, { x: itemStartPositionX, ease: Power2.easeInOut, delay: newDelayValue });
-                TweenMax.from(bulletItems[i], 1.5, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", ease: Power2.easeInOut, delay: newDelayValue });
-                /* #endregion Animating position */
-                if (i < bulletItems.length - 1) {
-                    var actualIconPoligon = $(bulletItems[i]).find('polygon');
-                    TweenMax.to(actualIconPoligon, 0.25, { fill: "#f2605f", ease: Power2.easeInOut, delay: newDelayValue });
-                    var actualIconPath = $(bulletItems[i]).find('path');
-                    TweenMax.to(actualIconPath, 0.25, { fill: "#f2605f", ease: Power2.easeInOut, delay: newDelayValue });
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_all.length) {
+                    TweenMax.to(graphicKosovo_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
                 }
             }
-        }
-    }
-    /* #endregion SVG animation - Infographic Bullets */
-    /* #region SVG animation - Infographic Flower */
-    var graphicFlower;
-    var graphicFlowerSVGdocument;
-    graphicFlower_Interval = setInterval(graphicFlower_setup, 300);
-    function graphicFlower_setup() {
-        graphicFlower = document.getElementById("cid-infographic-flower");
-        // Get the SVG document inside the Object tag
-        graphicFlowerSVGdocument = graphicFlower.contentDocument;
-        if (graphicFlowerSVGdocument != null) {
-            clearInterval(graphicFlower_Interval); // stop the interval
-        }
-    }
-    //state of animation
-    var graphicFlowerFired = false;
-    function animateFlower() {
-        if (graphicFlowerFired == false && graphicFlowerSVGdocument != null) {
-            // Get one of the SVG items by ID; 
-            var flowerItems = [];
-            for (var k = 0; k < 10; k++) {
-                flowerItems.push(graphicFlowerSVGdocument.getElementById('active' + (k + 1)));
-            }
-            var allFlowerItems = [];
-            for (var k = 0; k < 10; k++) {
-                allFlowerItems = $(graphicFlowerSVGdocument).find('path');
-            }
-            //
-            graphicFlowerFired = true;
-            var delayNumber = 0.03;
-            var circleItem = $(graphicFlowerSVGdocument).find('circle');
-            TweenMax.from(circleItem, 1, { scaleX: 0.01, scaleY: 0.01, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), onComplete: animateCircleColor });
-            function animateCircleColor() {
-                TweenMax.to(circleItem, 0.25, { fill: "#f2605f", ease: Power2.easeInOut });
-            }
-            //fill: "#f2605f",
-            for (var i = 0; i < allFlowerItems.length; i++) {
-                var newDelayValue = delayNumber * i;
-                var itemStartPositionX = -100 * i;
-                TweenMax.from(allFlowerItems[i], 1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", ease: Power2.easeInOut, delay: newDelayValue });
-                if (i < flowerItems.length - 1) {
-                    TweenMax.to(flowerItems[i], 0.25, { fill: "#fdd5b1", ease: Power2.easeInOut, delay: newDelayValue });
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
+            var delayNumber = 0.02;
+            function animate_initial() {
+                for (var i = 0; i < objects_all.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, });
                 }
             }
+            /* #endregion MAIN ANIMATIONS */
         }
     }
-    /* #endregion SVG animation - Infographic Flower */
+    /* #endregion SVG animation - Kosovo */
+    /* #region SVG animation - Kyrgyz */
+    var graphicKyrgyz_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-kyrgyz-trigger", duration: 200 })
+    graphicKyrgyz_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicKyrgyz_animate();
+    })
+    //contains <object> element with desired id
+    var graphicKyrgyz_object;
+    //contains <svg> element with graphics
+    var graphicKyrgyz_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicKyrgyz_interval = setInterval(graphicKyrgyz_setup, 300);
+    function graphicKyrgyz_setup() {
+        // Get the div holding svg object
+        graphicKyrgyz_object = document.getElementById("cid-infographic-kyrgyz-object");
+        if (graphicKyrgyz_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicKyrgyz_svgDocument = graphicKyrgyz_object.contentDocument;
+            if (graphicKyrgyz_svgDocument != null) {
+                clearInterval(graphicKyrgyz_interval); // stop the interval
+                //initial hide of svg
+                graphicKyrgyz_object.style.opacity = startingOpacity;
+            }
+        }
+    }
+    //contains state of animation (fired/not fired)
+    var graphicKyrgyz_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicKyrgyz_animate() {
+        if (graphicKyrgyz_fired == false && graphicKyrgyz_svgDocument != null) {
+            graphicKyrgyz_fired = true;
+            /* #region Defining Elements */
+            var objects_all = [];
+            objects_all.push(graphicKyrgyz_svgDocument.getElementById("lybra"));
+            objects_all.push(graphicKyrgyz_svgDocument.getElementById("hand"));
+            for (var i = 0; i < objects_all.length; i++) {
+                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+            }
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_all.length) {
+                    TweenMax.to(graphicKyrgyz_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                }
+            }
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
+            var delayNumber = 0.02;
+            function animate_initial() {
+                for (var i = 0; i < objects_all.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, });
+                }
+            }
+            /* #endregion MAIN ANIMATIONS */
+        }
+    }
+    /* #endregion SVG animation - Kyrgyz */
+    /* #region SVG animation - Macedonia */
+    var graphicMacedonia_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-macedonia-trigger", duration: 200 })
+    graphicMacedonia_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicMacedonia_animate();
+    })
+    //contains <object> element with desired id
+    var graphicMacedonia_object;
+    //contains <svg> element with graphics
+    var graphicMacedonia_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicMacedonia_interval = setInterval(graphicMacedonia_setup, 300);
+    function graphicMacedonia_setup() {
+        // Get the div holding svg object
+        graphicMacedonia_object = document.getElementById("cid-infographic-macedonia-object");
+        if (graphicMacedonia_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicMacedonia_svgDocument = graphicMacedonia_object.contentDocument;
+            if (graphicMacedonia_svgDocument != null) {
+                clearInterval(graphicMacedonia_interval); // stop the interval
+                //initial hide of svg
+                graphicMacedonia_object.style.opacity = startingOpacity;
+            }
+        }
+    }
+    //contains state of animation (fired/not fired)
+    var graphicMacedonia_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicMacedonia_animate() {
+        if (graphicMacedonia_fired == false && graphicMacedonia_svgDocument != null) {
+            graphicMacedonia_fired = true;
+            /* #region Defining Elements */
+            var objects_all = [];
+            objects_all.push(graphicMacedonia_svgDocument.getElementById("hammer"));
+            objects_all.push(graphicMacedonia_svgDocument.getElementById("base"));
+            for (var i = 0; i < objects_all.length; i++) {
+                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+            }
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_all.length) {
+                    TweenMax.to(graphicMacedonia_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                }
+            }
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
+            var delayNumber = 0.02;
+            function animate_initial() {
+                for (var i = 0; i < objects_all.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, });
+                }
+            }
+            /* #endregion MAIN ANIMATIONS */
+        }
+    }
+    /* #endregion SVG animation - Macedonia */
+    /* #region SVG animation - Moldova */
+    var graphicMoldova_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-moldova-trigger", duration: 200 })
+    graphicMoldova_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicMoldova_animate();
+    })
+    //contains <object> element with desired id
+    var graphicMoldova_object;
+    //contains <svg> element with graphics
+    var graphicMoldova_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicMoldova_interval = setInterval(graphicMoldova_setup, 300);
+    function graphicMoldova_setup() {
+        // Get the div holding svg object
+        graphicMoldova_object = document.getElementById("cid-infographic-moldova-object");
+        if (graphicMoldova_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicMoldova_svgDocument = graphicMoldova_object.contentDocument;
+            if (graphicMoldova_svgDocument != null) {
+                clearInterval(graphicMoldova_interval); // stop the interval
+                //initial hide of svg
+                graphicMoldova_object.style.opacity = startingOpacity;
+            }
+        }
+    }
+    //contains state of animation (fired/not fired)
+    var graphicMoldova_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicMoldova_animate() {
+        if (graphicMoldova_fired == false && graphicMoldova_svgDocument != null) {
+            graphicMoldova_fired = true;
+            /* #region Defining Elements */
+            var objects_all = [];
+            objects_all.push(graphicMoldova_svgDocument.getElementById("phone"));
+            objects_all.push(graphicMoldova_svgDocument.getElementById("sos"));
+            for (var i = 0; i < objects_all.length; i++) {
+                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+            }
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_all.length) {
+                    TweenMax.to(graphicMoldova_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                }
+            }
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
+            var delayNumber = 0.02;
+            function animate_initial() {
+                for (var i = 0; i < objects_all.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, });
+                }
+            }
+            /* #endregion MAIN ANIMATIONS */
+        }
+    }
+    /* #endregion SVG animation - Moldova */
+    /* #region SVG animation - Montenegro */
+    var graphicMontenegro_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-montenegro-trigger", duration: 200 })
+    graphicMontenegro_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicMontenegro_animate();
+    })
+    //contains <object> element with desired id
+    var graphicMontenegro_object;
+    //contains <svg> element with graphics
+    var graphicMontenegro_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicMontenegro_interval = setInterval(graphicMontenegro_setup, 300);
+    function graphicMontenegro_setup() {
+        // Get the div holding svg object
+        graphicMontenegro_object = document.getElementById("cid-infographic-montenegro-object");
+        if (graphicMontenegro_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicMontenegro_svgDocument = graphicMontenegro_object.contentDocument;
+            if (graphicMontenegro_svgDocument != null) {
+                clearInterval(graphicMontenegro_interval); // stop the interval
+                //initial hide of svg
+                graphicMontenegro_object.style.opacity = startingOpacity;
+            }
+        }
+    }
+    //contains state of animation (fired/not fired)
+    var graphicMontenegro_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicMontenegro_animate() {
+        if (graphicMontenegro_fired == false && graphicMontenegro_svgDocument != null) {
+            graphicMontenegro_fired = true;
+            /* #region Defining Elements */
+            var objects_all = [];
+            for (var i = 0; i < 16; i++) {
+                objects_all.push(graphicMontenegro_svgDocument.getElementById("petal-"+(i+1)));
+                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+            }
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_all.length) {
+                    TweenMax.to(graphicMontenegro_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                }
+            }
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
+            var delayNumber = 0.02;
+            function animate_initial() {
+                for (var i = 0; i < objects_all.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, });
+                }
+            }
+            /* #endregion MAIN ANIMATIONS */
+        }
+    }
+    /* #endregion SVG animation - Montenegro */
+    /* #region SVG animation - Serbia */
+    var graphicSerbia_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-serbia-trigger", duration: 200 })
+    graphicSerbia_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicSerbia_animate();
+    })
+    //contains <object> element with desired id
+    var graphicSerbia_object;
+    //contains <svg> element with graphics
+    var graphicSerbia_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicSerbia_interval = setInterval(graphicSerbia_setup, 300);
+    function graphicSerbia_setup() {
+        // Get the div holding svg object
+        graphicSerbia_object = document.getElementById("cid-infographic-serbia-object");
+        if (graphicSerbia_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicSerbia_svgDocument = graphicSerbia_object.contentDocument;
+            if (graphicSerbia_svgDocument != null) {
+                clearInterval(graphicSerbia_interval); // stop the interval
+                //initial hide of svg
+                graphicSerbia_object.style.opacity = startingOpacity;
+            }
+        }
+    }
+    //contains state of animation (fired/not fired)
+    var graphicSerbia_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicSerbia_animate() {
+        if (graphicSerbia_fired == false && graphicSerbia_svgDocument != null) {
+            graphicSerbia_fired = true;
+            /* #region Defining Elements */
+            var objects_all = [];
+            objects_all.push(graphicSerbia_svgDocument.getElementById("document-back"));
+            objects_all.push(graphicSerbia_svgDocument.getElementById("document-front"));
+            objects_all.push(graphicSerbia_svgDocument.getElementById("checkmark"));
+            for (var i = 0; i < objects_all.length; i++) {
+                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+            }
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_all.length) {
+                    TweenMax.to(graphicSerbia_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                }
+            }
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
+            var delayNumber = 0.02;
+            function animate_initial() {
+                for (var i = 0; i < objects_all.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, });
+                }
+            }
+            /* #endregion MAIN ANIMATIONS */
+        }
+    }
+    /* #endregion SVG animation - Serbia */
+    /* #region SVG animation - Tajikistan */
+    var graphicTajikistan_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-tajikistan-trigger", duration: 200 })
+    graphicTajikistan_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicTajikistan_animate();
+    })
+    //contains <object> element with desired id
+    var graphicTajikistan_object;
+    //contains <svg> element with graphics
+    var graphicTajikistan_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicTajikistan_interval = setInterval(graphicTajikistan_setup, 300);
+    function graphicTajikistan_setup() {
+        // Get the div holding svg object
+        graphicTajikistan_object = document.getElementById("cid-infographic-tajikistan-object");
+        if (graphicTajikistan_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicTajikistan_svgDocument = graphicTajikistan_object.contentDocument;
+            if (graphicTajikistan_svgDocument != null) {
+                clearInterval(graphicTajikistan_interval); // stop the interval
+                //initial hide of svg
+                graphicTajikistan_object.style.opacity = startingOpacity;
+            }
+        }
+    }
+    //contains state of animation (fired/not fired)
+    var graphicTajikistan_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicTajikistan_animate() {
+        if (graphicTajikistan_fired == false && graphicTajikistan_svgDocument != null) {
+            graphicTajikistan_fired = true;
+            /* #region Defining Elements */
+            var objects_all = [];
+            objects_all.push(graphicTajikistan_svgDocument.getElementById("person-left"));
+            objects_all.push(graphicTajikistan_svgDocument.getElementById("person-right"));
+            for (var i = 0; i < objects_all.length; i++) {
+                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+            }
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_all.length) {
+                    TweenMax.to(graphicTajikistan_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                }
+            }
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
+            var delayNumber = 0.02;
+            function animate_initial() {
+                for (var i = 0; i < objects_all.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, });
+                }
+            }
+            /* #endregion MAIN ANIMATIONS */
+        }
+    }
+    /* #endregion SVG animation - Tajikistan */
+    /* #region SVG animation - Turkey */
+    var graphicTurkey_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-turkey-trigger", duration: 200 })
+    graphicTurkey_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicTurkey_animate();
+    })
+    //contains <object> element with desired id
+    var graphicTurkey_object;
+    //contains <svg> element with graphics
+    var graphicTurkey_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicTurkey_interval = setInterval(graphicTurkey_setup, 300);
+    function graphicTurkey_setup() {
+        // Get the div holding svg object
+        graphicTurkey_object = document.getElementById("cid-infographic-turkey-object");
+        if (graphicTurkey_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicTurkey_svgDocument = graphicTurkey_object.contentDocument;
+            if (graphicTurkey_svgDocument != null) {
+                clearInterval(graphicTurkey_interval); // stop the interval
+                //initial hide of svg
+                graphicTurkey_object.style.opacity = startingOpacity;
+            }
+        }
+    }
+    //contains state of animation (fired/not fired)
+    var graphicTurkey_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicTurkey_animate() {
+        if (graphicTurkey_fired == false && graphicTurkey_svgDocument != null) {
+            graphicTurkey_fired = true;
+            /* #region Defining Elements */
+            var objects_all = [];
+            objects_all.push(graphicTurkey_svgDocument.getElementById("group-left"));
+            objects_all.push(graphicTurkey_svgDocument.getElementById("group-right"));
+            objects_all.push(graphicTurkey_svgDocument.getElementById("person"));
+            objects_all.push(graphicTurkey_svgDocument.getElementById("document"));
+            for (var i = 0; i < objects_all.length; i++) {
+                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+            }
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_all.length) {
+                    TweenMax.to(graphicTurkey_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                }
+            }
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
+            var delayNumber = 0.02;
+            function animate_initial() {
+                for (var i = 0; i < objects_all.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, });
+                }
+            }
+            /* #endregion MAIN ANIMATIONS */
+        }
+    }
+    /* #endregion SVG animation - Turkey */
+    /* #region SVG animation - Turkmenistan */
+    var graphicTurkmenistan_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-turkmenistan-trigger", duration: 200 })
+    graphicTurkmenistan_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicTurkmenistan_animate();
+    })
+    //contains <object> element with desired id
+    var graphicTurkmenistan_object;
+    //contains <svg> element with graphics
+    var graphicTurkmenistan_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicTurkmenistan_interval = setInterval(graphicTurkmenistan_setup, 300);
+    function graphicTurkmenistan_setup() {
+        // Get the div holding svg object
+        graphicTurkmenistan_object = document.getElementById("cid-infographic-turkmenistan-object");
+        if (graphicTurkmenistan_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicTurkmenistan_svgDocument = graphicTurkmenistan_object.contentDocument;
+            if (graphicTurkmenistan_svgDocument != null) {
+                clearInterval(graphicTurkmenistan_interval); // stop the interval
+                //initial hide of svg
+                graphicTurkmenistan_object.style.opacity = startingOpacity;
+            }
+        }
+    }
+    //contains state of animation (fired/not fired)
+    var graphicTurkmenistan_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicTurkmenistan_animate() {
+        if (graphicTurkmenistan_fired == false && graphicTurkmenistan_svgDocument != null) {
+            graphicTurkmenistan_fired = true;
+            /* #region Defining Elements */
+            var objects_all = [];
+            objects_all.push(graphicTurkmenistan_svgDocument.getElementById("shield-outer"));
+            objects_all.push(graphicTurkmenistan_svgDocument.getElementById("shield-inner"));
+            for (var i = 0; i < objects_all.length; i++) {
+                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+            }
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_all.length) {
+                    TweenMax.to(graphicTurkmenistan_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                }
+            }
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
+            var delayNumber = 0.02;
+            function animate_initial() {
+                for (var i = 0; i < objects_all.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, });
+                }
+            }
+            /* #endregion MAIN ANIMATIONS */
+        }
+    }
+    /* #endregion SVG animation - Turkmenistan */
+    /* #region SVG animation - Ukraine */
+    var graphicUkraine_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-ukraine-trigger", duration: 200 })
+    graphicUkraine_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicUkraine_animate();
+    })
+    //contains <object> element with desired id
+    var graphicUkraine_object;
+    //contains <svg> element with graphics
+    var graphicUkraine_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicUkraine_interval = setInterval(graphicUkraine_setup, 300);
+    function graphicUkraine_setup() {
+        // Get the div holding svg object
+        graphicUkraine_object = document.getElementById("cid-infographic-ukraine-object");
+        if (graphicUkraine_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicUkraine_svgDocument = graphicUkraine_object.contentDocument;
+            if (graphicUkraine_svgDocument != null) {
+                clearInterval(graphicUkraine_interval); // stop the interval
+                //initial hide of svg
+                graphicUkraine_object.style.opacity = startingOpacity;
+            }
+        }
+    }
+    //contains state of animation (fired/not fired)
+    var graphicUkraine_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicUkraine_animate() {
+        if (graphicUkraine_fired == false && graphicUkraine_svgDocument != null) {
+            graphicUkraine_fired = true;
+            /* #region Defining Elements */
+            var objects_all = [];
+            objects_all.push(graphicUkraine_svgDocument.getElementById("person"));
+            objects_all.push(graphicUkraine_svgDocument.getElementById("building"));
+            for (var i = 0; i < objects_all.length; i++) {
+                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+            }
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_all.length) {
+                    TweenMax.to(graphicUkraine_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                }
+            }
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
+            var delayNumber = 0.02;
+            function animate_initial() {
+                for (var i = 0; i < objects_all.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, });
+                }
+            }
+            /* #endregion MAIN ANIMATIONS */
+        }
+    }
+    /* #endregion SVG animation - Ukraine */
+    /* #region SVG animation - Uzbekistan */
+    var graphicUzbekistan_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-uzbekistan-trigger", duration: 200 })
+    graphicUzbekistan_scrollMagicScene.triggerHook("onCenter")
+    .addTo(scrollMagicInitController)
+    .on("start", function (e) {
+        graphicUzbekistan_animate();
+    })
+    //contains <object> element with desired id
+    var graphicUzbekistan_object;
+    //contains <svg> element with graphics
+    var graphicUzbekistan_svgDocument;
+    //interval that will keep fireing until we get desired id element
+    graphicUzbekistan_interval = setInterval(graphicUzbekistan_setup, 300);
+    function graphicUzbekistan_setup() {
+        // Get the div holding svg object
+        graphicUzbekistan_object = document.getElementById("cid-infographic-uzbekistan-object");
+        if (graphicUzbekistan_object != undefined) {
+            // Get the SVG document inside the Object tag
+            graphicUzbekistan_svgDocument = graphicUzbekistan_object.contentDocument;
+            if (graphicUzbekistan_svgDocument != null) {
+                clearInterval(graphicUzbekistan_interval); // stop the interval
+                //initial hide of svg
+                graphicUzbekistan_object.style.opacity = startingOpacity;
+            }
+        }
+    }
+    //contains state of animation (fired/not fired)
+    var graphicUzbekistan_fired = false;
+    //function fired by 'ScrollMagic' controller
+    function graphicUzbekistan_animate() {
+        if (graphicUzbekistan_fired == false && graphicUzbekistan_svgDocument != null) {
+            graphicUzbekistan_fired = true;
+            /* #region Defining Elements */
+            var objects_all = [];
+            objects_all.push(graphicUzbekistan_svgDocument.getElementById("document-3"));
+            objects_all.push(graphicUzbekistan_svgDocument.getElementById("document-2"));
+            objects_all.push(graphicUzbekistan_svgDocument.getElementById("document-1"));
+            objects_all.push(graphicUzbekistan_svgDocument.getElementById("magnify"));
+            for (var i = 0; i < objects_all.length; i++) {
+                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+            }
+            /* #region INITAL function caller */
+            var counter_initial = 0;
+            function countdown_initial() {
+                counter_initial++;
+                if (counter_initial == objects_all.length) {
+                    TweenMax.to(graphicUzbekistan_object, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                }
+            }
+            /* #endregion INITAL function caller */
+            /* #region MAIN ANIMATIONS */
+            var delayNumber = 0.02;
+            function animate_initial() {
+                for (var i = 0; i < objects_all.length; i++) {
+                    var animDelay = delayNumber * i;
+                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, });
+                }
+            }
+            /* #endregion MAIN ANIMATIONS */
+        }
+    }
+    /* #endregion SVG animation - Uzbekistan */
+
 });
 
 
