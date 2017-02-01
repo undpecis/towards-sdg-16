@@ -126,7 +126,7 @@
                         <div class="c-cell">
                             <span class="c-dynamic-country-title">{{selectedCountry.title}}</span>
                         </div>
-                        <div class="c-cell c-w-1perc" ng-click="toggleContent('closeInterestCountry')">
+                        <div class="c-cell c-w-1perc" ng-click="toggleKeyContent('closeInterestCountry')">
                             <i class="c-ico icon-close"></i>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                             </ul>
                             <div class="c-buttons-wrap">
                                 <!-- #region Learn more button -->
-                                <button class="c-bttn c-bttn-combo c-bttn-blue" ng-click="toggleContent('isOpenCountryBACdata_lg')">
+                                <button class="c-bttn c-bttn-combo c-bttn-blue" ng-click="toggleKeyContent('isOpenCountryBACdata_lg')">
                                     <div class="c-circle-icon-box">
                                         <i class="c-ico icon-login"></i>
                                     </div>
@@ -361,7 +361,7 @@
                         <div class="c-cell">
                             <span class="c-dynamic-country-title">{{selectedCountry.title}}</span>
                         </div>
-                        <div class="c-cell c-w-1perc" ng-click="toggleContent('closeInterestCountry')">
+                        <div class="c-cell c-w-1perc" ng-click="toggleKeyContent('closeInterestCountry')">
                             <i class="c-ico icon-close"></i>
                         </div>
                     </div>
@@ -699,7 +699,7 @@
 </div>
 <!-- #endregion Focus areas -->
 <!-- #region Expandable content -->
-<div class="c-wide-wrap c-black-background">
+<div class="c-wide-wrap c-black-background" ng-if="ctrlVars.isOpenCountryOKWdata" id="cid-anchor-OKW-content">
     <div class="c-container">
         <div class="c-expandable-content-wrap">
             <!-- #region Title -->
@@ -820,8 +820,8 @@
                 <!-- #region First infographic -->
                 <div class="c-cell">
                     <!-- #region SVG graphic -->
-                    <div class="c-content-block c-svg-graph-wrap" id="cid-infographic-uzbekistan-trigger">
-                        <object type="image/svg+xml" data="Content/images/infographic-uzbekistan.svg" class="c-svg-object" id="cid-infographic-uzbekistan-object">
+                    <div class="c-content-block c-svg-graph-wrap" id="cid-infographic-{{infographicsGroups[secondRandomIndex].countryFirst}}-trigger" ng-if="ctrlVars.areInfographicsReady">
+                        <object type="image/svg+xml" data="Content/images/infographic-{{infographicsGroups[secondRandomIndex].countryFirst}}.svg" class="c-svg-object" id="cid-infographic-{{infographicsGroups[secondRandomIndex].countryFirst}}-object">
                             Infographic Legal
                         </object>
                     </div>
@@ -853,8 +853,8 @@
                 <!-- #region Second infographic -->
                 <div class="c-cell">
                     <!-- #region SVG graphic -->
-                    <div class="c-content-block c-svg-graph-wrap" id="trigger-infographic-female">
-                        <object type="image/svg+xml" data="Content/images/infographic-female.svg" class="c-svg-object" id="cid-infographic-female">
+                    <div class="c-content-block c-svg-graph-wrap" id="cid-infographic-{{infographicsGroups[secondRandomIndex].countrySecond}}-trigger" ng-if="ctrlVars.areInfographicsReady">
+                        <object type="image/svg+xml" data="Content/images/infographic-{{infographicsGroups[secondRandomIndex].countrySecond}}.svg" class="c-svg-object" id="cid-infographic-{{infographicsGroups[secondRandomIndex].countrySecond}}-object">
                             Infographic Legal
                         </object>
                     </div>
@@ -886,8 +886,8 @@
                 <!-- #region Third infographic -->
                 <div class="c-cell">
                     <!-- #region SVG graphic -->
-                    <div class="c-content-block c-svg-graph-wrap" id="trigger-infographic-legal">
-                        <object type="image/svg+xml" data="Content/images/infographic-legal.svg" class="c-svg-object" id="cid-infographic-legal">
+                    <div class="c-content-block c-svg-graph-wrap" id="cid-infographic-{{infographicsGroups[secondRandomIndex].countryThird}}-trigger" ng-if="ctrlVars.areInfographicsReady">
+                        <object type="image/svg+xml" data="Content/images/infographic-{{infographicsGroups[secondRandomIndex].countryThird}}.svg" class="c-svg-object" id="cid-infographic-{{infographicsGroups[secondRandomIndex].countryThird}}-object">
                             Infographic Legal
                         </object>
                     </div>

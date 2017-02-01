@@ -3,8 +3,8 @@
 angular.module('Home')
 
 .controller('HomeController',
-    ['$scope', '$window',
-        function ($scope, $window) {            
+    ['$scope', '$window', '$anchorScroll', '$location', '$timeout',
+        function ($scope, $window, $anchorScroll, $location, $timeout) {
             var winElement = angular.element($window);
             var screenWidth = winElement.width();
             winElement.bind('resize', function () {
@@ -12,39 +12,6 @@ angular.module('Home')
             });
             //'undpData' is object with side data defined inside 'allcontentdata.js' file
             var siteData = undpData;
-            /* #region FOCUS AREAS RELATED CODE */
-            $scope.focusData = siteData.focusAreas;
-            //object with currently selected Focus Area data
-            $scope.selectedFocusArea = {};
-            $scope.dataBindOKW = {};
-            $scope.currentOKWindex = 0;
-            //
-            $scope.changeFocusAreaData = function (focusAreaIndex) {
-                for (var i = 0; i < $scope.focusData.length; i++) {
-                    if (i == focusAreaIndex) {
-                        $scope.selectedFocusArea = $scope.focusData[i];
-                        $scope.changeCountryOKWData(0);
-                    }
-                }
-            }
-            $scope.enumOKW = {
-                overviewData: 0,
-                keyTrendsData: 1,
-                whatWeDoData: 2
-            }
-            $scope.changeCountryOKWData = function (buttonIndex) {
-                if (buttonIndex == $scope.enumOKW.overviewData) {
-                    $scope.dataBindOKW = $scope.selectedFocusArea.overviewData;
-                    $scope.currentOKWindex = buttonIndex;
-                } else if (buttonIndex == $scope.enumOKW.keyTrendsData) {
-                    $scope.dataBindOKW = $scope.selectedFocusArea.keyTrendsData;
-                    $scope.currentOKWindex = buttonIndex;
-                } else if (buttonIndex == $scope.enumOKW.whatWeDoData) {
-                    $scope.dataBindOKW = $scope.selectedFocusArea.whatWeDoData;
-                    $scope.currentOKWindex = buttonIndex;
-                }
-            }
-            /* #endregion FOCUS AREAS RELATED CODE */
             ///####################################################################################
             /* #region COUNTRIES RELATED CODE */
             //object with currently selected country data
@@ -108,12 +75,17 @@ angular.module('Home')
             /* #endregion COUNTRIES RELATED CODE */
 
             /* #region Content Visibility */
-            $scope.ctrlVars = {
+            $scope.ctrlVars = {                
                 isInterestCountryClicked: false,
+                //Key Result (Baskcground, Assistance.. Challanges..) = BAC
                 isOpenCountryBACdata_lg: false,
-                isOpenCountryBACdata_xs: false
+                isOpenCountryBACdata_xs: false,
+                //Focus Areas (Overview, Key trends, What we..) = OKW
+                isOpenCountryOKWdata: false,
+                //keeps visibility for Infographics SVG
+                areInfographicsReady: false
             }
-            $scope.toggleContent = function (callerName) {
+            $scope.toggleKeyContent = function (callerName) {
                 if (callerName == 'closeInterestCountry') {
                     $scope.ctrlVars.isInterestCountryClicked = false;
                     if ($scope.ctrlVars.isOpenCountryBACdata_lg == true) {
@@ -129,6 +101,151 @@ angular.module('Home')
                 }
             }
             /* #endregion Content Visibility */
+
+            /* #region FOCUS AREAS RELATED CODE */
+            $scope.focusData = siteData.focusAreas;
+            //object with currently selected Focus Area data
+            $scope.selectedFocusArea = {};
+            $scope.dataBindOKW = {};
+            $scope.currentOKWindex = 0;
+            //called from home.html
+            $scope.changeFocusAreaData = function (focusAreaIndex) {
+                if ($scope.ctrlVars.isOpenCountryOKWdata == false) {
+                    $scope.ctrlVars.isOpenCountryOKWdata = true;
+                    $timeout(function () {
+                        $location.hash('cid-anchor-OKW-content');
+                        // call $anchorScroll()
+                        $anchorScroll();
+                    }, 200);
+
+                }
+                for (var i = 0; i < $scope.focusData.length; i++) {
+                    if (i == focusAreaIndex) {
+                        $scope.selectedFocusArea = $scope.focusData[i];
+                        $scope.changeCountryOKWData(0);
+                    }
+                }
+            }
+            $scope.enumOKW = {
+                overviewData: 0,
+                keyTrendsData: 1,
+                whatWeDoData: 2
+            }
+            $scope.changeCountryOKWData = function (buttonIndex) {
+                if (buttonIndex == $scope.enumOKW.overviewData) {
+                    $scope.dataBindOKW = $scope.selectedFocusArea.overviewData;
+                    $scope.currentOKWindex = buttonIndex;
+                } else if (buttonIndex == $scope.enumOKW.keyTrendsData) {
+                    $scope.dataBindOKW = $scope.selectedFocusArea.keyTrendsData;
+                    $scope.currentOKWindex = buttonIndex;
+                } else if (buttonIndex == $scope.enumOKW.whatWeDoData) {
+                    $scope.dataBindOKW = $scope.selectedFocusArea.whatWeDoData;
+                    $scope.currentOKWindex = buttonIndex;
+                }
+            }
+            /* #endregion FOCUS AREAS RELATED CODE */
+
+
+            /* #region Setter for random infographics sets on reload */
+            $scope.infographicsGroups = [
+                {
+                    countryFirst: 'albania',
+                    countrySecond: 'armenia',
+                    countryThird: 'azerbaijan'
+                },
+                {
+                    countryFirst: 'belarus',
+                    countrySecond: 'bosnia',
+                    countryThird: 'georgia'
+                },
+                {
+                    countryFirst: 'kazakhstan',
+                    countrySecond: 'kosovo',
+                    countryThird: 'kyrgyz'
+                },
+                {
+                    countryFirst: 'moldova',
+                    countrySecond: 'montenegro',
+                    countryThird: 'serbia'
+                },
+                {
+                    countryFirst: 'tajikistan',
+                    countrySecond: 'macedonia',
+                    countryThird: 'turkey'
+                },
+                {
+                    countryFirst: 'turkmenistan',
+                    countrySecond: 'ukraine',
+                    countryThird: 'uzbekistan'
+                }
+            ];
+            function setRandomInfographics() {
+                var groupLength = $scope.infographicsGroups.length;
+                //get index for first group
+                $scope.firstRandomIndex = Math.floor(Math.random() * (groupLength - 0 )) + 0;
+                console.log('firstRandomIndex: ' + $scope.firstRandomIndex);
+                $scope.secondRandomIndex;
+                //setup for second index
+                var randomInterval_secondGroup = setInterval(getRandomIndex_secondGroup, 10);
+                function getRandomIndex_secondGroup() {
+                    // get index for second group
+                    var secondIndex = Math.floor(Math.random() * (groupLength - 0 )) + 0;
+                    if (secondIndex != $scope.firstRandomIndex) {
+                        $scope.secondRandomIndex = secondIndex;
+                        console.log('secondRandomIndex: ' + $scope.secondRandomIndex);
+                        // stop the interval
+                        clearInterval(randomInterval_secondGroup);
+                        //we need $timeout to provide some time until html is rendered
+                        $timeout(function () {
+                            $scope.ctrlVars.areInfographicsReady = true;
+                            console.log('$timeout: ');
+                            //calling functions inside 'index-controller.js'
+                            callExternalFunctions($scope.firstRandomIndex);
+                            callExternalFunctions($scope.secondRandomIndex);
+                        }, 200);
+                    }
+                }
+            }
+            setRandomInfographics();
+            ///calling EXTERNAL functions in 'index-controller.js'
+            function callExternalFunctions(groupIndex) {
+                for (var i = 0; i < $scope.infographicsGroups.length; i++) {
+                    if (i == groupIndex) {
+                        if (groupIndex == 0) {
+                            console.log('groupIndex: ' + groupIndex);
+                            setScrollMagicScene_albania();
+                            setScrollMagicScene_armenia();
+                            setScrollMagicScene_azerbaijan();
+                        } else if (groupIndex == 1) {
+                            console.log('groupIndex: ' + groupIndex);
+                            setScrollMagicScene_belarus();
+                            setScrollMagicScene_bosnia();
+                            setScrollMagicScene_georgia();
+                        } else if (groupIndex == 2) {
+                            console.log('groupIndex: ' + groupIndex);
+                            setScrollMagicScene_kazakhstan();
+                            setScrollMagicScene_kosovo();
+                            setScrollMagicScene_kyrgyz();
+                        } else if (groupIndex == 3) {
+                            console.log('groupIndex: ' + groupIndex);
+                            setScrollMagicScene_moldova();
+                            setScrollMagicScene_montenegro();
+                            setScrollMagicScene_serbia();
+                        } else if (groupIndex == 4) {
+                            console.log('groupIndex: ' + groupIndex);
+                            setScrollMagicScene_tajikistan();
+                            setScrollMagicScene_macedonia();
+                            setScrollMagicScene_turkey();
+                        } else if (groupIndex == 5) {
+                            console.log('groupIndex: ' + groupIndex);
+                            setScrollMagicScene_turkmenistan();
+                            setScrollMagicScene_ukraine();
+                            setScrollMagicScene_uzbekistan();
+                        }
+                    }
+                }
+            }
+            /* #endregion Setter for random infographics sets on reload */
 
         }
     ]

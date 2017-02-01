@@ -3,6 +3,7 @@
 //- ScrollMagic (for detecting scroll events)
 //- TweenMax (GreenSock GSAP) (for animation)
 //
+//
 $(document).ready(function () {
     var listOfActiveCountries = [
       { "id": "AL", "title": "Albania" },
@@ -171,18 +172,27 @@ $(document).ready(function () {
     var startingOpacity = 0.2;
     /* #endregion SVG animation - Global Variables */
     /* #region SVG animation - Albania */
-    var graphicAlbania_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-albania-trigger", duration: 200 })
-    graphicAlbania_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicAlbania_animate();
-    })
+    window.setScrollMagicScene_albania = function () {
+        console.log('setScrollMagicScene_albania');
+        var graphicAlbania_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-albania-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicAlbania_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicAlbania_object;
     //contains <svg> element with graphics
     var graphicAlbania_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicAlbania_interval = setInterval(graphicAlbania_setup, 300);
+    var graphicAlbania_interval = setInterval(graphicAlbania_setup, 300);
     function graphicAlbania_setup() {
         // Get the div holding svg object
         graphicAlbania_object = document.getElementById("cid-infographic-albania-object");
@@ -200,6 +210,7 @@ $(document).ready(function () {
     var graphicAlbania_fired = false;
     //function fired by 'ScrollMagic' controller
     function graphicAlbania_animate() {
+        console.log('graphicAlbania_animate');
         if (graphicAlbania_fired == false && graphicAlbania_svgDocument != null) {
             graphicAlbania_fired = true;
             /* #region Defining Elements - Grayed Lines */
@@ -248,18 +259,27 @@ $(document).ready(function () {
     }
     /* #endregion SVG animation - Albania */
     /* #region SVG animation - Armenia */
-    var graphicArmenia_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-armenia-trigger", duration: 200 })
-    graphicArmenia_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicArmenia_animate();
-    })
+    window.setScrollMagicScene_armenia = function () {
+        console.log('setScrollMagicScene_armenia');
+        var graphicArmenia_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-armenia-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicArmenia_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicArmenia_object;
     //contains <svg> element with graphics
     var graphicArmenia_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicArmenia_interval = setInterval(graphicArmenia_setup, 300);
+    var graphicArmenia_interval = setInterval(graphicArmenia_setup, 300);
     function graphicArmenia_setup() {
         // Get the div holding svg object
         graphicArmenia_object = document.getElementById("cid-infographic-armenia-object");
@@ -277,6 +297,7 @@ $(document).ready(function () {
     var graphicArmenia_fired = false;
     //function fired by 'ScrollMagic' controller
     function graphicArmenia_animate() {
+        console.log('graphicArmenia_animate');
         if (graphicArmenia_fired == false && graphicArmenia_svgDocument != null) {
             graphicArmenia_fired = true;
             /* #region Defining Elements */
@@ -311,18 +332,27 @@ $(document).ready(function () {
     }
     /* #endregion SVG animation - Armenia */
     /* #region SVG animation - Azerbaijan */
-    var graphicAzerbaijan_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-azerbaijan-trigger", duration: 200 })
-    graphicAzerbaijan_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicAzerbaijan_animate();
-    })
+    window.setScrollMagicScene_azerbaijan = function () {
+        console.log('setScrollMagicScene_azerbaijan');
+        var graphicAzerbaijan_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-azerbaijan-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicAzerbaijan_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicAzerbaijan_object;
     //contains <svg> element with graphics
     var graphicAzerbaijan_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicAzerbaijan_interval = setInterval(graphicAzerbaijan_setup, 300);
+    var graphicAzerbaijan_interval = setInterval(graphicAzerbaijan_setup, 300);
     function graphicAzerbaijan_setup() {
         // Get the div holding svg object
         graphicAzerbaijan_object = document.getElementById("cid-infographic-azerbaijan-object");
@@ -340,6 +370,7 @@ $(document).ready(function () {
     var graphicAzerbaijan_fired = false;
     //function fired by 'ScrollMagic' controller
     function graphicAzerbaijan_animate() {
+        console.log('graphicArmenia_animate');
         if (graphicAzerbaijan_fired == false && graphicAzerbaijan_svgDocument != null) {
             graphicAzerbaijan_fired = true;
             /* #region Defining Elements */
@@ -373,18 +404,27 @@ $(document).ready(function () {
     }
     /* #endregion SVG animation - Azerbaijan */
     /* #region SVG animation - Belarus */
-    var graphicBelarus_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-belarus-trigger", duration: 200 })
-    graphicBelarus_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicBelarus_animate();
-    })
+    window.setScrollMagicScene_belarus = function () {
+        console.log('setScrollMagicScene_belarus');
+        var graphicBelarus_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-belarus-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicBelarus_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicBelarus_object;
     //contains <svg> element with graphics
     var graphicBelarus_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicBelarus_interval = setInterval(graphicBelarus_setup, 300);
+    var graphicBelarus_interval = setInterval(graphicBelarus_setup, 300);
     function graphicBelarus_setup() {
         // Get the div holding svg object
         graphicBelarus_object = document.getElementById("cid-infographic-belarus-object");
@@ -435,18 +475,27 @@ $(document).ready(function () {
     }
     /* #endregion SVG animation - Belarus */
     /* #region SVG animation - Bosnia */
-    var graphicBosnia_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-bosnia-trigger", duration: 200 })
-    graphicBosnia_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicBosnia_animate();
-    })
+    window.setScrollMagicScene_bosnia = function () {
+        console.log('setScrollMagicScene_bosnia');
+        var graphicBosnia_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-bosnia-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicBosnia_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicBosnia_object;
     //contains <svg> element with graphics
     var graphicBosnia_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicBosnia_interval = setInterval(graphicBosnia_setup, 300);
+    var graphicBosnia_interval = setInterval(graphicBosnia_setup, 300);
     function graphicBosnia_setup() {
         // Get the div holding svg object
         graphicBosnia_object = document.getElementById("cid-infographic-bosnia-object");
@@ -497,18 +546,27 @@ $(document).ready(function () {
     }
     /* #endregion SVG animation - Bosnia */
     /* #region SVG animation - Georgia */
-    var graphicGeorgia_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-georgia-trigger", duration: 200 })
-    graphicGeorgia_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicGeorgia_animate();
-    })
+    window.setScrollMagicScene_georgia = function () {
+        console.log('setScrollMagicScene_georgia');
+        var graphicGeorgia_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-georgia-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicGeorgia_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicGeorgia_object;
     //contains <svg> element with graphics
     var graphicGeorgia_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicGeorgia_interval = setInterval(graphicGeorgia_setup, 300);
+    var graphicGeorgia_interval = setInterval(graphicGeorgia_setup, 300);
     function graphicGeorgia_setup() {
         // Get the div holding svg object
         graphicGeorgia_object = document.getElementById("cid-infographic-georgia-object");
@@ -557,18 +615,27 @@ $(document).ready(function () {
     }
     /* #endregion SVG animation - Georgia */
     /* #region SVG animation - Kazakhstan */
-    var graphicKazakhstan_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-kazakhstan-trigger", duration: 200 })
-    graphicKazakhstan_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicKazakhstan_animate();
-    })
+    window.setScrollMagicScene_kazakhstan = function () {
+        console.log('setScrollMagicScene_kazakhstan');
+        var graphicKazakhstan_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-kazakhstan-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicKazakhstan_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicKazakhstan_object;
     //contains <svg> element with graphics
     var graphicKazakhstan_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicKazakhstan_interval = setInterval(graphicKazakhstan_setup, 300);
+    var graphicKazakhstan_interval = setInterval(graphicKazakhstan_setup, 300);
     function graphicKazakhstan_setup() {
         // Get the div holding svg object
         graphicKazakhstan_object = document.getElementById("cid-infographic-kazakhstan-object");
@@ -586,6 +653,7 @@ $(document).ready(function () {
     var graphicKazakhstan_fired = false;
     //function fired by 'ScrollMagic' controller
     function graphicKazakhstan_animate() {
+        console.log('graphicKazakhstan_animate');
         if (graphicKazakhstan_fired == false && graphicKazakhstan_svgDocument != null) {
             graphicKazakhstan_fired = true;
             /* #region Defining Elements */
@@ -618,18 +686,27 @@ $(document).ready(function () {
     }
     /* #endregion SVG animation - Kazakhstan */
     /* #region SVG animation - Kosovo */
-    var graphicKosovo_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-kosovo-trigger", duration: 200 })
-    graphicKosovo_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicKosovo_animate();
-    })
+    window.setScrollMagicScene_kosovo = function () {
+        console.log('setScrollMagicScene_kosovo');
+        var graphicKosovo_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-kosovo-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicKosovo_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicKosovo_object;
     //contains <svg> element with graphics
     var graphicKosovo_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicKosovo_interval = setInterval(graphicKosovo_setup, 300);
+    var graphicKosovo_interval = setInterval(graphicKosovo_setup, 300);
     function graphicKosovo_setup() {
         // Get the div holding svg object
         graphicKosovo_object = document.getElementById("cid-infographic-kosovo-object");
@@ -677,18 +754,27 @@ $(document).ready(function () {
     }
     /* #endregion SVG animation - Kosovo */
     /* #region SVG animation - Kyrgyz */
-    var graphicKyrgyz_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-kyrgyz-trigger", duration: 200 })
-    graphicKyrgyz_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicKyrgyz_animate();
-    })
+    window.setScrollMagicScene_kyrgyz = function () {
+        console.log('setScrollMagicScene_kyrgyz');
+        var graphicKyrgyz_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-kyrgyz-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicKyrgyz_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicKyrgyz_object;
     //contains <svg> element with graphics
     var graphicKyrgyz_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicKyrgyz_interval = setInterval(graphicKyrgyz_setup, 300);
+    var graphicKyrgyz_interval = setInterval(graphicKyrgyz_setup, 300);
     function graphicKyrgyz_setup() {
         // Get the div holding svg object
         graphicKyrgyz_object = document.getElementById("cid-infographic-kyrgyz-object");
@@ -737,18 +823,27 @@ $(document).ready(function () {
     }
     /* #endregion SVG animation - Kyrgyz */
     /* #region SVG animation - Macedonia */
-    var graphicMacedonia_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-macedonia-trigger", duration: 200 })
-    graphicMacedonia_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicMacedonia_animate();
-    })
+    window.setScrollMagicScene_macedonia = function () {
+        console.log('setScrollMagicScene_macedonia');
+        var graphicMacedonia_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-macedonia-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicMacedonia_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicMacedonia_object;
     //contains <svg> element with graphics
     var graphicMacedonia_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicMacedonia_interval = setInterval(graphicMacedonia_setup, 300);
+    var graphicMacedonia_interval = setInterval(graphicMacedonia_setup, 300);
     function graphicMacedonia_setup() {
         // Get the div holding svg object
         graphicMacedonia_object = document.getElementById("cid-infographic-macedonia-object");
@@ -797,18 +892,27 @@ $(document).ready(function () {
     }
     /* #endregion SVG animation - Macedonia */
     /* #region SVG animation - Moldova */
-    var graphicMoldova_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-moldova-trigger", duration: 200 })
-    graphicMoldova_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicMoldova_animate();
-    })
+    window.setScrollMagicScene_moldova = function () {
+        console.log('setScrollMagicScene_moldova');
+        var graphicMoldova_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-moldova-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicMoldova_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicMoldova_object;
     //contains <svg> element with graphics
     var graphicMoldova_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicMoldova_interval = setInterval(graphicMoldova_setup, 300);
+    var graphicMoldova_interval = setInterval(graphicMoldova_setup, 300);
     function graphicMoldova_setup() {
         // Get the div holding svg object
         graphicMoldova_object = document.getElementById("cid-infographic-moldova-object");
@@ -857,18 +961,27 @@ $(document).ready(function () {
     }
     /* #endregion SVG animation - Moldova */
     /* #region SVG animation - Montenegro */
-    var graphicMontenegro_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-montenegro-trigger", duration: 200 })
-    graphicMontenegro_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicMontenegro_animate();
-    })
+    window.setScrollMagicScene_montenegro = function () {
+        console.log('setScrollMagicScene_montenegro');
+        var graphicMontenegro_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-montenegro-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicMontenegro_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicMontenegro_object;
     //contains <svg> element with graphics
     var graphicMontenegro_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicMontenegro_interval = setInterval(graphicMontenegro_setup, 300);
+    var graphicMontenegro_interval = setInterval(graphicMontenegro_setup, 300);
     function graphicMontenegro_setup() {
         // Get the div holding svg object
         graphicMontenegro_object = document.getElementById("cid-infographic-montenegro-object");
@@ -916,18 +1029,27 @@ $(document).ready(function () {
     }
     /* #endregion SVG animation - Montenegro */
     /* #region SVG animation - Serbia */
-    var graphicSerbia_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-serbia-trigger", duration: 200 })
-    graphicSerbia_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicSerbia_animate();
-    })
+    window.setScrollMagicScene_serbia = function () {
+        console.log('setScrollMagicScene_serbia');
+        var graphicSerbia_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-serbia-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicSerbia_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicSerbia_object;
     //contains <svg> element with graphics
     var graphicSerbia_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicSerbia_interval = setInterval(graphicSerbia_setup, 300);
+    var graphicSerbia_interval = setInterval(graphicSerbia_setup, 300);
     function graphicSerbia_setup() {
         // Get the div holding svg object
         graphicSerbia_object = document.getElementById("cid-infographic-serbia-object");
@@ -977,18 +1099,27 @@ $(document).ready(function () {
     }
     /* #endregion SVG animation - Serbia */
     /* #region SVG animation - Tajikistan */
-    var graphicTajikistan_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-tajikistan-trigger", duration: 200 })
-    graphicTajikistan_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicTajikistan_animate();
-    })
+    window.setScrollMagicScene_tajikistan = function () {
+        console.log('setScrollMagicScene_tajikistan');
+        var graphicTajikistan_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-tajikistan-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicTajikistan_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicTajikistan_object;
     //contains <svg> element with graphics
     var graphicTajikistan_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicTajikistan_interval = setInterval(graphicTajikistan_setup, 300);
+    var graphicTajikistan_interval = setInterval(graphicTajikistan_setup, 300);
     function graphicTajikistan_setup() {
         // Get the div holding svg object
         graphicTajikistan_object = document.getElementById("cid-infographic-tajikistan-object");
@@ -1006,6 +1137,7 @@ $(document).ready(function () {
     var graphicTajikistan_fired = false;
     //function fired by 'ScrollMagic' controller
     function graphicTajikistan_animate() {
+        console.log('graphicTajikistan_animate');
         if (graphicTajikistan_fired == false && graphicTajikistan_svgDocument != null) {
             graphicTajikistan_fired = true;
             /* #region Defining Elements */
@@ -1037,18 +1169,27 @@ $(document).ready(function () {
     }
     /* #endregion SVG animation - Tajikistan */
     /* #region SVG animation - Turkey */
-    var graphicTurkey_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-turkey-trigger", duration: 200 })
-    graphicTurkey_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicTurkey_animate();
-    })
+    window.setScrollMagicScene_turkey = function () {
+        console.log('setScrollMagicScene_turkey');
+        var graphicTurkey_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-turkey-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicTurkey_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicTurkey_object;
     //contains <svg> element with graphics
     var graphicTurkey_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicTurkey_interval = setInterval(graphicTurkey_setup, 300);
+    var graphicTurkey_interval = setInterval(graphicTurkey_setup, 300);
     function graphicTurkey_setup() {
         // Get the div holding svg object
         graphicTurkey_object = document.getElementById("cid-infographic-turkey-object");
@@ -1099,18 +1240,27 @@ $(document).ready(function () {
     }
     /* #endregion SVG animation - Turkey */
     /* #region SVG animation - Turkmenistan */
-    var graphicTurkmenistan_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-turkmenistan-trigger", duration: 200 })
-    graphicTurkmenistan_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicTurkmenistan_animate();
-    })
+    window.setScrollMagicScene_turkmenistan = function () {
+        console.log('setScrollMagicScene_turkmenistan');
+        var graphicTurkmenistan_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-turkmenistan-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicTurkmenistan_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicTurkmenistan_object;
     //contains <svg> element with graphics
     var graphicTurkmenistan_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicTurkmenistan_interval = setInterval(graphicTurkmenistan_setup, 300);
+    var graphicTurkmenistan_interval = setInterval(graphicTurkmenistan_setup, 300);
     function graphicTurkmenistan_setup() {
         // Get the div holding svg object
         graphicTurkmenistan_object = document.getElementById("cid-infographic-turkmenistan-object");
@@ -1128,6 +1278,7 @@ $(document).ready(function () {
     var graphicTurkmenistan_fired = false;
     //function fired by 'ScrollMagic' controller
     function graphicTurkmenistan_animate() {
+        console.log('graphicTurkmenistan_animate');
         if (graphicTurkmenistan_fired == false && graphicTurkmenistan_svgDocument != null) {
             graphicTurkmenistan_fired = true;
             /* #region Defining Elements */
@@ -1159,18 +1310,27 @@ $(document).ready(function () {
     }
     /* #endregion SVG animation - Turkmenistan */
     /* #region SVG animation - Ukraine */
-    var graphicUkraine_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-ukraine-trigger", duration: 200 })
-    graphicUkraine_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicUkraine_animate();
-    })
+    window.setScrollMagicScene_ukraine = function () {
+        console.log('setScrollMagicScene_ukraine');
+        var graphicUkraine_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-ukraine-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicUkraine_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicUkraine_object;
     //contains <svg> element with graphics
     var graphicUkraine_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicUkraine_interval = setInterval(graphicUkraine_setup, 300);
+    var graphicUkraine_interval = setInterval(graphicUkraine_setup, 300);
     function graphicUkraine_setup() {
         // Get the div holding svg object
         graphicUkraine_object = document.getElementById("cid-infographic-ukraine-object");
@@ -1219,18 +1379,27 @@ $(document).ready(function () {
     }
     /* #endregion SVG animation - Ukraine */
     /* #region SVG animation - Uzbekistan */
-    var graphicUzbekistan_scrollMagicScene = new ScrollMagic.Scene({ triggerElement: "#cid-infographic-uzbekistan-trigger", duration: 200 })
-    graphicUzbekistan_scrollMagicScene.triggerHook("onCenter")
-    .addTo(scrollMagicInitController)
-    .on("start", function (e) {
-        graphicUzbekistan_animate();
-    })
+    window.setScrollMagicScene_uzbekistan = function () {
+        console.log('setScrollMagicScene_uzbekistan');
+        var graphicUzbekistan_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: "#cid-infographic-uzbekistan-trigger", duration: 200,
+                triggerHook: "onCenter",
+            }
+        ).addTo(
+            scrollMagicInitController
+        ).on("start", function (e) {
+                console.log('animate++');
+                graphicUzbekistan_animate();
+            }
+        )
+    }
     //contains <object> element with desired id
     var graphicUzbekistan_object;
     //contains <svg> element with graphics
     var graphicUzbekistan_svgDocument;
     //interval that will keep fireing until we get desired id element
-    graphicUzbekistan_interval = setInterval(graphicUzbekistan_setup, 300);
+    var graphicUzbekistan_interval = setInterval(graphicUzbekistan_setup, 300);
     function graphicUzbekistan_setup() {
         // Get the div holding svg object
         graphicUzbekistan_object = document.getElementById("cid-infographic-uzbekistan-object");
@@ -1248,6 +1417,7 @@ $(document).ready(function () {
     var graphicUzbekistan_fired = false;
     //function fired by 'ScrollMagic' controller
     function graphicUzbekistan_animate() {
+        console.log('graphicUzbekistan_animate');
         if (graphicUzbekistan_fired == false && graphicUzbekistan_svgDocument != null) {
             graphicUzbekistan_fired = true;
             /* #region Defining Elements */
