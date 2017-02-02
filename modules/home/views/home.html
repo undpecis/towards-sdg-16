@@ -126,7 +126,7 @@
                         <div class="c-cell">
                             <span class="c-dynamic-country-title">{{selectedCountry.title}}</span>
                         </div>
-                        <div class="c-cell c-w-1perc" ng-click="toggleContent('closeInterestCountry')">
+                        <div class="c-cell c-w-1perc" ng-click="toggleKeyContent('closeInterestCountry')">
                             <i class="c-ico icon-close"></i>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                             </ul>
                             <div class="c-buttons-wrap">
                                 <!-- #region Learn more button -->
-                                <button class="c-bttn c-bttn-combo c-bttn-blue" ng-click="toggleContent('isOpenCountryBACdata_lg')">
+                                <button class="c-bttn c-bttn-combo c-bttn-blue" ng-click="toggleKeyContent('isOpenCountryBACdata_lg')">
                                     <div class="c-circle-icon-box">
                                         <i class="c-ico icon-login"></i>
                                     </div>
@@ -361,7 +361,7 @@
                         <div class="c-cell">
                             <span class="c-dynamic-country-title">{{selectedCountry.title}}</span>
                         </div>
-                        <div class="c-cell c-w-1perc" ng-click="toggleContent('closeInterestCountry')">
+                        <div class="c-cell c-w-1perc" ng-click="toggleKeyContent('closeInterestCountry')">
                             <i class="c-ico icon-close"></i>
                         </div>
                     </div>
@@ -699,7 +699,7 @@
 </div>
 <!-- #endregion Focus areas -->
 <!-- #region Expandable content -->
-<div class="c-wide-wrap c-black-background">
+<div class="c-wide-wrap c-black-background" ng-if="ctrlVars.isOpenCountryOKWdata" id="cid-anchor-OKW-content">
     <div class="c-container">
         <div class="c-expandable-content-wrap">
             <!-- #region Title -->
@@ -820,11 +820,13 @@
                 <!-- #region First infographic -->
                 <div class="c-cell">
                     <!-- #region SVG graphic -->
-                    <div class="c-content-block c-svg-graph-wrap" id="cid-infographic-uzbekistan-trigger">
-                        <object type="image/svg+xml" data="Content/images/infographic-uzbekistan.svg" class="c-svg-object" id="cid-infographic-uzbekistan-object">
+                    <div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-1-svg">
+                    </div>
+                    <!--<div class="c-content-block c-svg-graph-wrap" id="cid-infographic-{{infographicsGroups[0].countries[0].shortName}}-trigger" ng-if="ctrlVars.areInfographicsReady">
+                        <object type="image/svg+xml" data="Content/images/infographic-{{infographicsGroups[0].countries[0].shortName}}.svg" class="c-svg-object" id="cid-infographic-{{infographicsGroups[0].countries[0].shortName}}-object">
                             Infographic Legal
                         </object>
-                    </div>
+                    </div>-->
                     <!-- #endregion SVG graphic -->
                     <!-- #region Percentage text -->
                     <div class="c-content-block c-percentage-text-wrap">
@@ -844,8 +846,8 @@
                     </div>
                     <!-- #endregion Percentage text -->
                     <!-- #region Country name -->
-                    <div class="c-content-block c-country-name-wrap c-peach-color">
-                        <span>Albania</span>
+                    <div class="c-content-block c-country-name-wrap c-peach-color" id="trigger-country-container-1-title">
+                        <span></span>
                     </div>
                     <!-- #endregion Country name -->
                 </div>
@@ -853,11 +855,13 @@
                 <!-- #region Second infographic -->
                 <div class="c-cell">
                     <!-- #region SVG graphic -->
-                    <div class="c-content-block c-svg-graph-wrap" id="trigger-infographic-female">
-                        <object type="image/svg+xml" data="Content/images/infographic-female.svg" class="c-svg-object" id="cid-infographic-female">
+                    <div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-2-svg">
+                    </div>
+                    <!--<div class="c-content-block c-svg-graph-wrap" id="cid-infographic-{{infographicsGroups[0].countries[1].shortName}}-trigger" ng-if="ctrlVars.areInfographicsReady">
+                        <object type="image/svg+xml" data="Content/images/infographic-{{infographicsGroups[0].countries[1].shortName}}.svg" class="c-svg-object" id="cid-infographic-{{infographicsGroups[0].countries[1].shortName}}-object">
                             Infographic Legal
                         </object>
-                    </div>
+                    </div>-->
                     <!-- #endregion SVG graphic -->
                     <!-- #region Percentage text -->
                     <div class="c-content-block c-percentage-text-wrap">
@@ -877,8 +881,8 @@
                     </div>
                     <!-- #endregion Percentage text -->
                     <!-- #region Country name -->
-                    <div class="c-content-block c-country-name-wrap c-peach-color">
-                        <span>Kazakhstan</span>
+                    <div class="c-content-block c-country-name-wrap c-peach-color" id="trigger-country-container-2-title">
+                        <span></span>
                     </div>
                     <!-- #endregion Country name -->
                 </div>
@@ -886,11 +890,13 @@
                 <!-- #region Third infographic -->
                 <div class="c-cell">
                     <!-- #region SVG graphic -->
-                    <div class="c-content-block c-svg-graph-wrap" id="trigger-infographic-legal">
-                        <object type="image/svg+xml" data="Content/images/infographic-legal.svg" class="c-svg-object" id="cid-infographic-legal">
+                    <div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-3-svg">
+                    </div>
+                    <!--<div class="c-content-block c-svg-graph-wrap" id="cid-infographic-{{infographicsGroups[0].countries[2].shortName}}-trigger" ng-if="ctrlVars.areInfographicsReady">
+                        <object type="image/svg+xml" data="Content/images/infographic-{{infographicsGroups[0].countries[2].shortName}}.svg" class="c-svg-object" id="cid-infographic-{{infographicsGroups[0].countries[2].shortName}}-object">
                             Infographic Legal
                         </object>
-                    </div>
+                    </div>-->
                     <!-- #endregion SVG graphic -->
                     <!-- #region Percentage text -->
                     <div class="c-content-block c-percentage-text-wrap">
@@ -910,8 +916,8 @@
                     </div>
                     <!-- #endregion Percentage text -->
                     <!-- #region Country name -->
-                    <div class="c-content-block c-country-name-wrap c-peach-color">
-                        <span>Tajikistan</span>
+                    <div class="c-content-block c-country-name-wrap c-peach-color" id="trigger-country-container-3-title">
+                        <span></span>
                     </div>
                     <!-- #endregion Country name -->
                 </div>
@@ -985,11 +991,13 @@
                 <!-- #region First infographic -->
                 <div class="c-cell">
                     <!-- #region SVG graphic -->
-                    <div class="c-content-block c-svg-graph-wrap" id="trigger-infographic-people">
+                    <div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-4-svg">
+                    </div>
+                    <!--<div class="c-content-block c-svg-graph-wrap" id="trigger-infographic-people">
                         <object type="image/svg+xml" data="Content/images/infographic-people-figures.svg" class="c-svg-object" id="cid-infographic-people">
                             Infographic Legal
                         </object>
-                    </div>
+                    </div>-->
                     <!-- #endregion SVG graphic -->
                     <!-- #region Percentage text -->
                     <div class="c-content-block c-percentage-text-wrap">
@@ -1009,8 +1017,8 @@
                     </div>
                     <!-- #endregion Percentage text -->
                     <!-- #region Country name -->
-                    <div class="c-content-block c-country-name-wrap c-light-coral-color">
-                        <span>Ukraine</span>
+                    <div class="c-content-block c-country-name-wrap c-light-coral-color" id="trigger-country-container-4-title">
+                        <span></span>
                     </div>
                     <!-- #endregion Country name -->
                 </div>
@@ -1018,11 +1026,13 @@
                 <!-- #region Second infographic -->
                 <div class="c-cell">
                     <!-- #region SVG graphic -->
-                    <div class="c-content-block c-svg-graph-wrap" id="trigger-infographic-bullets">
+                    <div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-5-svg">
+                    </div>
+                    <!--<div class="c-content-block c-svg-graph-wrap" id="trigger-infographic-bullets">
                         <object type="image/svg+xml" data="Content/images/infographic-bullets.svg" class="c-svg-object" id="cid-infographic-bullets">
                             Infographic Legal
                         </object>
-                    </div>
+                    </div>-->
                     <!-- #endregion SVG graphic -->
                     <!-- #region Percentage text -->
                     <div class="c-content-block c-percentage-text-wrap">
@@ -1042,8 +1052,8 @@
                     </div>
                     <!-- #endregion Percentage text -->
                     <!-- #region Country name -->
-                    <div class="c-content-block c-country-name-wrap c-light-coral-color">
-                        <span>Bosnia & Herzegovina</span>
+                    <div class="c-content-block c-country-name-wrap c-light-coral-color" id="trigger-country-container-5-title">
+                        <span></span>
                     </div>
                     <!-- #endregion Country name -->
                 </div>
@@ -1051,11 +1061,13 @@
                 <!-- #region Third infographic -->
                 <div class="c-cell">
                     <!-- #region SVG graphic -->
-                    <div class="c-content-block c-svg-graph-wrap" id="trigger-infographic-flower">
+                    <div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-6-svg">
+                    </div>
+                    <!--<div class="c-content-block c-svg-graph-wrap" id="trigger-infographic-flower">
                         <object type="image/svg+xml" data="Content/images/infographic-flower.svg" class="c-svg-object" id="cid-infographic-flower">
                             Infographic Legal
                         </object>
-                    </div>
+                    </div>-->
                     <!-- #endregion SVG graphic -->
                     <!-- #region Percentage text -->
                     <div class="c-content-block c-percentage-text-wrap">
@@ -1075,8 +1087,8 @@
                     </div>
                     <!-- #endregion Percentage text -->
                     <!-- #region Country name -->
-                    <div class="c-content-block c-country-name-wrap c-light-coral-color">
-                        <span>Moldova</span>
+                    <div class="c-content-block c-country-name-wrap c-light-coral-color" id="trigger-country-container-6-title">
+                        <span></span>
                     </div>
                     <!-- #endregion Country name -->
                 </div>
