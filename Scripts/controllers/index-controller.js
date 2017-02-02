@@ -296,12 +296,14 @@ $(document).ready(function () {
     setupRandomSvgGraphics();
     /* #endregion Get Random SVG groups */
     /* #region Inserts SVG's to HTML */
+    var startingOpacity = 0.3;
     var scrollMagicInitController = new ScrollMagic.Controller();
     var allScrollMagicScenesArray = [];
     function insertSvgGraphicsToView() {
         for (var i = 0; i < randomCountriesArray.length; i++) {
             $("#trigger-country-container-" + (i + 1) + "-svg").prop('id', 'cid-infographic-trigger-' + randomCountriesArray[i].shortName);
             $("#cid-infographic-trigger-" + randomCountriesArray[i].shortName).append('<object type="image/svg+xml" data="Content/images/infographic-' + randomCountriesArray[i].shortName + '.svg" class="c-svg-object" id="cid-infographic-' + randomCountriesArray[i].shortName + '-object">Infographic Legal</object>');
+            $("#cid-infographic-trigger-" + randomCountriesArray[i].shortName).css("opacity", startingOpacity);
             /* #region Setting up ScrollMagicScenes */
             // create the scrollmagic scene here.
             var generic_scrollMagicScene = new ScrollMagic.Scene(
@@ -321,8 +323,7 @@ $(document).ready(function () {
             /* #endregion Setting up ScrollMagicScenes */
         }
     }
-    /* #endregion Inserts SVG's to HTML */
-    var startingOpacity = 0.2;
+    /* #endregion Inserts SVG's to HTML */    
     function genericCountrySvg_animate(event) {
         var eventCountryIndex = event.currentTarget.countryIndex;
         for (var i = 0; i < randomCountriesArray.length; i++) {
