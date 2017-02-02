@@ -147,104 +147,139 @@ angular.module('Home')
 
 
             /* #region Setter for random infographics sets on reload */
-            $scope.infographicsGroups = [
-                {
-                    countryFirst: 'albania',
-                    countrySecond: 'armenia',
-                    countryThird: 'azerbaijan'
-                },
-                {
-                    countryFirst: 'belarus',
-                    countrySecond: 'bosnia',
-                    countryThird: 'georgia'
-                },
-                {
-                    countryFirst: 'kazakhstan',
-                    countrySecond: 'kosovo',
-                    countryThird: 'kyrgyz'
-                },
-                {
-                    countryFirst: 'moldova',
-                    countrySecond: 'montenegro',
-                    countryThird: 'serbia'
-                },
-                {
-                    countryFirst: 'tajikistan',
-                    countrySecond: 'macedonia',
-                    countryThird: 'turkey'
-                },
-                {
-                    countryFirst: 'turkmenistan',
-                    countrySecond: 'ukraine',
-                    countryThird: 'uzbekistan'
-                }
-            ];
-            function setRandomInfographics() {
-                var groupLength = $scope.infographicsGroups.length;
-                //get index for first group
-                $scope.firstRandomIndex = Math.floor(Math.random() * (groupLength - 0 )) + 0;
-                console.log('firstRandomIndex: ' + $scope.firstRandomIndex);
-                $scope.secondRandomIndex;
-                //setup for second index
-                var randomInterval_secondGroup = setInterval(getRandomIndex_secondGroup, 10);
-                function getRandomIndex_secondGroup() {
-                    // get index for second group
-                    var secondIndex = Math.floor(Math.random() * (groupLength - 0 )) + 0;
-                    if (secondIndex != $scope.firstRandomIndex) {
-                        $scope.secondRandomIndex = secondIndex;
-                        console.log('secondRandomIndex: ' + $scope.secondRandomIndex);
-                        // stop the interval
-                        clearInterval(randomInterval_secondGroup);
-                        //we need $timeout to provide some time until html is rendered
-                        $timeout(function () {
-                            $scope.ctrlVars.areInfographicsReady = true;
-                            console.log('$timeout: ');
-                            //calling functions inside 'index-controller.js'
-                            callExternalFunctions($scope.firstRandomIndex);
-                            callExternalFunctions($scope.secondRandomIndex);
-                        }, 200);
-                    }
-                }
-            }
-            setRandomInfographics();
-            ///calling EXTERNAL functions in 'index-controller.js'
-            function callExternalFunctions(groupIndex) {
-                for (var i = 0; i < $scope.infographicsGroups.length; i++) {
-                    if (i == groupIndex) {
-                        if (groupIndex == 0) {
-                            console.log('groupIndex: ' + groupIndex);
-                            setScrollMagicScene_albania();
-                            setScrollMagicScene_armenia();
-                            setScrollMagicScene_azerbaijan();
-                        } else if (groupIndex == 1) {
-                            console.log('groupIndex: ' + groupIndex);
-                            setScrollMagicScene_belarus();
-                            setScrollMagicScene_bosnia();
-                            setScrollMagicScene_georgia();
-                        } else if (groupIndex == 2) {
-                            console.log('groupIndex: ' + groupIndex);
-                            setScrollMagicScene_kazakhstan();
-                            setScrollMagicScene_kosovo();
-                            setScrollMagicScene_kyrgyz();
-                        } else if (groupIndex == 3) {
-                            console.log('groupIndex: ' + groupIndex);
-                            setScrollMagicScene_moldova();
-                            setScrollMagicScene_montenegro();
-                            setScrollMagicScene_serbia();
-                        } else if (groupIndex == 4) {
-                            console.log('groupIndex: ' + groupIndex);
-                            setScrollMagicScene_tajikistan();
-                            setScrollMagicScene_macedonia();
-                            setScrollMagicScene_turkey();
-                        } else if (groupIndex == 5) {
-                            console.log('groupIndex: ' + groupIndex);
-                            setScrollMagicScene_turkmenistan();
-                            setScrollMagicScene_ukraine();
-                            setScrollMagicScene_uzbekistan();
-                        }
-                    }
-                }
-            }
+            //$scope.firstRandomIndex = '';
+            //$scope.secondRandomIndex = '';
+            //$scope.infographicsGroups = [
+            //    {
+            //        countries: [
+            //            {
+            //                shortName:'albania',
+            //                fullName:'Albania'
+            //            },
+            //            {
+            //                shortName:'armenia',
+            //                fullName: 'Armenia'
+            //            },
+            //            {
+            //                shortName:'azerbaijan',
+            //                fullName: 'Azerbaijan'
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        countries: [
+            //            {
+            //                shortName:'belarus',
+            //                fullName: 'Belarus'
+            //            },
+            //            {
+            //                shortName:'bosnia',
+            //                fullName: 'Bosnia'
+            //            },
+            //            {
+            //                shortName:'georgia',
+            //                fullName: 'Georgia'
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        countries: [
+            //            {
+            //                shortName:'kazakhstan',
+            //                fullName: 'Kazakhstan'
+            //            },
+            //            {
+            //                shortName:'kosovo',
+            //                fullName: 'Kosovo'
+            //            },
+            //            {
+            //                shortName:'kyrgyz',
+            //                fullName: 'Kyrgyz'
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        countries: [
+            //            {
+            //                shortName:'moldova',
+            //                fullName: 'Moldova'
+            //            },
+            //            {
+            //                shortName:'montenegro',
+            //                fullName: 'Montenegro'
+            //            },
+            //            {
+            //                shortName:'serbia',
+            //                fullName:'Serbia'
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        countries: [
+            //            {
+            //                shortName:'tajikistan',
+            //                fullName:'Tajikistan'
+            //            },
+            //            {
+            //                shortName:'macedonia',
+            //                fullName:'Macedonia'
+            //            },
+            //            {
+            //                shortName:'turkey',
+            //                fullName:'Turkey'
+            //            }
+            //        ]
+            //    },
+            //    {
+            //        countries: [
+            //            {
+            //                shortName:'turkmenistan',
+            //                fullName:'Turkmenistan'
+            //            },
+            //            {
+            //                shortName:'ukraine',
+            //                fullName:'Ukraine'
+            //            },
+            //            {
+            //                shortName:'uzbekistan',
+            //                fullName:'Uzbekistan'
+            //            }
+            //        ]
+            //    }
+            //];
+            //function setRandomInfographics() {
+            //    var groupLength = $scope.infographicsGroups.length;
+            //    //get index for first group
+            //    $scope.firstRandomIndex = Math.floor(Math.random() * (groupLength - 0 )) + 0;
+            //    console.log('$scope.firstRandomIndex: ' + $scope.firstRandomIndex);
+            //    //setup for second index
+            //    var randomInterval_secondGroup = setInterval(getRandomIndex_secondGroup, 10);
+            //    function getRandomIndex_secondGroup() {
+            //        // get index for second group
+            //        var secondIndex = Math.floor(Math.random() * (groupLength - 0 )) + 0;
+            //        if (secondIndex != $scope.firstRandomIndex) {
+            //            $scope.secondRandomIndex = secondIndex;
+            //            console.log('$scope.secondRandomIndex: ' + $scope.secondRandomIndex);
+            //            // stop the interval
+            //            clearInterval(randomInterval_secondGroup);
+            //            //we need $timeout to provide some time until html is rendered
+            //            $timeout(function () {
+            //                $scope.ctrlVars.areInfographicsReady = true;
+            //                console.log('$timeout: ');
+            //                //calling functions inside 'index-controller.js'
+            //                var arrayWithRandomCountries = [];
+            //                for (var i = 0; i < $scope.infographicsGroups[0].countries.length; i++) {
+            //                    arrayWithRandomCountries.push($scope.infographicsGroups[0].countries[i]);
+            //                }
+            //                for (var i = 0; i < $scope.infographicsGroups[$scope.secondRandomIndex].countries.length; i++) {
+            //                    arrayWithRandomCountries.push($scope.infographicsGroups[$scope.secondRandomIndex].countries[i]);
+            //                }
+            //                callExternalSvgSetup(arrayWithRandomCountries);
+            //            }, 300);
+            //        }
+            //    }
+            //}
+            //setRandomInfographics();
             /* #endregion Setter for random infographics sets on reload */
 
         }
