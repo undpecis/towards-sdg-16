@@ -75,16 +75,13 @@
   color: #00699e;
 }
 .c-peach-color {
-  color: #fdceaa;
+  color: #fef1e1;
 }
 .c-light-coral-color {
   color: #F68786;
 }
 .c-sienna-color {
   color: #F2605F;
-}
-.c-black-background {
-  background-color: #243338;
 }
 .c-blue-background {
   background-color: #00699e;
@@ -93,7 +90,25 @@
   background-color: #f5f5f5;
 }
 .c-peach-light-background {
-  background-color: #fef0e6;
+  background-color: #ffffff;
+}
+.c-white-smoke-background {
+  background-color: #F6F6F6;
+}
+.c-zircon-background {
+  background-color: #eceded;
+}
+.c-forget-me-not-background {
+  background-color: #fef1e1;
+}
+.c-melon-background {
+  background-color: #fabea7;
+}
+.c-light-steel-blue-background {
+  background-color: #B7C7DF;
+}
+.c-black-background {
+  background-color: #383839;
 }
 /* #endregion COLORS */
 html,
@@ -280,7 +295,7 @@ a {
   color: #fff;
 }
 .c-bttn.c-bttn-combo.c-bttn-black {
-  background-color: #243338;
+  background-color: #383839;
   color: #fff;
 }
 .c-bttn.c-bttn-combo.c-bttn-black .c-circle-icon-box {
@@ -290,7 +305,7 @@ a {
   color: #fff;
 }
 .c-bttn.c-bttn-combo.c-bttn-black:hover {
-  background-color: #2e4148;
+  background-color: #454546;
   color: #fff;
 }
 .c-bttn .c-ico {
@@ -344,7 +359,7 @@ a {
   height: 30px;
   border-radius: 50%;
   background: #6b6865;
-  color: #243338;
+  color: #383839;
   text-align: center;
   padding: 0;
   text-decoration: none;
@@ -394,29 +409,29 @@ a {
   font-weight: bold;
 }
 .c-vertical-list.c-expandable-nav.c-black-background li a {
-  background-color: #243338;
+  background-color: #383839;
   color: #fff;
 }
 .c-vertical-list.c-expandable-nav.c-black-background li:hover a {
-  background-color: #1a2528;
+  background-color: #2b2b2c;
   color: #fff;
 }
 .c-vertical-list.c-expandable-nav.c-black-background li.c-active a {
-  background-color: #1a2528;
+  background-color: #2b2b2c;
   color: #fff;
   font-weight: bold;
 }
 .c-vertical-list.c-footer-nav {
   display: block;
   width: 100%;
-  border-bottom: 1px solid #2e4148;
+  border-bottom: 1px solid #454546;
 }
 .c-vertical-list.c-footer-nav > li {
   display: none;
 }
 .c-vertical-list.c-footer-nav > li.c-nav-title {
   display: block;
-  border-top: 1px solid #2e4148;
+  border-top: 1px solid #454546;
 }
 .c-vertical-list.c-footer-nav > li.c-nav-title > a {
   display: block;
@@ -424,15 +439,15 @@ a {
   padding: 20px;
   text-decoration: none;
   font-size: 12px;
-  background-color: #243338;
+  background-color: #383839;
   color: #fff;
 }
 .c-vertical-list.c-footer-nav > li.c-nav-title:hover > a {
-  background-color: #1a2528;
+  background-color: #2b2b2c;
   color: #fff;
 }
 .c-vertical-list.c-footer-nav > li.c-nav-content {
-  background-color: #1e2b2f;
+  background-color: #303031;
   color: #6b6865;
   padding: 20px;
   line-height: 1.4;
@@ -495,21 +510,21 @@ a {
 }
 .c-vertical-list.c-key-results-list.c-black-background > li > a {
   color: #fff;
-  background-color: #243338;
-  border-top: 1px solid #384f57;
+  background-color: #383839;
+  border-top: 1px solid #515153;
 }
 .c-vertical-list.c-key-results-list.c-black-background > li > a:hover {
-  background-color: #2e4148;
+  background-color: #454546;
 }
 .c-vertical-list.c-key-results-list.c-black-background > li:last-child > a {
-  border-bottom: 1px solid #384f57;
+  border-bottom: 1px solid #515153;
 }
 .c-vertical-list.c-key-results-list.c-black-background > li .c-item-content {
-  background-color: #1a2528;
+  background-color: #2b2b2c;
 }
 .c-copy-content {
   display: block;
-  background-color: #243338;
+  background-color: #383839;
   color: #6b6865;
   line-height: 1.4;
   font-size: 12px;
@@ -1161,7 +1176,7 @@ a {
   display: block;
   width: 100%;
   position: relative;
-  background-color: #243338;
+  background-color: #383839;
   background: url(images/map-grid-pattern.png) repeat top left;
   /* #region RESPONSIVE QUERY */
   /* #region Extra small resolutions */
@@ -1725,7 +1740,7 @@ a {
     display: block;
   }
   .c-key-results-content-wrap .c-cross-cells-wrap .c-table > .c-row > .c-cell .c-icon-text-content .c-table .c-cell {
-    color: #243338;
+    color: #383839;
     display: block;
   }
   .c-key-results-content-wrap .c-cross-cells-wrap .c-table > .c-row > .c-cell .c-icon-text-content .c-table .c-cell.c-w-1perc {
@@ -1784,7 +1799,7 @@ a {
     max-width: 370px;
   }
   .c-key-results-content-wrap .c-cross-cells-wrap .c-table > .c-row > .c-cell .c-icon-text-content .c-table .c-cell {
-    color: #243338;
+    color: #383839;
   }
   .c-key-results-content-wrap .c-cross-cells-wrap .c-table > .c-row > .c-cell .c-icon-text-content .c-table .c-cell.c-w-1perc {
     padding-right: 20px;
@@ -1855,10 +1870,10 @@ a {
     display: block;
   }
   .c-focus-areas-content-wrap .c-table .c-cell.c-black-border {
-    border-color: #243338;
+    border-color: #383839;
   }
   .c-focus-areas-content-wrap .c-table .c-cell.c-black-border .c-headline {
-    color: #243338;
+    color: #383839;
   }
   .c-focus-areas-content-wrap .c-table .c-cell.c-red-border {
     border-color: #00699e;
@@ -1873,10 +1888,10 @@ a {
     color: #ef412c;
   }
   .c-focus-areas-content-wrap .c-table .c-cell.c-peach-border {
-    border-color: #fdceaa;
+    border-color: #fef1e1;
   }
   .c-focus-areas-content-wrap .c-table .c-cell.c-peach-border .c-headline {
-    color: #fdceaa;
+    color: #fef1e1;
   }
 }
 @media only screen and (min-width: 992px) {
@@ -1914,10 +1929,10 @@ a {
     display: block;
   }
   .c-focus-areas-content-wrap .c-table .c-cell.c-black-border {
-    border-color: #243338;
+    border-color: #383839;
   }
   .c-focus-areas-content-wrap .c-table .c-cell.c-black-border .c-headline {
-    color: #243338;
+    color: #383839;
   }
   .c-focus-areas-content-wrap .c-table .c-cell.c-red-border {
     border-color: #00699e;
@@ -1932,10 +1947,10 @@ a {
     color: #ef412c;
   }
   .c-focus-areas-content-wrap .c-table .c-cell.c-peach-border {
-    border-color: #fdceaa;
+    border-color: #fef1e1;
   }
   .c-focus-areas-content-wrap .c-table .c-cell.c-peach-border .c-headline {
-    color: #fdceaa;
+    color: #fef1e1;
   }
 }
 /* #endregion FOCUS AREAS CONTENT */
@@ -2110,7 +2125,7 @@ a {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
-  background-color: #fdceaa;
+  background-color: #fef1e1;
   padding: 10px 25px;
   font-size: 11px;
 }
