@@ -125,6 +125,48 @@
     background-image: url('images/photos-and-graphic/image-montenegro-120-1.jpg');
 }
 
-montenegro_table_img .assistance_img2 {
+.montenegro_table_img .assistance_img2 {
     background-image: url('images/photos-and-graphic/image-montenegro-120-2.jpg');
+}
+.serbia_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-serbia-123-1.jpg');
+}
+.serbia_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-serbia-124-1.jpg');
+}
+.tajikistan_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-tajikistan-128-1.jpg');
+} 
+.tajikistan_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-tajikistan-128-2.jpg');
+} 
+.macedonia_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-macedonia-133-1.jpg');
+}
+.macedonia_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-macedonia-134-1.jpg');
+}
+.turkey_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-turkey-137-1.jpg');
+}
+.turkey_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-turkey-138-1.jpg');
+}
+.turkmenistan_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-turkmenistan-141-1.jpg');
+}
+.turkmenistan_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-turkmenistan-142-1.jpg');
+}
+.ukraine_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-ukraine-145-1.jpg');
+}
+.ukraine_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-ukraine-146-1.jpg.');
+}
+.uzbekistan_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-uzbekistan-149-1.jpg');
+}
+.uzbekistan_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-uzbekistan-150-1.jpg');
 }
