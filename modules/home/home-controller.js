@@ -118,24 +118,28 @@ angular.module('Home')
             var visibleFocusArea = [false, false, false, false];
             $scope.toggleFocusAreaVisibility = function (focusAreaIndex) {
                 for (var i = 0; i < visibleFocusArea.length; i++) {
-                    if (visibleFocusArea[i] == false) {
-                        $scope.ctrlVars.isOpenCountryOKWdata = true;
-                        $scope.currentFocusAreaIndex = focusAreaIndex;
-                        visibleFocusArea[i] = true;
-                        $scope.changeCountryOKWData(0);
-                        for (var j = 0; j < $scope.focusData.length; j++) {
-                            if (j == focusAreaIndex) {
-                                $scope.selectedFocusArea = $scope.focusData[j];
-                                $timeout(function () {
-                                    $location.hash('cid-anchor-OKW-content');
-                                    // call $anchorScroll()
-                                    $anchorScroll();
-                                }, 100);
+                    if (i == focusAreaIndex) {
+                        if (visibleFocusArea[i] == false) {
+                            $scope.changeCountryOKWData(0);
+                            $scope.currentFocusAreaIndex = focusAreaIndex;
+                            visibleFocusArea[i] = true;
+                            $scope.ctrlVars.isOpenCountryOKWdata = true;
+                            for (var j = 0; j < $scope.focusData.length; j++) {
+                                if (j == focusAreaIndex) {
+                                    $scope.selectedFocusArea = $scope.focusData[j];
+                                    $timeout(function () {
+                                        $location.hash('cid-anchor-OKW-content');
+                                        // call $anchorScroll()
+                                        $anchorScroll();
+                                    }, 100);
+                                }
                             }
+                        } else {
+                            $scope.ctrlVars.isOpenCountryOKWdata = false;
+                            $scope.currentFocusAreaIndex = null;
+                            visibleFocusArea[i] = false;
                         }
                     } else {
-                        $scope.ctrlVars.isOpenCountryOKWdata = false;
-                        $scope.currentFocusAreaIndex = null;
                         visibleFocusArea[i] = false;
                     }
                 }
