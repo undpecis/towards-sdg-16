@@ -4,6 +4,7 @@
 //- TweenMax (GreenSock GSAP) (for animation)
 //
 //
+$('.swipebox').swipebox();
 $(document).ready(function () {
     var listOfActiveCountries = [
       { "id": "AL", "title": "Albania" },
@@ -187,7 +188,8 @@ $(document).ready(function () {
                     functionName: 'svgAnimate_azerbaijan'
                 }
             ],
-            backgroundColor: '#F6F6F6'
+            backgroundColor: '#F6F6F6',
+            titleColor: '#818285'
         },
         {
             countries: [
@@ -207,7 +209,8 @@ $(document).ready(function () {
                     functionName: 'svgAnimate_georgia'
                 }
             ],
-            backgroundColor: '#eceded'
+            backgroundColor: '#eceded',
+            titleColor: '#1073a8'
         },
         {
             countries: [
@@ -227,7 +230,8 @@ $(document).ready(function () {
                     functionName: 'svgAnimate_kyrgyz'
                 }
             ],
-            backgroundColor: '#fef1e1'
+            backgroundColor: '#fef1e1',
+            titleColor: '#f48466'
         },
         {
             countries: [
@@ -247,7 +251,8 @@ $(document).ready(function () {
                     functionName: 'svgAnimate_serbia'
                 }
             ],
-            backgroundColor: '#fabea7'
+            backgroundColor: '#fabea7',
+            titleColor: '#ef4331'
         },
         {
             countries: [
@@ -267,7 +272,8 @@ $(document).ready(function () {
                     functionName: 'svgAnimate_turkey'
                 }
             ],
-            backgroundColor: '#B7C7DF'
+            backgroundColor: '#B7C7DF',
+            titleColor: '#1073a8'
         },
         {
             countries: [
@@ -287,15 +293,16 @@ $(document).ready(function () {
                     functionName: 'svgAnimate_uzbekistan'
                 }
             ],
-            backgroundColor: '#383839'
+            backgroundColor: '#383839',
+            titleColor: '#a7a9ac'
         }
     ];
     var randomCountriesArray = [];
     /* #region Get Random SVG groups */
     function setupRandomSvgGraphics() {
         /* #region Get random numbers */
-        var firstRandomIndex = Math.floor(Math.random() * (infographicsGroups.length - 0)) + 0;
-        //var firstRandomIndex = 0;
+        //var firstRandomIndex = Math.floor(Math.random() * (infographicsGroups.length - 0)) + 0;
+        var firstRandomIndex = 0;
         //setup interval that will keep firing until we get second index different from first index
         var randomInterval_secondGroup = setInterval(getRandomIndex_secondGroup, 10);
         function getRandomIndex_secondGroup() {
@@ -309,9 +316,11 @@ $(document).ready(function () {
                 for (var i = 0; i < infographicsGroups.length; i++) {
                     if (firstRandomIndex == i) {
                         $("#svg-graph-master-wrap-first").css("background-color", infographicsGroups[i].backgroundColor);
+                        $("#svg-graph-master-wrap-first .c-section-title").css("color", infographicsGroups[i].titleColor);
                     }
                     if (secondRandomIndex == i) {
                         $("#svg-graph-master-wrap-second").css("background-color", infographicsGroups[i].backgroundColor);
+                        $("#svg-graph-master-wrap-second .c-section-title").css("color", infographicsGroups[i].titleColor);
                     }
                 }
                 //fill list of random countries with first group
