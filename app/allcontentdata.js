@@ -27,7 +27,7 @@
                         text: '0 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
                     },
                     {
-                        partName: 'New and Old Threats from V iolent Extremism',
+                        partName: 'New and Old Threats from Violent Extremism',
                         text: '1 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
                     }
                 ]
@@ -45,7 +45,7 @@
                         text: '1 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
                     },
                     {
-                        partName: 'Opening D ialogues and ConfIence- Building',
+                        partName: 'Opening Dialogues and ConfIence- Building',
                         text: '2 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
                     },
                     {
@@ -88,15 +88,15 @@
                 textParts: [
                     {
                         partName: 'Corruption Slowly Declining',
-                        text: '1 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                        text: '0 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
                     },
                     {
                         partName: 'Increasing Government Effectiveness and Regulatory Quality',
-                        text: '2 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                        text: '1 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
                     },
                     {
-                        partName: 'The Growing Use of Technology and I nnovation',
-                        text: '3 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                        partName: 'The Growing Use of Technology and Innovation',
+                        text: '2 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
                     }
                 ]
             },
@@ -154,11 +154,11 @@
                 textParts: [
                     {
                         partName: 'Diverging Levels of Voice and Accountability',
-                        text: '1 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                        text: '0 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
                     },
                     {
                         partName: 'The Growing Presence of Women in Decision-Making Roles',
-                        text: '2 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                        text: '1 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
                     }
                 ]
             },
