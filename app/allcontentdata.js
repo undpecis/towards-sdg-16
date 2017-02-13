@@ -13,6 +13,16 @@
             shortName: 'conflictData',
             shortIntroText: 'With a legacy of conflict throughout the ECIS region, UNDP works to promote social cohesion, and empower nations and communities to become more inclusive and resilient to external and internal shocks.',
             sectionPdfUrl: 'http://www.google.com',
+            pictogramModals: {
+                gender: {
+                    title:'',
+                    text: 'adfaldfjalfdjladf'
+                },
+                peace: {
+                    title: '',
+                    text: 'adfaldfjalfdjladf'
+                },
+            },
             overviewData: {
                 isLargeText: false,
                 isTextExpanded: false,
@@ -78,6 +88,16 @@
             shortName: 'responsiveData',
             shortIntroText: 'Central to ensuring that development is both effective and sustainable for citizens, UNDP works with partners to improve transparency and improve the capabilities of governmental bodies and institutions at all levels.',
             sectionPdfUrl: 'http://www.google.com',
+            pictogramModals: {
+                gender: {
+                    title: '',
+                    text: 'adfaldfjalfdjladf'
+                },
+                peace: {
+                    title: '',
+                    text: 'adfaldfjalfdjladf'
+                },
+            },
             overviewData: {
                 isLargeText: false,
                 isTextExpanded: false,
@@ -145,6 +165,16 @@
             shortName: 'inclusiveData',
             shortIntroText: 'Vital to the health of democracies, UNDP works to increase the participation and political influence of citizens, assist governments and institutions to be more representative, and build a stronger and more inclusive social contract.',
             sectionPdfUrl: 'http://www.google.com',
+            pictogramModals: {
+                gender: {
+                    title: '',
+                    text: 'adfaldfjalfdjladf'
+                },
+                peace: {
+                    title: '',
+                    text: 'adfaldfjalfdjladf'
+                },
+            },
             overviewData: {
                 isLargeText: false,
                 isTextExpanded: false,
@@ -207,6 +237,16 @@
             shortName: 'ruleData',
             shortIntroText: 'Partnering with governments, justice and security institutions and citizens, UNDP works to strengthen the rule of law, improve the capacity and fairness of the justice system, and support the promotion and protection of human rights for all.',
             sectionPdfUrl: 'http://www.google.com',
+            pictogramModals: {
+                gender: {
+                    title: '',
+                    text: 'adfaldfjalfdjladf'
+                },
+                peace: {
+                    title: '',
+                    text: 'adfaldfjalfdjladf'
+                },
+            },
             overviewData: {
                 isLargeText: false,
                 isTextExpanded: false,
@@ -284,36 +324,6 @@
             }
         }
     ],
-    genderPeace:{
-        genderEquality : [
-            {
-                modalText: 'First text for Gender Equality modal: The legacy of conflict and the prevalence of protracted and so-called frozen conflicts throughout the ECIS region has long undermined developme'
-            },
-            {
-                modalText: 'Second text for Gender Equality modal: Lorem Ipsum: translation<br/>The Latin scholar H. Rackham translated the above in 1914:<br/>De Finibus Bonorum Et Malorum But I must explain to you how all this mistaken '
-            },
-            {
-                modalText: 'Third text for Gender Equality modal: The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress'
-            },
-            {
-                modalText: 'Fourth text for Gender Equality modal: Or else, an alternative route: set checkpoints, networks, processes, junctions between content and layout. Depending on the state of affairs it may be fine to concentrate either on design or content, reversing gears when needed.<br/>Or maybe not. How about this: build in appropriate intersections and checkpoints between design and content. Accept that it’s sometimes okay to focus just on the content or just on the design.'
-            }
-        ],
-        peaceAndJustice: [
-            {
-                modalText: 'First text for Peace, Justice and Strong Institutions modal: The legacy of conflict and the prevalence of protracted and so-called frozen conflicts throughout the ECIS region has long undermined developme'
-            },
-            {
-                modalText: 'Second text for Peace, Justice and Strong Institutions modal: Lorem Ipsum: translation<br/>The Latin scholar H. Rackham translated the above in 1914:<br/>De Finibus Bonorum Et Malorum But I must explain to you how all this mistaken'
-            },
-            {
-                modalText: 'Third text for Peace, Justice and Strong Institutions modal: The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress'
-            },
-            {
-                modalText: 'Fourth text for Gender Peace, Justice and Strong Institutions: Or else, an alternative route: set checkpoints, networks, processes, junctions between content and layout. Depending on the state of affairs it may be fine to concentrate either on design or content, reversing gears when needed.<br/>Or maybe not. How about this: build in appropriate intersections and checkpoints between design and content. Accept that it’s sometimes okay to focus just on the content or just on the design.'
-            }
-        ]
-    },
     countries: [
         /* #region Albania */
         {
@@ -957,7 +967,7 @@
             backgroundData: {
                 isLargeText: false,
                 isTextExpanded: false,
-                text: 'Since beginning its transition to democracy at the end of the Yugoslav conflicts, Serbia has made important progress in strengthening democratic freedoms and improving human development. Although tensions remain between Serbia and several countries in the region, Serbia is making efforts to normalize relationships, as evidenced by its continued cooperation with the International Criminal Tribunal for the former Yugoslavia (ICTY). In recognition of Serbia’s progress, and the continued commitment to the normalization of its relations with Kosovo, the EU opened negotiations for membership in 2014. <br /> <br /> In 2015, Serbia was one of the main countries affected by the refugee and migrant crisis, as hundreds of thousands of refugees and migrants, primarily from Syria, made their way to Western Europe. In a development that could potentially jeopardize the visa-free regime granted to Serbia in 2009, there was also an increase in applications for asylum from Serbian citizens in this period, despite only 1 percent of requests submitted so far in Germany and other EU countries being considered admissible. <br /> <br /> 2015 was also the first year of an IMF guided programme to improve economic conditions. In recent years, the impact of the international financial crisis and numerous rounds of elections have slowed down necessary structural reforms in the country. However, this programme, which includes measures to reduce the deficit, reform public institutions and improve the business environment, appears to be producing results. In 2015, the deficit almost halved to 3.7 percent and unemployment fell significantly.<sup>76</sup>Additionally, the economy is expected to return to positive growth after going backwards in 2014.<sup>77</sup> Although poverty and unemployment are still prevalent, particularly in the South and Southwest regions which have large minority populations, sustained growth in Serbia would be expected to provide an economic boost to the entire Western Balkans.'
+                text: 'Since beginning its transition to democracy at the end of the Yugoslav conflicts, Serbia has made important progress in strengthening democratic freedoms and improving human development. Although tensions remain between Serbia and several countries in the region, Serbia is making efforts to normalize relationships, as evidenced by its continued cooperation with the International Criminal Tribunal for the former Yugoslavia (ICTY). In recognition of Serbia’s progress, and the continued commitment to the normalization of its relations with Kosovo, the EU opened negotiations for membership in 2014. <br /> <br /> In 2015, Serbia was one of the main countries affected by the refugee and migrant crisis, as hundreds of thousands of refugees and migrants, primarily from Syria, made their way to Western Europe. In a development that could potentially jeopardize the visa-free regime granted to Serbia in 2009, there was also an increase in applications for asylum from Serbian citizens in this period, despite only 1 percent of requests submitted so far in Germany and other EU countries being considered admissible. <br /> <br /> 2015 was also the first year of an IMF guided programme to improve economic conditions. In recent years, the impact of the international financial crisis and numerous rounds of elections have slowed down necessary structural reforms in the country. However, this programme, which includes measures to reduce the deficit, reform public institutions and improve the business environment, appears to be producing results. In 2015, the deficit almost halved to 3.7 percent and unemployment fell significantly.<sup title="new">76</sup> Additionally, the economy is expected to return to positive growth after going backwards in 2014.<sup>77</sup> Although poverty and unemployment are still prevalent, particularly in the South and Southwest regions which have large minority populations, sustained growth in Serbia would be expected to provide an economic boost to the entire Western Balkans.'
             },
             assistanceData: {
                 isLargeText: false,

@@ -345,19 +345,11 @@ angular.module('Home')
             /* #region Modal for Gender Equality + Peace, Justice and Strong Institutions */
             $scope.openGenderPeaceModal = function (buttonName) {
                 if (buttonName == 'gender') {
-                    for (var i = 0; i < siteData.genderPeace.genderEquality.length; i++) {
-                        if (i == $scope.ctrlVars.currentFocusAreaIndex) {
-                            $scope.ctrlVars.genderPeaceDataToShow = siteData.genderPeace.genderEquality[i].modalText;
-                            openModalInstance();
-                        }
-                    }
+                    $scope.ctrlVars.genderPeaceDataToShow = $scope.ctrlVars.selectedFocusAreaData.pictogramModals.gender.text;
+                    openModalInstance();
                 } else if (buttonName == 'peace') {
-                    for (var i = 0; i < siteData.genderPeace.peaceAndJustice.length; i++) {
-                        if (i == $scope.ctrlVars.currentFocusAreaIndex) {
-                            $scope.ctrlVars.genderPeaceDataToShow = siteData.genderPeace.peaceAndJustice[i].modalText;
-                            openModalInstance();
-                        }
-                    }
+                    $scope.ctrlVars.genderPeaceDataToShow = $scope.ctrlVars.selectedFocusAreaData.pictogramModals.peace.text;
+                    openModalInstance();
                 }
             }
             function openModalInstance() {
@@ -402,7 +394,6 @@ angular.module('Home')
                 $anchorScroll();
             };
             /* #endregion Anchor Scroll */
-
             activate();
             function activate() {
                 //keeps data of all Focus Areas

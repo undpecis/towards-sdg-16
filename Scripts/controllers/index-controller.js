@@ -4,8 +4,10 @@
 //- TweenMax (GreenSock GSAP) (for animation)
 //
 //
-$('.swipebox').swipebox();
 $(document).ready(function () {
+    /* #region Swipebox lightbox */
+    $('.swipebox').swipebox();
+    /* #endregion Swipebox lightbox */
     var listOfActiveCountries = [
       { "id": "AL", "title": "Albania" },
       { "id": "AM", "title": "Armenia" },

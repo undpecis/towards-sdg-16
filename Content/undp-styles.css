@@ -2121,8 +2121,6 @@ a {
   }
 }
 /* #endregion EXPANDABLE CONTENT */
-/* #region BINDED TEXT CUSTOM STYLES */
-/* #endregion BINDED TEXT CUSTOM STYLES */
 /* #region FOCUS AREAS CONTENT */
 .c-focus-areas-content-wrap {
   display: block;
@@ -2673,6 +2671,11 @@ a {
 .c-svg-graph-wrap {
   display: inline-block;
   position: relative;
+}
+.c-pictograms-wrap {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
 }
 .c-svg-object {
   max-width: 100%;
