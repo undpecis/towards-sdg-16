@@ -46,9 +46,33 @@
                                 </button>
                             </div>
                             <div class="c-cell c-has-burger">
-                                <button class="c-bttn">
-                                    <i class="c-ico icon-menu"></i>
-                                </button>
+                                <div class="btn-group c-dropdown-btn-group">
+                                    <button type="button" class="c-bttn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="c-ico icon-menu"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-right c-max-h-300">
+                                        <li>
+                                            <a>FOCUS AREAS<i class="c-ico icon-arrow-down"></i></a>
+                                        </li>
+                                        <li>
+                                            <ul class="c-dropdown-menu-subnav">
+                                                <li ng-repeat="areaSubitem in ctrlVars.focusData" ng-class="'c-vdash-fareas-' + areaSubitem.id">
+                                                    <a>{{areaSubitem.title}}</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a>COUNTRY PROFILES<i class="c-ico icon-arrow-down"></i></a>
+                                        </li>
+                                        <li>
+                                            <ul class="c-dropdown-menu-subnav">
+                                                <li ng-repeat="countrySubitem in activeCountriesList" class="c-vdash-countries">
+                                                    <a>{{countrySubitem.title}}</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -205,7 +229,7 @@
                     <!-- #region Middle text -->
                     <div class="c-cell c-has-text c-col-3-5-lg">
                         <div id="cid-expandable-bac-wrapper" ng-class="{'c-max-h-700' : !ctrlVars.dataBindBAC.isTextExpanded}">
-                            <div id="cid-binded-bac-text" class="c-bind-txxt-wrapper" ng-bind-html="ctrlVars.dataBindBAC.text" ng-class="{'c-p-bottom-50' : ctrlVars.dataBindBAC.isTextExpanded}">
+                            <div id="cid-binded-bac-text" class="c-bind-txxt-wrapper"  ng-bind-html="to_trusted(ctrlVars.dataBindBAC.text)" ng-class="{'c-p-bottom-50' : ctrlVars.dataBindBAC.isTextExpanded}">
                             </div>
                         </div>
                         <div class="c-read-more-feather-button c-blue-version" ng-click="toggleBACtextExpanded()" ng-if="ctrlVars.dataBindBAC.isLargeText">
@@ -805,7 +829,7 @@
                     <!-- #region Middle text -->
                     <div class="c-cell c-has-text c-col-3-5-lg">
                         <div id="cid-expandable-okw-wrapper" ng-class="{'c-max-h-470' : !ctrlVars.dataBindOKW.isTextExpanded}">
-                            <div id="cid-binded-okw-text" class="c-bind-txxt-wrapper" ng-bind-html="ctrlVars.textPartOKWtoBind">
+                            <div id="cid-binded-okw-text" class="c-bind-txxt-wrapper" ng-bind-html="to_trusted(ctrlVars.textPartOKWtoBind)" ng-class="{'c-p-bottom-50' : ctrlVars.dataBindOKW.isTextExpanded}">
                             </div>
                         </div>
                         <div class="c-read-more-feather-button" ng-click="toggleOKWtextExpanded()" ng-if="ctrlVars.dataBindOKW.isLargeText">
@@ -818,14 +842,14 @@
                     <div class="c-cell c-has-right-content c-col-1-5-lg">
                         <p>UNDP’s Conflict Prevention and Peacebuilding work is designed to help countries meet targets under:</p>
                         <!-- #region SVG graphic -->
-                        <a class="c-content-block c-svg-graph-wrap" ng-click="openGenderPeaceModal('gender')">
+                        <a class="c-content-block c-pictograms-wrap" ng-click="openGenderPeaceModal('gender')">
                             <object type="image/svg+xml" data="Content/images/sidebar-gender-equality.svg" class="c-svg-object">
                                 Peace and justice
                             </object>
                         </a>
                         <!-- #endregion SVG graphic -->
                         <!-- #region SVG graphic -->
-                        <a class="c-content-block c-svg-graph-wrap" ng-click="openGenderPeaceModal('peace')">
+                        <a class="c-content-block c-pictograms-wrap" ng-click="openGenderPeaceModal('peace')">
                             <object type="image/svg+xml" data="Content/images/sidebar-peace-and-justice.svg" class="c-svg-object">
                                 Gender equality
                             </object>
@@ -878,7 +902,22 @@
                         </a>
                         <!-- #region Subnavigation dropdown -->
                         <div class="c-has-dropdown-subnav c-black-background" ng-if="enumOKW.keyTrendsData.isXsSubnavActive == true">
-                            <div class="c-selected-item" ng-click="toggleDropdownOpen('okw')">
+                            <div class="btn-group c-dropdown-btn-group">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="c-has-text">
+                                        {{okwXsVars.selectedItemTitle}}
+                                    </div>
+                                    <div class="c-has-icon">
+                                        <i class="c-ico icon-list"></i>
+                                    </div>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li ng-repeat="dropdownItem in ctrlVars.dataBindOKW.textParts" ng-click="selectOKWdropdownItem($index)">
+                                        <a>{{dropdownItem.partName}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--<div class="c-selected-item" ng-click="toggleDropdownOpen('okw')">
                                 <div class="c-has-text">
                                     {{okwXsVars.selectedItemTitle}}
                                 </div>
@@ -891,7 +930,7 @@
                                 <li ng-repeat="dropdownItem in ctrlVars.dataBindOKW.textParts" ng-click="selectOKWdropdownItem($index)">
                                     <a>{{dropdownItem.partName}}</a>
                                 </li>
-                            </ul>
+                            </ul>-->
                         </div>
                         <!-- #endregion Subnavigation dropdown -->
                     </li>
@@ -914,7 +953,22 @@
                         </a>
                         <!-- #region Subnavigation dropdown -->
                         <div class="c-has-dropdown-subnav c-black-background" ng-if="enumOKW.whatWeDoData.isXsSubnavActive == true">
-                            <div class="c-selected-item" ng-click="toggleDropdownOpen('okw')">
+                            <div class="btn-group c-dropdown-btn-group">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="c-has-text">
+                                        {{okwXsVars.selectedItemTitle}}
+                                    </div>
+                                    <div class="c-has-icon">
+                                        <i class="c-ico icon-list"></i>
+                                    </div>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li ng-repeat="dropdownItem in ctrlVars.dataBindOKW.textParts" ng-click="selectOKWdropdownItem($index)">
+                                        <a>{{dropdownItem.partName}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--<div class="c-selected-item" ng-click="toggleDropdownOpen('okw')">
                                 <div class="c-has-text">
                                     {{okwXsVars.selectedItemTitle}}
                                 </div>
@@ -927,7 +981,7 @@
                                 <li ng-repeat="dropdownItem in ctrlVars.dataBindOKW.textParts" ng-click="selectOKWdropdownItem($index)">
                                     <a>{{dropdownItem.partName}}</a>
                                 </li>
-                            </ul>
+                            </ul>-->
                         </div>
                         <!-- #endregion Subnavigation dropdown -->
                     </li>
