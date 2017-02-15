@@ -3,8 +3,8 @@
 angular.module('Home')
 
 .controller('HomeController',
-    ['$scope', '$window', '$anchorScroll', '$location', '$timeout', '$uibModal',
-        function ($scope, $window, $anchorScroll, $location, $timeout, $uibModal) {
+    ['$scope', '$window', '$anchorScroll', '$location', '$timeout', '$uibModal', '$sce',
+        function ($scope, $window, $anchorScroll, $location, $timeout, $uibModal, $sce) {
             var winElement = angular.element($window);
             var screenWidth = winElement.width();
             var breakpointStart_lg = 992;
@@ -21,6 +21,9 @@ angular.module('Home')
                     isLargeResolution = false;
                 }
             }
+            $scope.to_trusted = function (html_code) {
+                return $sce.trustAsHtml(html_code);
+            }
             //'undpData' is object with side data defined inside 'allcontentdata.js' file
             var siteData = undpData;
             ///####################################################################################
@@ -28,25 +31,25 @@ angular.module('Home')
             //object with currently selected country data
             $scope.selectedCountry = {};
             //we are defining list of active countries (this 'listOfActiveCountries' is also defined inside 'index-controller.js' file)
-            var listOfActiveCountries = [
-              { "id": "AL", "title": "Albania" },
-              { "id": "AM", "title": "Armenia" },
-              { "id": "AZ", "title": "Azerbaijan" },
-              { "id": "BY", "title": "Belarus" },
-              { "id": "BA", "title": "Bosnia and Herzegovina" },
-              { "id": "MK", "title": "FYR Macedonia" },
-              { "id": "GE", "title": "Georgia" },
-              { "id": "KZ", "title": "Kazakhstan" },
-              { "id": "XK", "title": "Kosovo" },
-              { "id": "KG", "title": "Kyrgyz Republic" },
-              { "id": "MD", "title": "Moldova" },
-              { "id": "ME", "title": "Montenegro" },
-              { "id": "RS", "title": "Serbia" },
-              { "id": "TJ", "title": "Tajikistan" },
-              { "id": "TR", "title": "Turkey" },
-              { "id": "TM", "title": "Turkmenistan" },
-              { "id": "UA", "title": "Ukraine" },
-              { "id": "UZ", "title": "Uzbekistan" }
+            $scope.activeCountriesList = [
+              { id: "AL", title: "Albania" },
+              { id: "AM", title: "Armenia" },
+              { id: "AZ", title: "Azerbaijan" },
+              { id: "BY", title: "Belarus" },
+              { id: "BA", title: "Bosnia and Herzegovina" },
+              { id: "MK", title: "FYR Macedonia" },
+              { id: "GE", title: "Georgia" },
+              { id: "KZ", title: "Kazakhstan" },
+              { id: "XK", title: "Kosovo" },
+              { id: "KG", title: "Kyrgyz Republic" },
+              { id: "MD", title: "Moldova" },
+              { id: "ME", title: "Montenegro" },
+              { id: "RS", title: "Serbia" },
+              { id: "TJ", title: "Tajikistan" },
+              { id: "TR", title: "Turkey" },
+              { id: "TM", title: "Turkmenistan" },
+              { id: "UA", title: "Ukraine" },
+              { id: "UZ", title: "Uzbekistan" }
             ];
             /* #region On country map click */
             //we are calling 'countryClickedFunc' from external file 'index-controller.js' and passing name of country that has been clicked
@@ -57,7 +60,6 @@ angular.module('Home')
                         $scope.changeCountryBACData(0);
                         //console.log('$scope.selectedCountry: ' + $scope.selectedCountry.keyResults[2].text);
                         $scope.ctrlVars.isInterestCountryClicked = true;
-                        $scope.$apply();
                     }
                 }
             }
@@ -89,6 +91,7 @@ angular.module('Home')
                     $scope.enumBAC.challengesData.isXsContentVisible = false;
                     /* #region Check if text exceeded height */
                     checkHeightOfTextBAC();
+                    $scope.callExternalRebindingOfHtmlContent();
                     /* #endregion Check if text exceeded height */
                 } else if (buttonIndex == $scope.enumBAC.assistanceData.enumIndex) {
                     $scope.ctrlVars.dataBindBAC = $scope.selectedCountry.assistanceData;
@@ -101,6 +104,7 @@ angular.module('Home')
                     $scope.enumBAC.challengesData.isXsContentVisible = false;
                     /* #region Check if text exceeded height */
                     checkHeightOfTextBAC();
+                    $scope.callExternalRebindingOfHtmlContent();
                     /* #endregion Check if text exceeded height */
                 } else if (buttonIndex == $scope.enumBAC.challengesData.enumIndex) {
                     $scope.ctrlVars.dataBindBAC = $scope.selectedCountry.challengesData;
@@ -113,9 +117,19 @@ angular.module('Home')
                     $scope.enumBAC.assistanceData.isXsContentVisible = false;
                     /* #region Check if text exceeded height */
                     checkHeightOfTextBAC();
+                    $scope.callExternalRebindingOfHtmlContent();
                     /* #endregion Check if text exceeded height */
                 }
             }
+
+            $scope.callExternalRebindingOfHtmlContent = function () {
+                //$scope.$apply();
+                $timeout(function () {
+                    console.log('caliing code in angular');
+                    externalCompileCaller();
+                }, 500);
+            }
+
             /* #endregion Change Data displayed for 'Background', 'Assistance and Impact' & 'Challenges, Lessons Learned and Way Forward' */
             /* #region Check if text exceeded height */
             function checkHeightOfTextBAC() {
@@ -281,6 +295,7 @@ angular.module('Home')
                         $scope.ctrlVars.selectedSubnavTitle_xs = $scope.ctrlVars.dataBindOKW.textParts[i].partName;
                         /* #region Check if text exceeded height */
                         checkHeightOfTextOKW();
+                        $scope.callExternalRebindingOfHtmlContent();
                         /* #endregion Check if text exceeded height */
                     }
                 }
@@ -394,6 +409,7 @@ angular.module('Home')
                 $anchorScroll();
             };
             /* #endregion Anchor Scroll */
+
             activate();
             function activate() {
                 //keeps data of all Focus Areas

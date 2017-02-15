@@ -3,7 +3,17 @@
 //- ScrollMagic (for detecting scroll events)
 //- TweenMax (GreenSock GSAP) (for animation)
 //
-//
+function externalCompileCaller() {
+    console.log('calling... outisde func');
+    $('[data-toggle="popover"]').popover(
+        {
+            html: true,
+            viewport: '.c-bind-txxt-wrapper',
+            trigger: 'focus',
+        }
+    );
+}
+
 $(document).ready(function () {
     /* #region Swipebox lightbox */
     $('.swipebox').swipebox();
