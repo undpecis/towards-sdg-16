@@ -3,8 +3,8 @@
 angular.module('Home')
 
 .controller('HomeController',
-    ['$scope', '$window', '$anchorScroll', '$location', '$timeout', '$uibModal', '$sce',
-        function ($scope, $window, $anchorScroll, $location, $timeout, $uibModal, $sce) {
+    ['$scope', '$window', '$anchorScroll', '$location', '$timeout', '$uibModal', '$sce', '$document',
+        function ($scope, $window, $anchorScroll, $location, $timeout, $uibModal, $sce, $document) {
             var winElement = angular.element($window);
             var screenWidth = winElement.width();
             var breakpointStart_lg = 992;
@@ -13,6 +13,9 @@ angular.module('Home')
             winElement.bind('resize', function () {
                 screenWidth = winElement.width();
                 updateResolutionStatus();
+                //reset some values
+                $scope.ctrlVars.burgerMenuSubmenuVisible_countries = false;
+                $scope.ctrlVars.burgerMenuSubmenuVisible_focusAreas = false;
             });
             function updateResolutionStatus() {
                 if (screenWidth >= breakpointStart_lg) {
@@ -62,6 +65,25 @@ angular.module('Home')
                         $scope.ctrlVars.isInterestCountryClicked = true;
                     }
                 }
+            }
+            $scope.countryClickedFunc_fromBurger = function (countryOfInterestId) {
+                for (var i = 0; i < siteData.countries.length; i++) {
+                    if (siteData.countries[i].id == countryOfInterestId) {
+                        $scope.selectedCountry = siteData.countries[i];
+                        $scope.changeCountryBACData(0);
+                        //console.log('$scope.selectedCountry: ' + $scope.selectedCountry.keyResults[2].text);
+                        $scope.ctrlVars.isInterestCountryClicked = true;
+                        $timeout(function () {
+                            console.log('crolled to anchor map');
+                            $scope.scrollToAnchor('mapdiv');
+                        }, 500);
+                    }
+                }
+                if ($('#cid-burger-dropdown-menu-lg').not(':hidden')) {
+                    console.log('ton hiden lg country');
+                    //$("#cid-burger-dropdown-menu-xs").hide();
+                    $('[data-toggle="dropdown"]').parent().removeClass('open');
+                };
             }
             /* #endregion On country map click */
             /* #region Change Data displayed for 'Background', 'Assistance and Impact' & 'Challenges, Lessons Learned and Way Forward' */
@@ -181,7 +203,19 @@ angular.module('Home')
                 //keeps index of currently clicked Focus Area button
                 currentFocusAreaIndex: null,
                 //keeps data for modal screen (Gender Equality, Peace, ...)
-                genderPeaceDataToShow: null
+                genderPeaceDataToShow: null,
+                //burger menu
+                burgerMenuSubmenuVisible_focusAreas: false,
+                burgerMenuSubmenuVisible_countries: false
+            }
+            $scope.toggleBurgerMenu = function (callerName) {
+                if (callerName == 'focus') {
+                    $scope.ctrlVars.burgerMenuSubmenuVisible_focusAreas = !$scope.ctrlVars.burgerMenuSubmenuVisible_focusAreas;
+                    $scope.ctrlVars.burgerMenuSubmenuVisible_countries = false;
+                } else if (callerName == 'countries') {
+                    $scope.ctrlVars.burgerMenuSubmenuVisible_countries = !$scope.ctrlVars.burgerMenuSubmenuVisible_countries;
+                    $scope.ctrlVars.burgerMenuSubmenuVisible_focusAreas = false;
+                }
             }
             $scope.toggleKeyContent = function (callerName) {
                 if (callerName == 'closeInterestCountry') {
@@ -208,6 +242,12 @@ angular.module('Home')
             /* #region FOCUS AREAS RELATED CODE */
             //keeps visibility status of clicked Focus Area
             $scope.toggleFocusAreaVisibility = function (focusAreaIndex) {
+                //check if click was initialized from burger menu and close burger menu
+                if ($('#cid-burger-dropdown-menu-xs').not(':hidden')) {
+                    console.log('ton hiden');
+                    //$("#cid-burger-dropdown-menu-xs").hide();
+                    $('[data-toggle="dropdown"]').parent().removeClass('open');
+                };
                 //find index match of Focus Area button clicked
                 for (var i = 0; i < $scope.ctrlVars.focusData.length; i++) {
                     //if index matched
@@ -220,7 +260,15 @@ angular.module('Home')
                             $scope.ctrlVars.currentFocusAreaIndex = focusAreaIndex;
                             $scope.changeCountryOKWData(0);
                             if (isLargeResolution == false) {
+                                //small devices, mobile phones
                                 $timeout(function () {
+                                    console.log('crolled to anchor');
+                                    $scope.scrollToAnchor('cid-anchor-OKW-content');
+                                }, 500);
+                            } else {
+                                //large resolutions
+                                $timeout(function () {
+                                    console.log('crolled to anchor 000');
                                     $scope.scrollToAnchor('cid-anchor-OKW-content');
                                 }, 500);
                             }
@@ -409,6 +457,22 @@ angular.module('Home')
                 $anchorScroll();
             };
             /* #endregion Anchor Scroll */
+
+            /* #region Check*/
+
+            $(document).on('click', '#cid-burger-dropdown-menu-xs.dropdown-menu', function (e) {
+                console.log('hearing');
+                e.stopPropagation();
+            });
+            $(document).on('click', '#cid-burger-dropdown-menu-lg.dropdown-menu', function (e) {
+                console.log('hearing');
+                e.stopPropagation();
+            });
+
+            //$document.bind('click', function (event) {
+            //    console.log('call an click target keys: ' + Object.keys(event));
+            //    var elTarget = $(event.target);
+            //});
 
             activate();
             function activate() {
