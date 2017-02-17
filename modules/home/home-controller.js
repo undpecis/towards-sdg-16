@@ -360,10 +360,10 @@ angular.module('Home')
             /* #region Modal for Gender Equality + Peace, Justice and Strong Institutions */
             $scope.openGenderPeaceModal = function (buttonName) {
                 if (buttonName == 'gender') {
-                    $scope.ctrlVars.genderPeaceDataToShow = $scope.ctrlVars.selectedFocusAreaData.pictogramModals.gender.text;
+                    $scope.ctrlVars.genderPeaceDataToShow = $scope.ctrlVars.selectedFocusAreaData.pictogramModals.gender;
                     openModalInstance();
                 } else if (buttonName == 'peace') {
-                    $scope.ctrlVars.genderPeaceDataToShow = $scope.ctrlVars.selectedFocusAreaData.pictogramModals.peace.text;
+                    $scope.ctrlVars.genderPeaceDataToShow = $scope.ctrlVars.selectedFocusAreaData.pictogramModals.peace;
                     openModalInstance();
                 }
             }
@@ -377,7 +377,7 @@ angular.module('Home')
                     resolve: {
                         passedData: function () {
                             return {
-                                text: $scope.ctrlVars.genderPeaceDataToShow
+                                content: $scope.ctrlVars.genderPeaceDataToShow
                             }
                         }
                     }

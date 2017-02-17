@@ -15,13 +15,13 @@
             sectionPdfUrl: 'http://www.google.com',
             pictogramModals: {
                 gender: {
-                    title:'',
+                    title: '',
                     text: 'adfaldfjalfdjladf'
                 },
                 peace: {
                     title: '',
                     text: 'adfaldfjalfdjladf'
-                },
+                }
             },
             overviewData: {
                 isLargeText: false,
@@ -96,7 +96,7 @@
                 peace: {
                     title: '',
                     text: 'adfaldfjalfdjladf'
-                },
+                }
             },
             overviewData: {
                 isLargeText: false,
@@ -173,7 +173,7 @@
                 peace: {
                     title: '',
                     text: 'adfaldfjalfdjladf'
-                },
+                }
             },
             overviewData: {
                 isLargeText: false,
@@ -245,7 +245,7 @@
                 peace: {
                     title: '',
                     text: 'adfaldfjalfdjladf'
-                },
+                }
             },
             overviewData: {
                 isLargeText: false,

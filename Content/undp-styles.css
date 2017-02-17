@@ -933,6 +933,15 @@ a {
 .c-copy-content p {
   margin-bottom: 1em;
 }
+.c-header-burger-dropdown {
+  background-color: #f5f5f6;
+}
+.c-header-burger-dropdown > li > a {
+  font-size: 16px;
+}
+.c-header-burger-dropdown > li .c-dropdown-menu-subnav > li > a {
+  font-size: 14px;
+}
 /* #endregion Lists links */
 /* #region Text links */
 .c-link-text {

@@ -1030,6 +1030,23 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
         margin-bottom:1em;
     }
 }
+@c-burger-dropdown-background:#f5f5f6;
+.c-header-burger-dropdown{
+    background-color:@c-burger-dropdown-background;
+    > li{
+        > a{
+            font-size:16px;
+        }
+        //subnav
+        .c-dropdown-menu-subnav{
+            > li{
+                > a{
+                    font-size:14px;
+                }
+            }
+        }
+    }
+}
 /* #endregion Lists links */
 /* #region Text links */
 .c-link-text{
