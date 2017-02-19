@@ -1202,8 +1202,8 @@ $(document).ready(function () {
                     var svgDocument_tajikistan = graphicObject_tajikistan.contentDocument;
 
                     var objects_all = [];
-                    objects_all.push(svgDocument_tajikistan.getElementById("person-left"));
-                    objects_all.push(svgDocument_tajikistan.getElementById("person-right"));
+                    objects_all.push(svgDocument_tajikistan.getElementById("base"));
+                    objects_all.push(svgDocument_tajikistan.getElementById("hammer"));
                     for (var i = 0; i < objects_all.length; i++) {
                         TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
                     }
@@ -1263,8 +1263,8 @@ $(document).ready(function () {
                     var svgDocument_macedonia = graphicObject_macedonia.contentDocument;
 
                     var objects_all = [];
-                    objects_all.push(svgDocument_macedonia.getElementById("base"));
-                    objects_all.push(svgDocument_macedonia.getElementById("hammer"));
+                    objects_all.push(svgDocument_macedonia.getElementById("person-left"));
+                    objects_all.push(svgDocument_macedonia.getElementById("person-right"));
                     for (var i = 0; i < objects_all.length; i++) {
                         TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
                     }

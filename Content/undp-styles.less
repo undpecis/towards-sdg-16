@@ -1088,6 +1088,45 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
             }
         }
     }
+    //footer navigation
+    &.c-footer-nav-items{
+        display:block;
+        width:100%;
+        padding:0;
+        > li{
+            &.c-has-subcontent{
+                font-size:14px;
+                text-align:left;
+                color:@col-white;
+                line-height:1.4;
+                .c-text-wrapper{
+                    padding:20px 15px;
+                    overflow:auto;
+                    .c-title{
+                        margin-bottom:10px;
+                    }
+                }
+                //
+                .c-footer-focus-areas{
+                    width:100%;
+                    li{
+                        a{
+                            padding:10px;
+                        }
+                        .c-vertical-list{
+                            &.c-subnav{
+                                li{
+                                    a{
+                                        text-align:center;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 .c-copy-content{
     display:block;
@@ -3264,6 +3303,26 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
     /* #endregion RESPONSIVE QUERY */
 }
 .c-footer-content-wrap-xs{
+    font-size:12px;
+    .c-title{
+        display:inline-block;
+        width:auto;
+        text-align:left;
+        position:relative;
+        border-bottom:1px solid @col-text-footer-brown;
+        padding-bottom:10px;
+        margin-bottom:30px;
+        .fmx-open-sans-regular();
+        font-size:16px;
+        color:@col-white;
+        text-transform:uppercase;
+    }
+    a{
+        color:@col-white;
+    }
+    p{
+        margin-bottom:1em;
+    }
     /* #region RESPONSIVE QUERY */
     /* #region Extra small resolutions */
     @media only screen and (min-width : @var-breakpoint-start-zero) {

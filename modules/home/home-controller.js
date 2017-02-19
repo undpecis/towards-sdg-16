@@ -3,8 +3,8 @@
 angular.module('Home')
 
 .controller('HomeController',
-    ['$scope', '$window', '$anchorScroll', '$location', '$timeout', '$uibModal', '$sce', '$document', 'smoothScroll',
-        function ($scope, $window, $anchorScroll, $location, $timeout, $uibModal, $sce, $document, smoothScroll) {
+    ['$scope', '$window', '$anchorScroll', '$location', '$timeout', '$uibModal', '$sce', '$document',
+        function ($scope, $window, $anchorScroll, $location, $timeout, $uibModal, $sce, $document) {
             /* #===================================================================== Application setup =======# */
             // @= We are defining list of active countries (this 'listOfActiveCountries' is also defined inside 'index-controller.js' file)
             $scope.activeCountriesList = [
@@ -106,7 +106,30 @@ angular.module('Home')
                 forewordData: {
                     data: null,
                     isTextExpanded: false
-                }
+                },
+                // @= Footer navigation XS devices
+                enumFooter: [
+                    {
+                        name: 'UNDP ECIS',
+                        enumIndex: 0,
+                        isXsSubContentActive: false
+                    },
+                    {
+                        name: 'QUICK LINKS',
+                        enumIndex: 1,
+                        isXsSubContentActive: false
+                    },
+                    {
+                        name: 'REFERENCES',
+                        enumIndex: 2,
+                        isXsSubContentActive: false
+                    },
+                    {
+                        name: 'CONTACT US',
+                        enumIndex: 3,
+                        isXsSubContentActive: false
+                    }
+                ]
             }
             /* #endregion Variables for application */
             /* #===================================================================== Content visibility related code =======# */
@@ -128,12 +151,17 @@ angular.module('Home')
                         for (var i = 0; i < $scope.ctrlVars.focusData.length; i++) {
                             //if index matched
                             if (i == $scope.ctrlVars.visibleStates.footer_focusAreaIndex) {
+                                $scope.ctrlVars.visibleStates.isVisibleFocusAreaContent = true;
                                 var wantedFocusAreaIndex = $scope.ctrlVars.visibleStates.footer_focusAreaIndex;
                                 $scope.openFocusAreaOKWtext(wantedFocusAreaIndex, subTarget);
                                 //close footer navigation menu
                                 $scope.ctrlVars.visibleStates.footer_focusAreaIndex = null;
                                 break;
                             }
+                        }
+                        //close visibility of footer links
+                        for (var j = 0; j < $scope.ctrlVars.enumFooter.length; j++) {
+                            $scope.ctrlVars.enumFooter[j].isXsSubContentActive = false;
                         }
                     //check if click was initialized from burger menu
                     } else if ($('.c-header-burger-dropdown').is(':visible')) {
@@ -204,6 +232,15 @@ angular.module('Home')
                         //$timeout(function () {
                         //    scrollToAnchor('cid-foreword-content');
                         //}, 600);
+                    }
+                } else if (callerName == 'footerNav_xs') {
+                    for (var i = 0; i < $scope.ctrlVars.enumFooter.length; i++) {
+                        //if index matched
+                        if (i == subTarget) {
+                            $scope.ctrlVars.enumFooter[i].isXsSubContentActive = !$scope.ctrlVars.enumFooter[i].isXsSubContentActive;
+                        } else {
+                            $scope.ctrlVars.enumFooter[i].isXsSubContentActive = false;
+                        }
                     }
                 }
             }
@@ -290,7 +327,7 @@ angular.module('Home')
                 //set index of visible Focus Area (Conflict Prevention.., Responsive and.., Inclusive Political.. or Rule of Law, Justice)
                 $scope.ctrlVars.visibleStates.visibleFocusAreaContentIndex = wantedFocusAreaIndex;
                 $scope.ctrlVars.selectedFocusAreaData = $scope.ctrlVars.focusData[wantedFocusAreaIndex];
-                $scope.changeCountryOKWData(0);
+                $scope.changeCountryOKWData(wantedFocusAreaOKWcontentIndex);
                 if (isLargeResolution == false) {
                     //small devices, mobile phones
                     $timeout(function () {
@@ -404,10 +441,23 @@ angular.module('Home')
             }
             // @= Scroll to Anchor div 
             function scrollToAnchor(anchorId) {
-                console.log('anchorId: ' + anchorId);
-
-                //$location.hash(anchorId);
-                //$anchorScroll();
+                var genericIntervalCounter = 0;
+                var checkForElementInterval = setInterval(getElementToScroll, 100);
+                function getElementToScroll() {
+                    //cancel interval if it is fired to many times
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkForElementInterval);
+                    } else {
+                        var htmlElement = angular.element(document.getElementById(anchorId));
+                        if (htmlElement != null && htmlElement != undefined) {
+                            clearInterval(checkForElementInterval);
+                            //
+                            $location.hash(anchorId);
+                            $anchorScroll();
+                        }
+                        genericIntervalCounter++;
+                    }
+                }
             };
             // @= Calls external function that will reinitialize newly binded content update
             $scope.callExternalRebindingOfHtmlContent = function () {
