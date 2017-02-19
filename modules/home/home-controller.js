@@ -60,9 +60,10 @@ angular.module('Home')
                 for (var i = 0; i < siteData.countries.length; i++) {
                     if (siteData.countries[i].id == countryOfInterestId) {
                         $scope.selectedCountry = siteData.countries[i];
-                        $scope.changeCountryBACData(0);
-                        //console.log('$scope.selectedCountry: ' + $scope.selectedCountry.keyResults[2].text);
                         $scope.ctrlVars.isInterestCountryClicked = true;
+                        $scope.changeCountryBACData(0);
+                        //console.log('$scope.selectedCountry: ' + $scope.selectedCountry.keyResults[2].text);                        
+                        break;
                     }
                 }
             }
@@ -70,13 +71,14 @@ angular.module('Home')
                 for (var i = 0; i < siteData.countries.length; i++) {
                     if (siteData.countries[i].id == countryOfInterestId) {
                         $scope.selectedCountry = siteData.countries[i];
+                        $scope.ctrlVars.isInterestCountryClicked = true;
                         $scope.changeCountryBACData(0);
                         //console.log('$scope.selectedCountry: ' + $scope.selectedCountry.keyResults[2].text);
-                        $scope.ctrlVars.isInterestCountryClicked = true;
                         $timeout(function () {
                             console.log('crolled to anchor map');
                             $scope.scrollToAnchor('mapdiv');
-                        }, 500);
+                        }, 300);
+                        break;
                     }
                 }
                 if ($('#cid-burger-dropdown-menu-lg').not(':hidden')) {
@@ -149,7 +151,7 @@ angular.module('Home')
                 $timeout(function () {
                     console.log('caliing code in angular');
                     externalCompileCaller();
-                }, 500);
+                }, 300);
             }
 
             /* #endregion Change Data displayed for 'Background', 'Assistance and Impact' & 'Challenges, Lessons Learned and Way Forward' */
@@ -228,6 +230,7 @@ angular.module('Home')
                     }
                 } else if (callerName == 'isOpenCountryBACdata_lg') {
                     $scope.ctrlVars.isOpenCountryBACdata_lg = !$scope.ctrlVars.isOpenCountryBACdata_lg;
+                    $scope.changeCountryBACData(0);
                 } else if (callerName == 'isOpenCountryBACdata_xs') {
                     $scope.ctrlVars.isOpenCountryBACdata_xs = !$scope.ctrlVars.isOpenCountryBACdata_xs;
                 }
@@ -241,7 +244,7 @@ angular.module('Home')
 
             /* #region FOCUS AREAS RELATED CODE */
             //keeps visibility status of clicked Focus Area
-            $scope.toggleFocusAreaVisibility = function (focusAreaIndex) {
+            $scope.toggleFocusAreaVisibility = function (focusAreaIndex, okwIndex) {
                 //check if click was initialized from burger menu and close burger menu
                 if ($('#cid-burger-dropdown-menu-xs').not(':hidden')) {
                     console.log('ton hiden');
@@ -252,38 +255,50 @@ angular.module('Home')
                 for (var i = 0; i < $scope.ctrlVars.focusData.length; i++) {
                     //if index matched
                     if (i == focusAreaIndex) {
-                        //if this button not already opened
-                        if ($scope.ctrlVars.focusData[i].activeInView == false) {
-                            $scope.ctrlVars.focusData[i].activeInView = true;
-                            $scope.ctrlVars.selectedFocusAreaData = $scope.ctrlVars.focusData[i];
-                            $scope.ctrlVars.isOpenCountryOKWdata = true;
-                            $scope.ctrlVars.currentFocusAreaIndex = focusAreaIndex;
-                            $scope.changeCountryOKWData(0);
-                            if (isLargeResolution == false) {
-                                //small devices, mobile phones
-                                $timeout(function () {
-                                    console.log('crolled to anchor');
-                                    $scope.scrollToAnchor('cid-anchor-OKW-content');
-                                }, 500);
-                            } else {
-                                //large resolutions
-                                $timeout(function () {
-                                    console.log('crolled to anchor 000');
-                                    $scope.scrollToAnchor('cid-anchor-OKW-content');
-                                }, 500);
-                            }
-                        //if button is already open then close everything
+                        //check if click was taken from footer links, then we WILL NOT CLOSE FOCUS AREA
+                        if ($scope.okwXsVars.visibleFooterArea == true) {
+                            //if clicked from footer lg resolutions, we are closing footer navigation
+                            $scope.okwXsVars.visibleFooterArea = null;
+                            openFocusAreaOKWtext(focusAreaIndex, okwIndex);
                         } else {
-                            $scope.ctrlVars.isOpenCountryOKWdata = false;
-                            $scope.ctrlVars.currentFocusAreaIndex = null;
-                            $scope.ctrlVars.focusData[i].activeInView = false;
+                            //if this button not already opened
+                            if ($scope.ctrlVars.focusData[i].activeInView == false) {
+                                openFocusAreaOKWtext(focusAreaIndex, okwIndex);
+                            } else {
+                                //if button is already open then close everything
+                                $scope.ctrlVars.isOpenCountryOKWdata = false;
+                                $scope.ctrlVars.focusData[i].activeInView = false;
+                                $scope.ctrlVars.currentFocusAreaIndex = null;
+                            }
                         }
-                    //if index not matched we will set status to false for all other buttons
+                        break;
                     } else {
+                        //if index not matched we will set status to false for all other buttons
                         $scope.ctrlVars.focusData[i].activeInView = false;
                     }
                 }
             }
+            /* #region Open Focus Area OKW text */
+            function openFocusAreaOKWtext(focusAreaIndex, okwIndex) {
+                $scope.ctrlVars.focusData[focusAreaIndex].activeInView = true;
+                $scope.ctrlVars.isOpenCountryOKWdata = true;
+                $scope.ctrlVars.selectedFocusAreaData = $scope.ctrlVars.focusData[focusAreaIndex];
+                $scope.ctrlVars.currentFocusAreaIndex = focusAreaIndex;
+                $scope.changeCountryOKWData(okwIndex);
+                if (isLargeResolution == false) {
+                    //small devices, mobile phones
+                    $timeout(function () {
+                        $scope.scrollToAnchor('cid-anchor-OKW-content');
+                    }, 300);
+                } else {
+                    //large resolutions
+                    $timeout(function () {
+                        $scope.scrollToAnchor('cid-anchor-OKW-content');
+                    }, 300);
+                }
+            }
+            /* #endregion Open Focus Area OKW text */
+
             $scope.enumOKW = {
                 overviewData: {
                     enumIndex: 0,
@@ -345,6 +360,7 @@ angular.module('Home')
                         checkHeightOfTextOKW();
                         $scope.callExternalRebindingOfHtmlContent();
                         /* #endregion Check if text exceeded height */
+                        break;
                     }
                 }
             }
@@ -355,12 +371,14 @@ angular.module('Home')
                         $scope.ctrlVars.textPartOKWtoBind = $scope.ctrlVars.dataBindOKW.textParts[i].text;
                         $scope.ctrlVars.activeIndexTextPartOKW = i;
                         console.log('selectedOptionItemObject.partName: ' + selectedOptionItemObject.partName);
+                        break;
                     }
                 }
             }
             $scope.okwXsVars = {
                 selectedItemTitle: '',
-                isDropdownOpen:false
+                isDropdownOpen: false,
+                visibleFooterArea: null
             }
             $scope.selectOKWdropdownItem = function (clickedIndex) {
                 console.log('clickedIndex: ' + clickedIndex);
@@ -371,6 +389,7 @@ angular.module('Home')
                         $scope.okwXsVars.isDropdownOpen = !$scope.okwXsVars.isDropdownOpen;
                         $scope.ctrlVars.textPartOKWtoBind = $scope.ctrlVars.dataBindOKW.textParts[i].text;
                         $scope.ctrlVars.activeIndexTextPartOKW = i;
+                        break;
                     }
                 }
             }
@@ -380,6 +399,17 @@ angular.module('Home')
                     console.log('$scope.okwXsVars.isDropdownOpen: ' + $scope.okwXsVars.isDropdownOpen);
                 }
             }
+            /* #region Focus Ares links footer */
+            //large resolutions links
+            $scope.toggleFooterFocusAreasLinks = function (fareaIndex) {
+                //toggle fisible footer links// if clicked is already opened
+                if ($scope.okwXsVars.visibleFooterArea == fareaIndex){
+                    $scope.okwXsVars.visibleFooterArea = null;
+                } else {
+                    $scope.okwXsVars.visibleFooterArea = fareaIndex;
+                }
+            }
+            /* #endregion Focus Ares links footer */
             /* #region Check if text exceeded height */
             function checkHeightOfTextOKW() {
                 var checkForElementInterval = setInterval(getTextBoxElement, 10);
@@ -430,11 +460,13 @@ angular.module('Home')
                         }
                     }
                 });
-                modalInstance.result.then(function (response) {
-                    if (response) {
+                modalInstance.result.then(
+                    function (response) {
+                        if (response) {
 
+                        }
                     }
-                });
+                );
             }
             /* #endregion Modal for Gender Equality + Peace, Justice and Strong Institutions */
             /* #endregion FOCUS AREAS RELATED CODE */
@@ -458,16 +490,15 @@ angular.module('Home')
             };
             /* #endregion Anchor Scroll */
 
-            /* #region Check*/
-
+            /* #region If user clicks over burger menu we will stop click propagation to prevent dropdown closing */
             $(document).on('click', '#cid-burger-dropdown-menu-xs.dropdown-menu', function (e) {
-                console.log('hearing');
                 e.stopPropagation();
             });
             $(document).on('click', '#cid-burger-dropdown-menu-lg.dropdown-menu', function (e) {
                 console.log('hearing');
                 e.stopPropagation();
             });
+            /* #endregion If user clicks over burger menu we will stop click propagation to prevent dropdown closing */
 
             //$document.bind('click', function (event) {
             //    console.log('call an click target keys: ' + Object.keys(event));

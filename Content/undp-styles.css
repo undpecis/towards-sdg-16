@@ -939,6 +939,44 @@ a {
 .c-vertical-list.c-xs-devices.c-black-background > li .c-item-content {
   background-color: #2b2b2c;
 }
+.c-vertical-list.c-footer-focus-areas > li {
+  cursor: pointer;
+  display: block;
+  border-bottom: 1px solid #515153;
+  position: relative;
+}
+.c-vertical-list.c-footer-focus-areas > li:last-child {
+  border-bottom: none;
+}
+.c-vertical-list.c-footer-focus-areas > li > a {
+  display: block;
+  text-align: left;
+  padding: 6px 0;
+  text-decoration: none;
+}
+.c-vertical-list.c-footer-focus-areas > li.c-active {
+  border-bottom: 1px solid #00699e;
+}
+.c-vertical-list.c-footer-focus-areas > li:hover:not(.c-just-link) {
+  background-color: #3d3d3e;
+}
+.c-vertical-list.c-footer-focus-areas > li.c-just-link > a:hover {
+  color: #00699e;
+}
+.c-vertical-list.c-footer-focus-areas > li .c-vertical-list {
+  padding: 5px 0;
+  width: 100%;
+  background-color: #333334;
+}
+.c-vertical-list.c-footer-focus-areas > li .c-vertical-list.c-subnav > li > a {
+  display: block;
+  text-align: left;
+  padding: 2px 10px;
+  color: #fff;
+}
+.c-vertical-list.c-footer-focus-areas > li .c-vertical-list.c-subnav > li:hover > a {
+  color: #00699e;
+}
 .c-copy-content {
   display: block;
   background-color: #383839;
@@ -2957,3 +2995,6 @@ a {
   background-color: #fff;
 }
 /* #endregion Bootstrap Popover */
+.c-sup-popover a {
+  color: #00699e !important;
+}

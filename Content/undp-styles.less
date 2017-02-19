@@ -1031,6 +1031,62 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
             }
         }
     }
+    //footer focus areas links
+    &.c-footer-focus-areas{
+        > li{
+            cursor:pointer;
+            display:block;
+            border-bottom:1px solid lighten(@col-stripe-black, 10);
+            position:relative;
+            &:last-child{
+                border-bottom:none;
+            }
+            > a{
+                display: block;
+                text-align: left;
+                padding: 6px 0;
+                text-decoration: none;
+            }
+            //active
+            &.c-active{
+                border-bottom:1px solid @col-text-blue;
+            }
+            //hover
+            &:hover:not(.c-just-link){
+                background-color:lighten(@col-stripe-black, 2);
+            }
+            &.c-just-link{
+                > a{
+                    &:hover{
+                        color:@col-text-blue;
+                    }
+                }
+            }
+            //subnav
+            .c-vertical-list{
+                padding:5px 0;
+                width:100%;
+                background-color:darken(@col-stripe-black, 2);
+                &.c-subnav{
+                    > li{
+                        > a{
+                            display: block;
+                            text-align: left;
+                            padding: 2px 10px;
+                            //text-decoration: none;
+                            color:@col-white;
+                        }
+                        //hover
+                        &:hover{
+                            > a{
+                                color:@col-text-blue;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 .c-copy-content{
     display:block;
@@ -3299,3 +3355,9 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
     }
 }
 /* #endregion Bootstrap Popover */
+
+.c-sup-popover{
+    a{
+        color:@col-text-blue !important;
+    }
+}

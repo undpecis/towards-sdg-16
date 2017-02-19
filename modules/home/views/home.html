@@ -36,7 +36,7 @@
                                         </li>
                                         <li ng-if="ctrlVars.burgerMenuSubmenuVisible_focusAreas == true">
                                             <ul class="c-dropdown-menu-subnav c-focus-areas c-max-h-300">
-                                                <li ng-repeat="areaSubitem in ctrlVars.focusData" ng-class="'c-vdash-fareas-' + areaSubitem.id" ng-click="toggleFocusAreaVisibility($index)">
+                                                <li ng-repeat="areaSubitem in ctrlVars.focusData" ng-class="'c-vdash-fareas-' + areaSubitem.id" ng-click="toggleFocusAreaVisibility($index, 0)">
                                                     <a>{{areaSubitem.title}}</a>
                                                 </li>
                                             </ul>
@@ -92,7 +92,7 @@
                                         </li>
                                         <li ng-if="ctrlVars.burgerMenuSubmenuVisible_focusAreas == true">
                                             <ul class="c-dropdown-menu-subnav c-focus-areas c-max-h-300">
-                                                <li ng-repeat="areaSubitem in ctrlVars.focusData" ng-class="'c-vdash-fareas-' + areaSubitem.id" ng-click="toggleFocusAreaVisibility($index)">
+                                                <li ng-repeat="areaSubitem in ctrlVars.focusData" ng-class="'c-vdash-fareas-' + areaSubitem.id" ng-click="toggleFocusAreaVisibility($index, 0)">
                                                     <a>{{areaSubitem.title}}</a>
                                                 </li>
                                             </ul>
@@ -712,7 +712,7 @@
                     <!-- #region Buttons -->
                     <div class="c-buttons-wrap">
                         <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(0)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==0">
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(0, 0)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==0">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-login"></i>
                             </div>
@@ -720,7 +720,7 @@
                         </button>
                         <!-- #endregion Learn more button -->
                         <!-- #region Close more button -->
-                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(0)" ng-show="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==0">
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(0, 0)" ng-show="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==0">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-close"></i>
                             </div>
@@ -750,7 +750,7 @@
                     <!-- #region Buttons -->
                     <div class="c-buttons-wrap">
                         <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(1)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==1">
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(1, 0)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==1">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-login"></i>
                             </div>
@@ -758,7 +758,7 @@
                         </button>
                         <!-- #endregion Learn more button -->
                         <!-- #region Close more button -->
-                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(1)" ng-show="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==1">
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(1, 0)" ng-show="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==1">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-close"></i>
                             </div>
@@ -788,7 +788,7 @@
                     <!-- #region Buttons -->
                     <div class="c-buttons-wrap">
                         <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(2)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==2">
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(2, 0)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==2">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-login"></i>
                             </div>
@@ -796,7 +796,7 @@
                         </button>
                         <!-- #endregion Learn more button -->
                         <!-- #region Close more button -->
-                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(2)" ng-show="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==2">
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(2, 0)" ng-show="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==2">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-close"></i>
                             </div>
@@ -826,7 +826,7 @@
                     <!-- #region Buttons -->
                     <div class="c-buttons-wrap">
                         <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(3)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==3">
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(3, 0)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==3">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-login"></i>
                             </div>
@@ -834,7 +834,7 @@
                         </button>
                         <!-- #endregion Learn more button -->
                         <!-- #region Close more button -->
-                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(3)" ng-show="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==3">
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(3, 0)" ng-show="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==3">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-close"></i>
                             </div>
@@ -1233,21 +1233,75 @@
                     <div class="c-title">QUICK LINKS</div>
                     <!-- #endregion Title -->
                     <!-- #region Content -->
-                    <p>
-                        <a class="c-link-text" ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[0].title}}</a>
-                    </p>
-                    <p>
-                        <a class="c-link-text" ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[1].title}}</a>
-                    </p>
-                    <p>
-                        <a class="c-link-text" ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[2].title}}</a>
-                    </p>
-                    <p>
-                        <a class="c-link-text" ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[3].title}}</a>
-                    </p>
-                    <p>
-                        <a class="c-link-text" href="http://www.un.org/sustainabledevelopment/sustainable-development-goals/" target="_blank">Sustainable development goals</a>
-                    </p>
+                    <ul class="c-vertical-list c-footer-focus-areas">
+                        <li ng-click="toggleFooterFocusAreasLinks(0)" ng-class="{'c-active' : okwXsVars.visibleFooterArea == 0}">
+                            <a>{{ctrlVars.focusData[0].title}}</a>
+                        </li>
+                        <li ng-if="okwXsVars.visibleFooterArea == 0">
+                            <ul class="c-vertical-list c-subnav">
+                                <li ng-click="toggleFocusAreaVisibility(0, 0)">
+                                    <a>Overview</a>
+                                </li>
+                                <li ng-click="toggleFocusAreaVisibility(0, 1)">
+                                    <a>Key trends</a>
+                                </li>
+                                <li ng-click="toggleFocusAreaVisibility(0, 2)">
+                                    <a>What we do</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li ng-click="toggleFooterFocusAreasLinks(1)" ng-class="{'c-active' : okwXsVars.visibleFooterArea == 1}">
+                            <a>{{ctrlVars.focusData[1].title}}</a>
+                        </li>
+                        <li ng-if="okwXsVars.visibleFooterArea == 1">
+                            <ul class="c-vertical-list c-subnav">
+                                <li ng-click="toggleFocusAreaVisibility(1, 0)">
+                                    <a>Overview</a>
+                                </li>
+                                <li ng-click="toggleFocusAreaVisibility(1, 1)">
+                                    <a>Key trends</a>
+                                </li>
+                                <li ng-click="toggleFocusAreaVisibility(1, 2)">
+                                    <a>What we do</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li ng-click="toggleFooterFocusAreasLinks(2)" ng-class="{'c-active' : okwXsVars.visibleFooterArea == 2}">
+                            <a>{{ctrlVars.focusData[2].title}}</a>
+                        </li>
+                        <li ng-if="okwXsVars.visibleFooterArea == 2">
+                            <ul class="c-vertical-list c-subnav">
+                                <li ng-click="toggleFocusAreaVisibility(2, 0)">
+                                    <a>Overview</a>
+                                </li>
+                                <li ng-click="toggleFocusAreaVisibility(2, 1)">
+                                    <a>Key trends</a>
+                                </li>
+                                <li ng-click="toggleFocusAreaVisibility(2, 2)">
+                                    <a>What we do</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li ng-click="toggleFooterFocusAreasLinks(3)" ng-class="{'c-active' : okwXsVars.visibleFooterArea == 3}">
+                            <a>{{ctrlVars.focusData[3].title}}</a>
+                        </li>
+                        <li ng-if="okwXsVars.visibleFooterArea == 3">
+                            <ul class="c-vertical-list c-subnav">
+                                <li ng-click="toggleFocusAreaVisibility(3, 0)">
+                                    <a>Overview</a>
+                                </li>
+                                <li ng-click="toggleFocusAreaVisibility(3, 1)">
+                                    <a>Key trends</a>
+                                </li>
+                                <li ng-click="toggleFocusAreaVisibility(3, 2)">
+                                    <a>What we do</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="c-just-link">
+                            <a href="http://www.un.org/sustainabledevelopment/sustainable-development-goals/" target="_blank">Sustainable development goals</a>
+                        </li>
+                    </ul>
                     <!-- #endregion Content -->
                 </div>
                 <!-- #endregion Second column -->
