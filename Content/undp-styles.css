@@ -918,6 +918,7 @@ a {
 }
 .c-vertical-list.c-xs-devices > li.c-has-subcontent .c-text-wrapper {
   padding: 20px 15px;
+  overflow: auto;
 }
 .c-vertical-list.c-xs-devices > li.c-has-subcontent.c-black-background {
   background-color: #2b2b2c;

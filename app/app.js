@@ -2,7 +2,7 @@
 
 // declare modules
 angular.module('Authentication', ['ngSanitize', 'ui.bootstrap']);
-angular.module('Home', ['ngSanitize', 'ui.bootstrap']);
+angular.module('Home', ['ngSanitize', 'ui.bootstrap', 'smoothScroll']);
 
 angular.module('BasicHttpAuthExample', [
     'Authentication',
@@ -10,7 +10,8 @@ angular.module('BasicHttpAuthExample', [
     'ngRoute',
     'ngCookies',
     'ngSanitize',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'smoothScroll'
 ])
 
 .config(['$routeProvider', function ($routeProvider) {
