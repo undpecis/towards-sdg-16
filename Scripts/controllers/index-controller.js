@@ -5,7 +5,7 @@
 var undpWorldMap = null;
 //
 function externalCompileCaller() {
-    console.log('calling... outisde func');
+    console.log('calling popover external rebind');
     $('[data-toggle="popover"]').popover(
         {
             html: true,
