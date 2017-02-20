@@ -873,11 +873,11 @@
                 <div class="c-table">
                     <!-- #region Left content / Vertical navigation -->
                     <div class="c-cell c-has-vertical-nav c-col-1-5-lg">
-                        <ul class="c-vertical-list c-expandable-nav c-black-background">
-                            <li ng-click="changeCountryOKWData(0)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 0}">
+                        <ul class="c-vertical-list c-expandable-nav c-black-background" id="cid-okw-sto-prop">
+                            <li ng-click="changeCountryOKWData(0)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 0}" class="c-sto-prop">
                                 <a>Overview</a>
                             </li>
-                            <li ng-click="changeCountryOKWData(1)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 1}">
+                            <li ng-click="changeCountryOKWData(1)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 1}" class="c-sto-prop">
                                 <a>Key trends</a>
                             </li>
                             <li class="c-has-subnavigation" ng-if="ctrlVars.currentOKWindex == 1">
@@ -889,7 +889,7 @@
                                 </ul>
                                 <!-- #endregion Subnavigation -->
                             </li>
-                            <li ng-click="changeCountryOKWData(2)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 2}">
+                            <li ng-click="changeCountryOKWData(2)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 2}" class="c-sto-prop">
                                 <a>What we do</a>
                             </li>
                             <li class="c-has-subnavigation" ng-if="ctrlVars.currentOKWindex == 2">
