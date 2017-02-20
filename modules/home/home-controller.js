@@ -137,6 +137,7 @@ angular.module('Home')
             /* #endregion Variables for application */
             /* #===================================================================== Content visibility related code =======# */
             $scope.toggleVisibility = function (callerName, subTarget) {
+                console.log('callerName: ' + callerName + '  subTarget: ' + subTarget);
                 if (callerName == 'burgerMenu_focusAreas') {
                     $scope.ctrlVars.visibleStates.burger_focusAreas = !$scope.ctrlVars.visibleStates.burger_focusAreas;
                     $scope.ctrlVars.visibleStates.burger_countries = false;
@@ -191,7 +192,11 @@ angular.module('Home')
                         }
                     }
                 } else if (callerName == 'footerMenu_focusAres') {
-                    $scope.ctrlVars.visibleStates.footer_focusAreaIndex = subTarget;
+                    if (subTarget != undefined && subTarget != null) {
+                        $scope.ctrlVars.visibleStates.footer_focusAreaIndex = subTarget;
+                    } else {
+                        $scope.ctrlVars.visibleStates.footer_focusAreaIndex = 0;
+                    }
                 } else if (callerName == 'okwContentMoreLess') {
                     if ($scope.ctrlVars.dataBindOKW.isTextExpanded != undefined && $scope.ctrlVars.dataBindOKW.isTextExpanded != null) {
                         $scope.ctrlVars.dataBindOKW.isTextExpanded = !$scope.ctrlVars.dataBindOKW.isTextExpanded;
