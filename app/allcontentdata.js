@@ -12,7 +12,7 @@
             title: 'Conflict Prevention and Peacebuilding',
             shortName: 'conflictData',
             shortIntroText: 'With a legacy of conflict throughout the ECIS region, UNDP works to promote social cohesion, and empower nations and communities to become more inclusive and resilient to external and internal shocks.',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/01-conflict-prevention-and-peacebuilding.pdf',
             pictogramModals: {
                 gender: {
                     title: ' <p class="red-text"><strong>GOAL 5 – ACHIEVE GENDER EQUALITY AND EMPOWER ALL WOMEN AND GIRLS</strong></p>',
@@ -87,7 +87,7 @@
             title: 'Responsive and Accountable Institutions',
             shortName: 'responsiveData',
             shortIntroText: 'Central to ensuring that development is both effective and sustainable for citizens, UNDP works with partners to improve transparency and improve the capabilities of governmental bodies and institutions at all levels.',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/02-responsive-and-accountable-institutions.pdf',
             pictogramModals: {
                 gender: {
                     title: '<p class="red-text"><strong>GOAL 5 – ACHIEVE GENDER EQUALITY AND EMPOWER ALL WOMEN AND GIRLS</strong></p>',
@@ -164,7 +164,7 @@
             title: 'Inclusive Political Processes',
             shortName: 'inclusiveData',
             shortIntroText: 'Vital to the health of democracies, UNDP works to increase the participation and political influence of citizens, assist governments and institutions to be more representative, and build a stronger and more inclusive social contract.',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/03-inclusive-political-processes.pdf',
             pictogramModals: {
                 gender: {
                     title: '<p class="red-text"><strong>GOAL 5 – ACHIEVE GENDER EQUALITY AND EMPOWER ALL WOMEN AND GIRLS:</strong></p>',
@@ -236,7 +236,7 @@
             title: 'Rule of Law, Justice, Security and Human Rights',
             shortName: 'ruleData',
             shortIntroText: 'Partnering with governments, justice and security institutions and citizens, UNDP works to strengthen the rule of law, improve the capacity and fairness of the justice system, and support the promotion and protection of human rights for all.',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/04-rule-of-law-justice-security-and-human-rights.pdf',
             pictogramModals: {
                 gender: {
                     title: '<p class="red-text"><strong>GOAL 5 – ACHIEVE GENDER EQUALITY AND EMPOWER ALL WOMEN AND GIRLS:</strong></p>',
@@ -330,7 +330,7 @@
             id: 'AL',
             title: 'Albania',
             flagClass: 'c-albania',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-albania.pdf',
             statement: {
                 img: 'albania.jpg',
                 imgThumb: 'albania-thumb.jpg',
@@ -382,7 +382,7 @@
             id: 'AM',
             title: 'Armenia',
             flagClass: 'c-armenia',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-armenia.pdf',
             statement: {
                 img: '',
                 imgThumb: 'armenia-thumb.jpg',
@@ -434,7 +434,7 @@
             id: 'AZ',
             title: 'Azerbaijan',
             flagClass: 'c-azerbaijan',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-azerbaijan.pdf',
             statement: {
                 img: 'azerbaijan.jpg',
                 imgThumb: 'azerbaijan-thumb.jpg',
@@ -481,7 +481,7 @@
             id: 'BY',
             title: 'Belarus',
             flagClass: 'c-belarus',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-belarus.pdf',
             statement: {
                 img: 'belarus.jpg',
                 imgThumb: 'belarus-thumb.jpg',
@@ -533,7 +533,7 @@
             id: 'BA',
             title: 'Bosnia and Herzegovina',
             flagClass: 'c-bosnia-and-herzegovina',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-bosnia-and-herzegovina.pdf',
             statement: {
                 img: 'BiH.jpg',
                 imgThumb: 'BiH-thumb.jpg',
@@ -585,7 +585,7 @@
             id: 'MK',
             title: 'FYR Macedonia',
             flagClass: 'c-macedonia',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-fyr-macedonia.pdf',
             statement: {
                 img: 'fyr-macedonia.jpg',
                 imgThumb: 'fyr-macedonia-thumb.jpg',
@@ -632,7 +632,7 @@
             id: 'GE',
             title: 'Georgia',
             flagClass: 'c-georgia',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-georgia.pdf',
             statement: {
                 img: 'georgia.jpg',
                 imgThumb: 'georgia-thumb.jpg',
@@ -684,7 +684,7 @@
             id: 'KZ',
             title: 'Kazakhstan',
             flagClass: 'c-kazakhstan',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-kazakhstan.pdf',
             statement: {
                 img: 'kazakhstan.jpg',
                 imgThumb: 'kazakhstan-thumb.jpg',
@@ -736,7 +736,7 @@
             id: 'XK',
             title: 'Kosovo',
             flagClass: 'c-kosovo',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-kosovo.pdf',
             statement: {
                 img: 'kosovo.jpg',
                 imgThumb: 'kosovo-thumb.jpg',
@@ -793,7 +793,7 @@
             id: 'KG',
             title: 'Kyrgyz Republic',
             flagClass: 'c-kyrgyz-republic',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-kyrgyz.pdf',
             statement: {
                 img: 'kyrgiz-republic.jpg',
                 imgThumb: 'kyrgiz-republic-thumb.jpg',
@@ -840,7 +840,7 @@
             id: 'MD',
             title: 'Moldova',
             flagClass: 'c-moldova',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-moldova.pdf',
             statement: {
                 img: 'moldova.jpg',
                 imgThumb: 'moldova-thumb.jpg',
@@ -892,7 +892,7 @@
             id: 'ME',
             title: 'Montenegro',
             flagClass: 'c-montenegro',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-montenegro.pdf',
             statement: {
                 img: 'montenegro.jpg',
                 imgThumb: 'montenegro-thumb.jpg',
@@ -939,7 +939,7 @@
             id: 'RS',
             title: 'Serbia',
             flagClass: 'c-serbia',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-serbia.pdf',
             statement: {
                 img: 'serbia.jpg',
                 imgThumb: 'serbia-thumb.jpg',
@@ -986,7 +986,7 @@
             id: 'TJ',
             title: 'Tajikistan',
             flagClass: 'c-tajikistan',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-tajikistan.pdf',
             statement: {
                 img: 'tajikistan.jpg',
                 imgThumb: 'tajikistan-thumb.jpg',
@@ -1038,7 +1038,7 @@
             id: 'TR',
             title: 'Turkey',
             flagClass: 'c-turkey',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-turkey.pdf',
             statement: {
                 img: 'turkey.jpg',
                 imgThumb: 'turkey-thumb.jpg',
@@ -1090,7 +1090,7 @@
             id: 'TM',
             title: 'Turkmenistan',
             flagClass: 'c-turkmenistan',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-turkmenistan.pdf',
             statement: {
                 img: 'turkmenistan.jpg',
                 imgThumb: 'turkmenistan-thumb.jpg',
@@ -1138,7 +1138,7 @@
             id: 'UA',
             title: 'Ukraine',
             flagClass: 'c-ukraine',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-ukraine.pdf',
             statement: {
                 img: 'ukraine.jpg',
                 imgThumb: 'ukraine-thumb.jpg',
@@ -1190,7 +1190,7 @@
             id: 'UZ',
             title: 'Uzbekistan',
             flagClass: 'c-uzbekistan',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-uzbekistan.pdf',
             statement: {
                 img: 'uzbekistan.jpg',
                 imgThumb: 'uzbekistan-thumb.jpg',
