@@ -913,8 +913,8 @@
                     <!-- #endregion Left content / Vertical navigation -->
                     <!-- #region Middle text -->
                     <div class="c-cell c-has-text c-col-3-5-lg">
-                        <div id="cid-expandable-okw-wrapper" ng-class="{'c-max-h-470' : !ctrlVars.dataBindOKW.isTextExpanded}">
-                            <div id="cid-binded-okw-text" class="c-bind-txxt-wrapper" ng-bind-html="to_trusted(ctrlVars.textPartOKWtoBind)" ng-class="{'c-p-bottom-50' : ctrlVars.dataBindOKW.isTextExpanded}">
+                        <div id="cid-expandable-okw-wrapper" ng-class="{'c-max-h-470' : !ctrlVars.dataBindOKW.isTextExpanded, 'c-p-bottom-50' : ctrlVars.dataBindOKW.isTextExpanded}">
+                            <div id="cid-binded-okw-text" class="c-bind-txxt-wrapper" ng-bind-html="to_trusted(ctrlVars.textPartOKWtoBind)">
                             </div>
                         </div>
                         <div class="c-read-more-feather-button" ng-click="toggleVisibility('okwContentMoreLess')" ng-if="ctrlVars.dataBindOKW.isLargeText">
