@@ -219,10 +219,16 @@ angular.module('Home')
                     if ($scope.ctrlVars.dataBindBAC.isTextExpanded != undefined && $scope.ctrlVars.dataBindBAC.isTextExpanded != null) {
                         $scope.ctrlVars.dataBindBAC.isTextExpanded = !$scope.ctrlVars.dataBindBAC.isTextExpanded;
                         //if we shrinked text content by clicking 'Show less' then we should scroll back to top
-                        if ($scope.ctrlVars.dataBindOKW.isTextExpanded == false) {
-                            $timeout(function () {
-                                scrollToAnchor('cid-bac-content-xs');
-                            }, 600);
+                        if ($scope.ctrlVars.dataBindBAC.isTextExpanded == false) {
+                            if (isLargeResolution == true) {
+                                $timeout(function () {
+                                    scrollToAnchor('cid-bac-content-lg');
+                                }, 600);
+                            } else {
+                                $timeout(function () {
+                                    scrollToAnchor('cid-bac-content-xs');
+                                }, 600);
+                            }
                         }
                     }
                 } else if (callerName == 'forwordContentMoreLess') {
