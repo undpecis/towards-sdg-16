@@ -732,7 +732,7 @@
         /* #region Kosovo */
         {
             id: 'XK',
-            title: 'Kosovo',
+            title: 'Kosovo<sup>&dagger;</sup>',
             flagClass: 'c-kosovo',
             sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-kosovo.pdf',
             statement: {
