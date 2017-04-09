@@ -557,16 +557,20 @@ angular.module('Home')
                         genericIntervalCounterScroll = 0;
                         scrollInProgress = false;
                         //
-                        var old = $location.hash();
-                        $location.hash(anchorId);
-                        $anchorScroll();
-                        $location.hash(old);
+                        //var old = $location.hash();
+                        //$location.hash(anchorId);
+                        //$anchorScroll();
+                        //$location.hash(old);
                         //
-                        //var scrollTarget = '#' + anchorId;
-                        //$('html,body').animate({ scrollTop: $(scrollTarget).offset().top }, 800);
+                        $scope.scrollToAnchorFunc(anchorId);
                     }
                 }
             }
+            $scope.scrollToAnchorFunc = function (anchorId) {
+                var scrollTarget = '#' + anchorId;
+                $('html,body').animate({ scrollTop: $(scrollTarget).offset().top }, 800);
+            }
+
             // @= Calls external function that will reinitialize newly binded content update
             $scope.callExternalRebindingOfHtmlContent = function () {
                 //$scope.$apply();
