@@ -57,7 +57,7 @@
                                         <li ng-if="ctrlVars.visibleStates.burger_countries == true">
                                             <ul class="c-dropdown-menu-subnav c-countries c-max-h-300">
                                                 <li ng-repeat="countrySubitem in activeCountriesList" class="c-vdash-countries" ng-click="countryClickedFunc('countriesFromBurger', $index)">
-                                                    <a>{{countrySubitem.title}}</a>
+                                                    <a ng-bind-html="to_trusted(countrySubitem.title)"></a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -145,7 +145,7 @@
                     <!-- #endregion Title -->
                     <!-- #region Description text -->
                     <div class="c-description-over-wrap">
-                        <p class="c-txxt">In the Europe and Central Asia region, UNDP works with partners to strengthen inclusive and effective governance and sustain peace. This platform provides insights into how our work helps to make progress from 2015 onwards towards the realization of Sustainable Development Goals – with a focus on Goals 5 & 16 – by 2030.</p>
+                        <p class="c-txxt">In the Europe and Central Asia region, UNDP works with partners to strengthen inclusive and effective governance and sustain peace. This platform provides insights into how our work helps to make progress from 2015 onwards towards the realization of Sustainable Development Goals – with a focus on SDGs 5 & 16 – by 2030.</p>
                     </div>
                     <!-- #endregion Description text -->
                 </div>
@@ -997,22 +997,22 @@
                     <!-- #endregion Left content / Vertical navigation -->
                     <!-- #region Middle text -->
                     <div class="c-cell c-has-text c-col-3-5-lg">
-                        <div id="cid-expandable-okw-wrapper" ng-class="{'c-max-h-470' : !ctrlVars.dataBindOKW.isTextExpanded, 'c-p-bottom-50' : ctrlVars.dataBindOKW.isTextExpanded}">
+                        <div id="cid-expandable-okw-wrapper" ng-class="{'c-max-h-470' : !ctrlVars.dataBindOKW.isTextExpanded && ctrlVars.okwStatementHaveContent == false, 'c-max-h-815' : !ctrlVars.dataBindOKW.isTextExpanded && ctrlVars.okwStatementHaveContent == true, 'c-p-bottom-50' : ctrlVars.dataBindOKW.isTextExpanded}">
                             <div id="cid-binded-okw-text" class="c-bind-txxt-wrapper" ng-bind-html="to_trusted(ctrlVars.textPartOKWtoBind)">
                             </div>
+                            <!-- #region Show Less/More button -->
+                            <div class="c-read-more-feather-button c-bottom-0" ng-show="ctrlVars.dataBindOKW.isLargeText" ng-hide="ctrlVars.textPardOKWhasAntrfile && ctrlVars.dataBindOKW.isTextExpanded || !ctrlVars.dataBindOKW.isLargeText">
+                                <button class="c-bttn c-bttn-combo" ng-click="toggleVisibility('okwContentMoreLess')">
+                                    <div class="c-circle-icon-box">
+                                        <i class="c-ico icon-arrow-down" ng-if="!ctrlVars.dataBindOKW.isTextExpanded"></i>
+                                        <i class="c-ico icon-arrow-up" ng-if="ctrlVars.dataBindOKW.isTextExpanded"></i>
+                                    </div>
+                                    <span ng-if="!ctrlVars.dataBindOKW.isTextExpanded">SHOW MORE</span>
+                                    <span ng-if="ctrlVars.dataBindOKW.isTextExpanded">SHOW LESS</span>
+                                </button>
+                            </div>
+                            <!-- #endregion Show Less/More button -->
                         </div>
-                        <!-- #region Show Less/More button -->
-                        <div class="c-read-more-feather-button" ng-show="ctrlVars.dataBindOKW.isLargeText" ng-hide="ctrlVars.textPardOKWhasAntrfile && ctrlVars.dataBindOKW.isTextExpanded || !ctrlVars.dataBindOKW.isLargeText">
-                            <button class="c-bttn c-bttn-combo" ng-click="toggleVisibility('okwContentMoreLess')">
-                                <div class="c-circle-icon-box">
-                                    <i class="c-ico icon-arrow-down" ng-if="!ctrlVars.dataBindOKW.isTextExpanded"></i>
-                                    <i class="c-ico icon-arrow-up" ng-if="ctrlVars.dataBindOKW.isTextExpanded"></i>
-                                </div>
-                                <span ng-if="!ctrlVars.dataBindOKW.isTextExpanded">SHOW MORE</span>
-                                <span ng-if="ctrlVars.dataBindOKW.isTextExpanded">SHOW LESS</span>
-                            </button>
-                        </div>
-                        <!-- #endregion Show Less/More button -->
                         <!--<div class="c-read-more-feather-button" ng-click="toggleVisibility('okwContentMoreLess')" ng-if="ctrlVars.dataBindOKW.isLargeText">
                             <span ng-if="!ctrlVars.dataBindOKW.isTextExpanded">Show more&nbsp;&nbsp;<i class="c-ico icon-arrow-down"></i></span>
                             <span ng-if="ctrlVars.dataBindOKW.isTextExpanded">Show less&nbsp;&nbsp;<i class="c-ico icon-arrow-up"></i></span>
@@ -1024,14 +1024,32 @@
                         <p>Our work helps to meet targets under:</p>
                         <!-- #region SVG graphic -->
                         <div class="c-sdg-pictograms-wrap">
-                            <a class="c-sdg-pictograms-box c-gender" ng-click="openGenderPeaceModal('gender')">
+                            <a class="c-sdg-pictograms-box c-lg c-gender" ng-click="openGenderPeaceModal('gender')">
                             </a>
                         </div>
                         <!-- #endregion SVG graphic -->
                         <!-- #region SVG graphic -->
                         <div class="c-sdg-pictograms-wrap">
-                            <a class="c-sdg-pictograms-box c-peace-justice" ng-click="openGenderPeaceModal('peace')">
+                            <a class="c-sdg-pictograms-box c-lg c-peace-justice" ng-click="openGenderPeaceModal('peace')">
                             </a>
+                        </div>
+                        <div class="c-pictograms-statement-wrapper" ng-if="ctrlVars.okwStatementHaveContent == true">
+                            <div ng-class="{'c-max-240' : ctrlVars.okwStatementExpanded == false}">
+                                <p class="c-statement-body-txxt" ng-bind-html="to_trusted(ctrlVars.okwStatementBodyTextTwo)"></p>
+                                <p class="c-statement-signature-txxt" ng-bind-html="to_trusted(ctrlVars.okwStatementSignatureTextTwo)"></p>
+                            </div>
+                            <!-- #region Show Less/More button -->
+                            <div class="c-read-more-feather-button" ng-class="{'c-relative' : ctrlVars.okwStatementExpanded}">
+                                <button class="c-bttn c-bttn-combo" ng-click="toggleVisibility('okwStatementPictograms')">
+                                    <div class="c-circle-icon-box">
+                                        <i class="c-ico icon-arrow-down" ng-if="!ctrlVars.okwStatementExpanded"></i>
+                                        <i class="c-ico icon-arrow-up" ng-if="ctrlVars.okwStatementExpanded"></i>
+                                    </div>
+                                    <span ng-if="!ctrlVars.okwStatementExpanded">SHOW MORE</span>
+                                    <span ng-if="ctrlVars.okwStatementExpanded">SHOW LESS</span>
+                                </button>
+                            </div>
+                            <!-- #endregion Show Less/More button -->
                         </div>
                         <!-- #endregion SVG graphic -->
                         <!-- #region Download section -->
