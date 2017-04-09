@@ -70,6 +70,12 @@
 .c-24-400{
     font-size:24px;
 }
+.c-26-400{
+    font-size:26px;
+}
+.c-28-400{
+    font-size:28px;
+}
 .c-24-700{
     font-size:24px;
     .fmx-open-sans-bold();
@@ -222,12 +228,15 @@ b, strong{
 .c-w-1perc{ width:1%;}
 .c-w-50perc{ width:50%;}
 .c-w-100{width:100%}
+.c-max-240{display:block; max-height:240px !important; overflow-y:hidden !important;}
 .c-max-h-300{display:inline-block; max-height:300px !important; overflow-y:hidden !important;}
 .c-max-h-420{display:inline-block; max-height:420px !important; overflow-y:hidden !important;}
 .c-max-h-430{display:inline-block; max-height:430px !important; overflow-y:hidden !important;}
 .c-max-h-440{display:inline-block; max-height:440px !important; overflow-y:hidden !important;}
 .c-max-h-470{display:inline-block; max-height:470px !important; overflow-y:hidden !important;}
+.c-max-h-669{display:inline-block; max-height:669px !important; overflow-y:hidden !important;}
 .c-max-h-700{display:inline-block; max-height:700px !important; overflow-y:hidden !important;}
+.c-max-h-815{display:inline-block; max-height:815px !important; overflow-y:hidden !important;}
 .c-max-h-315-scrl{display:inline-block; max-height:315px !important; overflow-y:auto !important;}
 /* #endregion Dimensions */
 /* #region Mixins */
@@ -559,6 +568,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
     //
     &.c-antrfile-box{
         bottom:-150px;
+    }
+    //remove bottom offset
+    &.c-bottom-0{
+        bottom:0;
+    }
+    //position relative makes button get under content below
+    &.c-relative{
+        position:relative;
+        bottom:0;
     }
 }
 /* #endregion Buttons */
@@ -911,9 +929,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
                             font-weight:normal !important;
                             color:rgba(255,255,255, 0.5);
                         }
+                        //hover
+                        &:hover{
+                            a{
+                                color:rgba(255,255,255, 0.7);
+                            }
+                        }
                         &.c-active{
                             a{
-                                color:@col-text-blue;
+                                color:@col-white;
                             }
                         }
                     }
@@ -2349,6 +2373,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
         &.c-show-when-lg{
             display:block;
         }
+        .c-dynamic-country-title{
+            font-size:24px;
+        }
         @media (max-width: (@var-breakpoint-start-xlg - 1) ){
         }
     }
@@ -2745,15 +2772,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
         margin:15px 0 10px;
         font-size:24px;
     }
-    .c-statement-body-txxt{
-        font-size:20px;
-        line-height:1.4;
-        font-style:italic;
-    }
-    .c-statement-signature-txxt{
-        font-size:20px;
-        line-height:1.4;
-    }
     //in case for mobile xs content
     &.c-xs-content{
         padding:0 20px 40px;
@@ -2923,6 +2941,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
 .c-bind-txxt-wrapper{
     overflow-x:hidden;
     overflow-y:auto;
+}
+.c-statement-body-txxt{
+    font-size:20px;
+    line-height:1.4;
+    font-style:italic;
+}
+.c-statement-signature-txxt{
+    font-size:20px;
+    line-height:1.4;
+}
+.c-pictograms-statement-wrapper{
+    padding-top:20px;
+    display:block;
+    position:relative;
+    width:100%;
+    .c-statement-body-txxt{
+        font-size:18px;
+        line-height:1.3;
+        font-style:italic;
+    }
+    .c-statement-signature-txxt{
+        font-size:18px;
+        line-height:1.3;
+    }
 }
 /* #endregion EXPANDABLE CONTENT */
 /* #region FOCUS AREAS CONTENT */
@@ -3759,6 +3801,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
                 background-position: 0 -170px;
             }
         }
+        //larger version of pictograms
+        &.c-lg{
+            width:233px;
+            height:233px;
+            background-image: url('../Content/images/sdg-banners-sprite-lg.png');
+            &.c-gender{
+                background-position: -243px 0;
+                &:hover{
+                    background-position: -243px -243px;
+                }
+            }
+            &.c-peace-justice{
+                background-position: 0 0;
+                &:hover{
+                    background-position: 0 -243px;
+                }
+            }
+        }
     }
 }
 .c-svg-object{
@@ -3862,10 +3922,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
 
 
 /* #region Example images in text content box */
-@var-allimg-max-width:540px;
+@var-allimg-max-width:100%;
 @var-allimg-desc-max-width:144px;
 @c-allimg-desc-background:#d2406c;
 @c-allimg-signature-background:#333;
+@c-wrap-img-width:66.6666%;
 .c-allimg-wrap{
     display:block;
     position:relative;
@@ -3882,7 +3943,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
         text-align:left;
         z-index:0;
         img{
-            width:100%;
+            width:auto;
             height:auto;
             max-width:@var-allimg-max-width;
             max-height:400px;
@@ -3923,6 +3984,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
             /* #endregion Large resolutions */
             /* #endregion RESPONSIVE QUERY */
         }
+    }
+    //text will wrap around image
+    &.c-wrap-left{
+        display:inline-block;
+        float:left;
+        margin:15px 20px 15px 0;
+        width:@c-wrap-img-width;
+        max-width:@c-wrap-img-width;
+    }
+    &.c-wrap-right{
+        display:inline-block;
+        float:right;
+        margin:15px 0 15px 20px;
+        width:@c-wrap-img-width;
+        max-width:@c-wrap-img-width;
     }
     //description
     .c-img-sign{
