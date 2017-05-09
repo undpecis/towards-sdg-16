@@ -261,6 +261,22 @@ strong {
   max-height: 315px !important;
   overflow-y: auto !important;
 }
+.c-min-w-500 {
+  min-width: 500px;
+}
+.c-min-w-450 {
+  min-width: 450px;
+}
+.c-min-w-400 {
+  min-width: 400px;
+}
+.c-wide-popup {
+  min-width: 360px;
+  word-break: break-all;
+}
+.c-wide-popup .popover-content {
+  word-break: break-all;
+}
 /* #endregion Dimensions */
 /* #region Mixins */
 /* #endregion Mixins */
@@ -2317,7 +2333,7 @@ strong {
     text-align: left;
     vertical-align: bottom;
     position: relative;
-    min-width: 230px;
+    min-width: 210px;
   }
   .c-key-results-content-flag > .c-table > .c-cell.c-w-1perc .c-title-text {
     position: absolute;
@@ -2599,6 +2615,7 @@ strong {
   }
 }
 .c-focus-areas-okw-content-xs-include-wrap {
+  /* #region RESPONSIVE QUERY */
   /* #region Extra small resolutions */
   /* #endregion Extra small resolutions */
   /* #region Large resolutions */

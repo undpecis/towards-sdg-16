@@ -238,12 +238,26 @@ b, strong{
 .c-max-h-700{display:inline-block; max-height:700px !important; overflow-y:hidden !important;}
 .c-max-h-815{display:inline-block; max-height:815px !important; overflow-y:hidden !important;}
 .c-max-h-315-scrl{display:inline-block; max-height:315px !important; overflow-y:auto !important;}
+.c-min-w-500{min-width:500px;}
+.c-min-w-450 {
+    min-width: 450px;
+}
+.c-min-w-400 {
+    min-width: 400px;
+}
+.c-wide-popup {
+    min-width: 360px;
+    word-break: break-all;
+    .popover-content{
+        word-break:break-all;
+    }
+}
 /* #endregion Dimensions */
 /* #region Mixins */
-.mx-set-as-border-box(){
-    -moz-box-sizing:border-box;
-    -webkit-box-sizing:border-box;
-    box-sizing:border-box;
+.mx-set-as-border-box() {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 .mx-transform-translate(@xPerc, @yPerc){
     -webkit-transform: translate(@xPerc, @yPerc);
@@ -2608,7 +2622,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
                     text-align:left;
                     vertical-align:bottom;
                     position:relative;
-                    min-width:230px;
+                    min-width:210px;
                     .c-title-text{
                         position:absolute;
                         top:10px;
@@ -2892,38 +2906,44 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
     /* #endregion Extra Large resolutions */
     /* #endregion RESPONSIVE QUERY */
 }
-.c-focus-areas-okw-content-xs-include-wrap{
-    &.c-black-line-top{
-        border-top:7px solid @col-stripe-black;
+.c-focus-areas-okw-content-xs-include-wrap {
+    &.c-black-line-top {
+        border-top: 7px solid @col-stripe-black;
     }
-    &.c-blue-line-top{
-        border-top:7px solid @col-focus-stripe-blue;
+
+    &.c-blue-line-top {
+        border-top: 7px solid @col-focus-stripe-blue;
     }
-    &.c-red-line-top{
-        border-top:7px solid @col-focus-stripe-red;
+
+    &.c-red-line-top {
+        border-top: 7px solid @col-focus-stripe-red;
     }
-    &.c-peach-line-top{
-        border-top:7px solid @col-focus-stripe-peach;
+
+    &.c-peach-line-top {
+        border-top: 7px solid @col-focus-stripe-peach;
     }
+    /* #region RESPONSIVE QUERY */
     /* #region Extra small resolutions */
     @media only screen and (min-width : @var-breakpoint-start-zero) {
-        @media (max-width: (@var-breakpoint-start-lg - 1) ){
-            display:block;
-            margin:20px -20px 0;
-            .c-included-content-wrap{
-                background:@col-stripe-black;
-                background-color:@col-stripe-black;
-                color:@col-white;
-                .c-title{
-                    font-size:34px;
-                    text-align:center;
-                    padding:25px 15px;
-                }
-                .c-vertical-list{
-                    &.c-okw-xs-devices-list{
-                        > li{
-                            > a{
+        @media (max-width: (@var-breakpoint-start-lg - 1) ) {
+            display: block;
+            margin: 20px -20px 0;
 
+            .c-included-content-wrap {
+                background: @col-stripe-black;
+                background-color: @col-stripe-black;
+                color: @col-white;
+
+                .c-title {
+                    font-size: 34px;
+                    text-align: center;
+                    padding: 25px 15px;
+                }
+
+                .c-vertical-list {
+                    &.c-okw-xs-devices-list {
+                        > li {
+                            > a {
                             }
                         }
                     }
@@ -2934,7 +2954,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
     /* #endregion Extra small resolutions */
     /* #region Large resolutions */
     @media only screen and (min-width : @var-breakpoint-start-lg) {
-        display:none !important;
+        display: none !important;
     }
     /* #endregion Large resolutions */
     /* #endregion RESPONSIVE QUERY */
