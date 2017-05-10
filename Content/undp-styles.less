@@ -83,6 +83,9 @@
 .c-32-400{
     font-size:32px;
 }
+.c-34-400 {
+    font-size: 34px;
+}
 .c-42-400{
     font-size:42px;
 }
@@ -3218,11 +3221,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
     font-size:14px;
     line-height:1.3;
 }
-.c-pictograms-statement-wrapper{
-    padding-top:20px;
-    display:block;
-    position:relative;
-    width:100%;
+.c-pictograms-statement-wrapper {
+    padding-top: 20px;
+    display: block;
+    position: relative;
+    width: 100%;
+    height:100%;
+    .c-right-content-statement-scroller{
+        position:absolute;
+        height:100%;
+        width:100%;
+        overflow-x:hidden;
+        overflow-y:auto;
+    }
     /*.c-statement-body-txxt{
         font-size:18px;
         line-height:1.3;
@@ -3381,6 +3392,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
     width:100%;
     background-color:@col-antrfile-box-background;
     margin-bottom:50px;
+    margin-top:30px;
     padding:70px 0;
     position:relative;
     //arrows for up & down
@@ -4382,9 +4394,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
     height:auto;
     margin:25px 0;
 }
+.c-binded-graphic-img{
+    width:auto !important;
+    height:auto !important;
+}
 /* #endregion Example images in text content box */
-
-
 .c-graphSub {
     color: #ac9d90;
     font-size: 14px;
